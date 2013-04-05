@@ -60,11 +60,13 @@ class Database {
                 }
                 break;
             case "pledgestatetypegroup":
-                if (is_array($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks())) {
-                    foreach ($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks() as $value) {
-                        $t0[] = $value->getID();
+                if ($this->pledgestatetypegroups[$val]) {
+                    if (is_array($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks())) {
+                        foreach ($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks() as $value) {
+                            $t0[] = $value->getID();
+                        }
+                        $this->setFilter("pledgestatetypeids", $t0);
                     }
-                    $this->setFilter("pledgestatetypeids", $t0);
                 }
                 break;
             }
