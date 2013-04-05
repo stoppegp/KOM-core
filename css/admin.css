@@ -1,0 +1,92 @@
+.main {
+    background-color: #fafafa;
+}
+
+.issuelist td {
+    padding: 4px;
+    vertical-align: middle;
+}
+
+a.listbutton, a.button {
+    padding: 1px;
+    border: 1px solid black;
+    margin: 2px;
+    margin-left: 0px;
+    padding: 5px;
+    background-color: #eee;
+    color: black;
+}
+a.listbutton:hover, a.button:hover {
+    background-color: gray;
+    color: white;
+}
+a.listbutton {
+    padding: 2px;
+    float: right;
+    margin: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+a.delbutton {
+    background-color: #fdd;
+}
+a.delbutton:hover {
+    background-color: red;
+}
+a.newbutton {
+    background-color: #dfd;
+}
+a.newbutton:hover {
+    background-color: green;
+}
+
+
+.adminerror, .adminsuccess {
+    margin: 5px;
+    padding: 5px;
+    background-color: #eee;
+}
+
+.adminerror {
+    border: 4px solid red;
+}
+.adminsuccess {
+    border: 4px solid green;
+}
+
+.backlink:before {
+    content: "< ";
+}
+
+td.big {
+    font-size: 1.1em;
+}
+table {
+    background-color: white;
+}
+
+.main {
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.user {
+    position: absolute;
+    text-align: center;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    top: 20px;
+    right: 40px;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    font-family: sans-serif;
+}
+input[type="text"] {
+    width: 300px;
+}

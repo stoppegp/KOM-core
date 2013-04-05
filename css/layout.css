@@ -1,0 +1,160 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
+a:hover {
+    background-color: green;
+    color: white;
+}
+
+.main {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+.header {
+    margin-bottom: 10px;
+}
+.header ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    clear: both;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-left: -6px;
+    margin-right: -6px;
+    overflow: auto;
+}
+.header ul.menu li{
+    display: block;
+    padding: 6px;
+    float: left;
+}
+.header ul.menu li a {
+    display: block;
+    margin: -6px;
+    padding: 6px;
+}
+.header ul.menu li #active_main  {
+    background-color: green;
+    color: white;
+}
+.header ul.menu li a:hover {
+    background-color: green;
+}
+.content {
+    clear: both;
+    float: left;
+    width: 70%;
+    border-right: 1px solid black;
+    padding-right: 10px;
+    overflow: auto;
+}
+.contentwide {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
+}
+.sidemenu {
+    width: 30%;
+    float: left;
+    border-left: 1px solid black;
+    margin-left: -1px;
+    padding: 10px;
+}
+.sidemenu ul {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    padding-top: 5px;
+    border-right: 2px solid green;
+
+}
+.sidemenu ul li {
+    padding: 3px;
+    display: block;
+}
+.sidemenu ul li a {
+    margin: -3px;
+    padding: 3px;
+    display: block;
+}
+.sidemenu h2 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: green;
+    color: white;
+    padding: 3px;
+}
+.sidemenu ul.menu li #active_cat, .sidemenu ul.menu li #active_party, .sidemenu ul.menu li #active_pst  {
+    background-color: green;
+    color: white;
+}
+
+h3.pledge {
+    border: 1px solid black;
+    padding: 4px;
+    font-size: 1.1em;
+}
+
+.content .quote {
+    border-left: 4px solid #ccc;
+    padding-left: 10px;
+}
+.content .quote .source {
+    display: block;
+    font-size: 0.9em;
+}
+.content .quote .source:before {
+    content: "(";
+}
+.content .quote .source:after {
+    content: ")";
+}
+.content .quote .text:before {
+    content: "»";
+}
+.content .quote .text:after {
+    content: "«";
+}
+.content .currentstate {
+    margin-top: 3px;
+}
+.content .currentstate:before {
+    content: "Status: ";
+    font-weight: bold;
+}
+tr .quote {
+    display: none;
+}
+tr:target {
+    background-color: #ddd;
+}
+tr:target .quote{
+    display: block;
+}
+
+.bordertable {
+    border-collapse: collapse;
+}
+.bordertable td {
+    border: 1px solid black;
+    padding: 4px;
+}
