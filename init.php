@@ -30,4 +30,6 @@ $active['issueid'] = $_GET['issueid'];
 
 $mainDB = new Database($dblink);
 
+$KOM_PAGETITLE = $mainDB->getOption("site_title");
+
 ?>
