@@ -254,7 +254,20 @@ class Database {
         } else {
             return null;
         }
-    }  
+    } 
+
+    public function getGroupsOfPledgestatetype($id) {
+        if (isset($this->pledgestatetypes[$id]) && is_array($this->pledgestatetypegroups)) {
+            foreach ($this->pledgestatetypegroups as $val) {
+                if (in_array($id, $val->getPledgestatetypes())) {
+                    $retar[] = $val->getID();
+                }
+            }
+            return $retar;
+        } else {
+            return null;
+        }
+    }     
     
     public function getLinkDB() {
         return $this->linkDB;

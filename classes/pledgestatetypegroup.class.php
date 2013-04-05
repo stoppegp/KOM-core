@@ -31,7 +31,9 @@ class Pledgestatetypegroup {
     public function getColour() {
         return $this->colour;
     }
-    
+    public function getPledgestatetypes() {
+        return $this->pledgestatetype_ids;
+    }
     public function getPledgestatetypeLinks() {
         if (is_array($this->pledgestatetype_ids)) {
             foreach ($this->pledgestatetype_ids as $val) {
