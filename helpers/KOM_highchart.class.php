@@ -31,6 +31,12 @@ class KOM_highchart {
         foreach ($array as $key => $val) {
             if (is_numeric($val) || strpos(" ".$val, "function(") > 0) {
                 $val0 = $val;
+            } elseif (is_bool($val)) {
+                if ($val) {
+                    $val0 = "true";
+                } else {
+                    $val0 = " false";
+                }
             } else {
                 $val0 = '"'.$val.'"';
             }
