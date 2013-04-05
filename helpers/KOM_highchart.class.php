@@ -1,0 +1,78 @@
+<?php
+
+class KOM_highchart {
+    
+    private $id;
+    public $options;
+    public $activelinks = false;
+    
+    function __construct($id) {
+        $this->id = $id;
+        $this->options = array("chart" => array("renderTo" => $id));
+    }
+    
+    public function activateLinks($what = "point") {
+        switch ($what) {
+            case "series":
+                 $this->options['plotOptions']['series']['events']['click'] = "function(event) {
+                            location.href = this.options.url;
+                        }";
+                break;
+            case "point":
+            default:
+            $this->options['plotOptions']['series']['point']['events']['click'] = "function() {
+                            location.href = this.options.url;
+                        }";
+        }
+        
+    }
+    
+    public function exploderec($array) {
+        foreach ($array as $key => $val) {
+            if (is_numeric($val) || strpos(" ".$val, "function(") > 0) {
+                $val0 = $val;
+            } else {
+                $val0 = '"'.$val.'"';
+            }
+        
+            if (!is_array($val)) {
+                if (is_numeric($key)) {
+                    $ret .= $val0.','."\n";
+                } else {
+                    $ret .= '"'.$key.'":'.$val0.','."\n";
+                }
+            } else {
+                if (!$this->isAssoc($val)) {
+                    if (!$this->isAssoc($array)) {
+                        $ret .= '['.$this->exploderec($val).'],';
+                    } else {
+                        $ret .= '"'.$key.'": ['.$this->exploderec($val).'],';
+                    }
+                } else {
+                    if (!$this->isAssoc($array)) {
+                        $ret .= '{'.$this->exploderec($val).'},';
+                    } else {
+                        $ret .= '"'.$key.'": {'.$this->exploderec($val).'},';
+                    }
+                }
+            }
+        }
+        return $ret;
+    }
+    
+    private function isAssoc($arr)
+    {
+        return array_keys($arr) !== range(0, count($arr) - 1);
+    }
+    
+    public function render() {
+        $ret .= "$(function () {";
+            $ret .= "$('#".$this->id."').highcharts({";
+            $ret .= $this->exploderec($this->options);
+            $ret .= "});";
+        $ret .= "});";
+        return $ret;
+    }
+
+}
+?>
