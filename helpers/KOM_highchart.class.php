@@ -24,7 +24,7 @@ class KOM_highchart {
                             location.href = this.options.url;
                         }";
         }
-        
+        $this->options['plotOptions']['series']['cursor'] = "pointer";
     }
     
     public function exploderec($array) {
