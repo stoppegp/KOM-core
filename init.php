@@ -17,7 +17,7 @@ if ($active['page'] == "") {
     $active['page'] = "home";
 }
 
-if (!file_exists("theme/".$active['page'].".php")) {
+if (!file_exists("interface/".$active['page'].".php")) {
     $active['page'] = "error/404";
 }
 
@@ -25,5 +25,5 @@ $mainDB = new Database($dblink);
 
 $KOM_PAGETITLE = $mainDB->getOption("site_title");
 
-require("theme/init.php");
+require("interface/init.php");
 ?>
