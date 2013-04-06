@@ -13,7 +13,6 @@ function kom_autoload($class) {
         "pledgestatetypegroup"  =>  "classes/pledgestatetypegroup.class.php",
         "pledgestate"  =>  "classes/pledgestate.class.php",
         "analysis"  =>  "classes/analysis.class.php",
-        "kom_highchart"  =>  "helpers/KOM_highchart.class.php",
     );
     if (in_array(strtolower($class), array_keys($classes))) {
         include_once $classes[strtolower($class)];
