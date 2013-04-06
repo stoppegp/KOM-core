@@ -40,9 +40,27 @@ function registerScript($content, $link = false) {
     }
 }
 
+function registerStyle($content, $link = false) {
+    global $KOM_STYLES;
+    if ($link) {
+        $KOM_STYLES[] = '<style type="text/css" src="'.$content.'"></style>';
+    } else {
+        $KOM_STYLES[] = '<link rel="stylesheet" type="text/css" href="'.$content.'" />';
+    }
+}
+
 function getScripts() {
     global $KOM_SCRIPTS;
     if (is_array($KOM_SCRIPTS) && count($KOM_SCRIPTS)>0) {
+        return implode("\n", $KOM_SCRIPTS);
+    } else {
+        return "";
+    }
+}
+
+function getStyles() {
+    global $KOM_STYLES;
+    if (is_array($KOM_STYLES) && count($KOM_STYLES)>0) {
         return implode("\n", $KOM_SCRIPTS);
     } else {
         return "";

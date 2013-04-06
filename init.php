@@ -7,8 +7,6 @@ require('helpers/MySQL.class.php');
 require('autoload.php');
 require('functions.php');
 
-require("theme/init.php");
-
 /* DB-Verbindung aufbauen */
 $dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME);
 $dblink->connect();
@@ -27,4 +25,5 @@ $mainDB = new Database($dblink);
 
 $KOM_PAGETITLE = $mainDB->getOption("site_title");
 
+require("theme/init.php");
 ?>

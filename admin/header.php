@@ -2,11 +2,8 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <title>KOM</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/layout.css">
-    <link rel="stylesheet" type="text/css" href="../css/admin.css">
+    <title>KOM ADMIN</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
   </head>
   <body>
   <div class="main">
