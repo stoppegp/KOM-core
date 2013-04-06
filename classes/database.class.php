@@ -186,6 +186,8 @@ class Database {
         }
     }
     
+    
+    
     /* Getter-Funktionn */
     
     public function getCategories($order = "ID", $orient = "ASC") {
@@ -233,13 +235,13 @@ class Database {
         }
     }    
     
-    public function getPledgestatetypes() {
-        return $this->pledgestatetypes;
-    }  
-    
     
     public function getPledgestatetypegroups() {
-        return $this->pledgestatetypegroups;
+        if (is_array($this->pledgestatetypegroups)) {
+            return $this->pledgestatetypegroups;
+        } else {
+            return false;
+        }
     }  
     
     public function getPledgestatetypegroup($id) {
@@ -247,6 +249,14 @@ class Database {
             return $this->pledgestatetypegroups[$id];
         } else {
             return null;
+        }
+    }  
+    
+    public function getPledgestatetypes() {
+        if (is_array($this->pledgestatetypes)) {
+            return $this->pledgestatetypes;
+        } else {
+            return false;
         }
     }  
     
@@ -267,7 +277,7 @@ class Database {
             }
             return $retar;
         } else {
-            return null;
+            return false;
         }
     }     
     
@@ -294,12 +304,28 @@ class Database {
     }
    
     public function getIssue($id) {
-        return $this->issues[$id];
+        if (isset($this->issues[$id])) {
+            return $this->issues[$id];
+        } else {
+            return false;
+        }
         
     }
    
+    public function getOptions() {
+        if (is_array($this->options)) {
+            return $this->options;
+        } else {
+            return false;
+        }
+    }
+   
     public function getOption($key) {
-        return $this->options[$key];
+        if (isset($this->options[$key])) {
+            return $this->options[$key];
+        } else {
+            return false;
+        }
     }
 }
 
