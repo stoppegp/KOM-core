@@ -1,8 +1,6 @@
 <?php
 require("init.php");
-if (file_exists("interface/functions.php")) {
-    require("interface/functions.php");
-}
+
 
 ob_start();
 require("interface/".$active['page'].".php");

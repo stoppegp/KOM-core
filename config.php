@@ -5,4 +5,6 @@ define( 'DB_USER',      "web105");
 define( 'DB_PASSWORD',  "mastrop$90");
 define( 'DB_DBNAME',    "usr_web105_5");
 
+define(  'SITE_URL',    "http://kom.stoppe-gp.de/page2");
+
 ?>

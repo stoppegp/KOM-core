@@ -1,6 +1,11 @@
 <?php
+$KOM_DOLINK = "stdDoLink";
+$KOM_REWRITE = "stdRewrite";
+
 function dolink($page = "", $arg = null, $clear = false) {
     global $active;
+    global $KOM_DOLINK;
+    
     if ($clear) {
         $nlactive = array();
     } else {
@@ -17,6 +22,20 @@ function dolink($page = "", $arg = null, $clear = false) {
         $page = $active['page'];
     }
     
+    return $KOM_DOLINK($page, $nlactive);
+}
+
+function setDoLink($func) {
+    global $KOM_DOLINK;
+    $KOM_DOLINK = $func;
+}
+
+function setRewrite($func) {
+    global $KOM_REWRITE;
+    $KOM_REWRITE = $func;
+}
+
+function stdDoLink($page, $nlactive) {
     if (is_array($nlactive)) {
         foreach ($nlactive as $key => $val) {
             if ($val) {
@@ -25,16 +44,29 @@ function dolink($page = "", $arg = null, $clear = false) {
         }
     }
     if (count($nlactive2) > 0) {
-        return "index.php?page=".$page."&".implode("&amp;", $nlactive2);
+        return SITE_URL."/index.php?page=".$page."&".implode("&amp;", $nlactive2);
     } else {
-        return "index.php?page=".$page;
+        return SITE_URL."/index.php?page=".$page;
     }
+}
+
+function stdRewrite($uri){
+    $active['page'] = $_GET['page'];
+
+    if ($active['page'] == "") {
+        $active['page'] = "home";
+    }
+
+    if (!file_exists("interface/".$active['page'].".php")) {
+        $active['page'] = "error/404";
+    }
+    return $active;
 }
 
 function registerScript($content, $link = false) {
     global $KOM_SCRIPTS;
     if ($link) {
-        $KOM_SCRIPTS[] = '<script type="text/javascript" src="'.$content.'"></script>';
+        $KOM_SCRIPTS[] = '<script type="text/javascript" src="'.SITE_URL."/".$content.'"></script>';
     } else {
         $KOM_SCRIPTS[] = '<script type="text/javascript">"'.$content.'"</script>';
     }
@@ -43,7 +75,7 @@ function registerScript($content, $link = false) {
 function registerStyle($content, $link = false) {
     global $KOM_STYLES;
     if ($link) {
-        $KOM_STYLES[] = '<link rel="stylesheet" type="text/css" href="'.$content.'" />';
+        $KOM_STYLES[] = '<link rel="stylesheet" type="text/css" href="'.SITE_URL."/".$content.'" />';
     } else {
         $KOM_STYLES[] = '<style type="text/css">"'.$content.'"</style>';
     }
