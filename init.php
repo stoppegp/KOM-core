@@ -23,11 +23,6 @@ if (!file_exists("theme/".$active['page'].".php")) {
     $active['page'] = "error/404";
 }
 
-$active['party'] = $_GET['party'];
-$active['cat'] = $_GET['cat'];
-$active['pst'] = $_GET['pst'];
-$active['issueid'] = $_GET['issueid'];
-
 $mainDB = new Database($dblink);
 
 $KOM_PAGETITLE = $mainDB->getOption("site_title");
