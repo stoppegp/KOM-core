@@ -15,7 +15,8 @@ if (is_array($errors)) {
         $dbarray['desc'] = htmlspecialchars($workarray['desc']);
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
         $dblink->Insert("issues", $dbarray);
-        $adminactive['page'] = "issue_list";
+        $adminactive['page'] = "issue_show";
+        $adminactive['issueid'] = mysql_insert_id();
         adminaddsuccess("Datensatz wurde erfolgreich eingefügt.");
         $database->reloadContent();
     } catch (DBError $e) {
