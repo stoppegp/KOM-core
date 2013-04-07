@@ -59,6 +59,7 @@ class Issue {
     public function loadContent() {
         $this->loadStates();
         $this->loadPledges();
+        $this->loadPledgestates();
         $this->isLoad = true;
     }
     
@@ -86,7 +87,16 @@ class Issue {
             foreach ($retar as $key => $val) {
                     $this->states[$val->id] = new State($this, $val->id, $this->id, $val->name, $val->datum, $val->quotetext, $val->quotesource, $val->quoteurl);
                     $this->statesByDatum[] = &$this->states[$val->id];
-                    $this->states[$val->id]->loadContent();
+                    //$this->states[$val->id]->loadContent();
+            }
+        }
+    }
+    
+    private function loadPledgestates() {
+        $ar = $this->states;
+        if (is_array($ar)) {
+            foreach ($ar as $key => $val) {
+                    $this->states[$key]->loadContent();
             }
         }
     }
