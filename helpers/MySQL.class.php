@@ -39,7 +39,7 @@ class MySQL {
 	public function Insert($table, $insar) {
         foreach ($insar as $key => $val) {
             if (!is_numeric($val)) {
-                $insar2["`".$key."`"] = "'".str_replace("'", "\'", $val)."'";
+                $insar2["`".$key."`"] = "'".$val."'";
             } else {
                 $insar2["`".$key."`"] = $val;
             }
@@ -63,7 +63,7 @@ class MySQL {
 	public function Update($table, $updar, $misc) {
         foreach ($updar as $key => $val) {
             if (!is_numeric($val)) {
-                $updar2["`".$key."`"] = "'".str_replace("'", "\'", $val)."'";
+                $updar2["`".$key."`"] = "'".$val."'";
             } else {
                 $updar2["`".$key."`"] = $val;
             }

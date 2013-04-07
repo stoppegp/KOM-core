@@ -24,6 +24,7 @@
     
     <ul class="menu">
     <li><a <? echo (in_array($adminactive['page'], array("issue_list", "issue_new", "issue_edit", "issue_del", "issue_show", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("issue_list");?>">Inhalt</a></li>
+    <li><a <? echo (in_array($adminactive['page'], array("custompages_list", "custompages_edit", "custompages_del", "custompages_new"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("custompages_list");?>">Seiten</a></li>
     <?php
     if ($_SESSION['admin'] == 1) {
     ?>
