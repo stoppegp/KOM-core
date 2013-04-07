@@ -122,6 +122,10 @@ class Pledge {
             return $this->quote->getURL();
         }
     }
+    
+    public function getIssueLink() {
+        return $this->linkIssue;
+    }
 }
 
 ?>
