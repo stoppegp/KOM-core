@@ -21,7 +21,7 @@
             Administrator:
         </td>
         <td>
-            <input type="checkbox" name="user[admin]" value="1" <? echo ($oldarray['admin']==1) ? "checked=\"checked\"" : ""; ?>" />
+            <input type="checkbox" name="user[admin]" value="1" <? echo ($oldarray['admin']==1) ? "checked=\"checked\"" : ""; ?> />
         </td>
     </tr>
     <tr>
