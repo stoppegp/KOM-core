@@ -7,6 +7,7 @@ if (!$database->getCategory($thiscatid)) {
     
     if (!isset($oldarray)) {
         $oldarray['name'] = $thiscat->getName();
+        $oldarray['disabled'] = $thiscat->getDisabled();
     }
 
 

@@ -11,6 +11,11 @@ if (is_array($errors)) {
 } else {
     try {
         $dbarray['name'] = htmlspecialchars($workarray['name']);
+        if ($workarray['disabled'] == 1) {
+            $dbarray['disabled'] = 1;
+        } else {
+            $dbarray['disabled'] = 0;
+        }
         $dblink->Insert("categories", $dbarray);
         $adminactive['page'] = "cat_list";
         adminaddsuccess("Datensatz wurde erfolgreich eingefügt.");

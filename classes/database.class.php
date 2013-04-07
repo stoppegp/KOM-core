@@ -146,7 +146,7 @@ class Database {
         $retar = $this->linkDB->Select("categories", "*", "ORDER BY name ASC");
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
-                $this->categories[$val->id] = new Category($val->id, $val->name);
+                $this->categories[$val->id] = new Category($val->id, $val->name, $val->disabled);
                 ksort($this->categories);
                 $this->categoriesByName[] = $this->categories[$val->id];
             }

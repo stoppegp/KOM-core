@@ -10,6 +10,11 @@ if (is_array($errors)) {
 } else {
     try {
         $dbarray['name'] = htmlspecialchars($workarray['name']);
+        if ($workarray['disabled'] == 1) {
+            $dbarray['disabled'] = 1;
+        } else {
+            $dbarray['disabled'] = 0;
+        }
         $dblink->Update("categories", $dbarray, "WHERE `id`=".$workarray['id']);
         $adminactive['page'] = "cat_list";
         adminaddsuccess("Datensatz wurde erfolgreich geändert.");
