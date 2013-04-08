@@ -3,7 +3,7 @@ require("init.php");
 
 
 ob_start();
-require("interface/".$active['page'].".php");
+require("interface/".KOM::$active['page'].".php");
 $KOM_CONTENT = ob_get_contents();
 ob_end_clean();
 
