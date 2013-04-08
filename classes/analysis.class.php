@@ -65,7 +65,7 @@ class Analysis {
         }
     }
     
-    public function getChartseriesPieGroup($datum = false) {
+    public function getChartseriesPieGroup($datum = false, $options = null) {
         
         if (!$datum) $datum = time();
         
@@ -79,9 +79,15 @@ class Analysis {
     
         $chart1data = array();
         foreach ($this->linkDatabase->getPledgestatetypegroups() as $value0) {
+            unset($tempar);
             $tempar['name'] = $value0->getName();
             $tempar['color'] = $value0->getColour();
             $tempar['y'] = $group_nr[$value0->getID()];
+            if (is_array($options[$value0->getID()])) {
+                foreach ($options[$value0->getID()] as $key => $val) {
+                    $tempar[$key] = $val;
+                }
+            }
             $chart1data[$value0->getOrder()] = $tempar;
         }
         ksort($chart1data);
@@ -89,7 +95,7 @@ class Analysis {
             
     }
     
-    public function getChartseriesPie($datum = false) {
+    public function getChartseriesPie($datum = false, $options = null) {
         
         if (!$datum) $datum = time();
         
@@ -97,10 +103,16 @@ class Analysis {
         
         $chart1data = array();
         foreach ($this->linkDatabase->getPledgestatetypes() as $value0) {
+            unset($tempar);
             if ( $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl() == 0) continue;
             $tempar['name'] = $value0->getName();
             $tempar['color'] = $value0->getColour();
             $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl();
+            if (is_array($options[$value0->getID()])) {
+                foreach ($options[$value0->getID()] as $key => $val) {
+                    $tempar[$key] = $val;
+                }
+            }
             $chart1data[$value0->getOrder()] = $tempar;
             //echo $value0->getOrder();
         }
@@ -109,11 +121,11 @@ class Analysis {
             
     }
     
-    public function getChartseriesTrendGroup($startdatum = false, $enddatum = false, $interval = 30) {
+    public function getChartseriesTrendGroup($startdatum = false, $enddatum = false, $interval = 30, $options = null) {
     
         if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
         if (!$enddatum || ($enddatum > time())) $enddatum = time();
-        
+        if (!is_numeric($interval)) $interval = 30;
         
         $c2d = array();
 
@@ -139,6 +151,12 @@ class Analysis {
                 'name' => $this->linkDatabase->getPledgestatetypegroup($key)->getName(),
                 'color' => $this->linkDatabase->getPledgestatetypegroup($key)->getColour(),
             );
+            if (is_array($options[$key])) {
+                foreach ($options[$key] as $key0 => $val0) {
+                    $temp00[$key0] = $val0;
+                }
+            }
+            
             if (!array_sum($val) == 0) {
                 foreach ($val as $key2 => $val2) {
                     if (!isset($valbef) || $valbef != $val2 || true) {
@@ -173,11 +191,11 @@ class Analysis {
     
     }
     
-    public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30) {
+    public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30, $options = false) {
     
         if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
         if (!$enddatum || ($enddatum > time())) $enddatum = time();
-        
+        if (!is_numeric($interval)) $interval = 30;
         
         $c2d = array();
 
@@ -202,6 +220,11 @@ class Analysis {
                 'name' => $this->linkDatabase->getPledgestatetype($key)->getName(),
                 'color' => $this->linkDatabase->getPledgestatetype($key)->getColour(),
             );
+            if (is_array($options[$key])) {
+                foreach ($options[$key] as $key0 => $val0) {
+                    $temp00[$key0] = $val0;
+                }
+            }
             if (!array_sum($val) == 0) {
                 foreach ($val as $key2 => $val2) {
                     if (!isset($valbef) || $valbef != $val2 || true) {
