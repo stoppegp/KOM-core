@@ -65,4 +65,172 @@ class Analysis {
         }
     }
     
+    public function getChartseriesPieGroup($datum = false) {
+        
+        if (!$datum) $datum = time();
+        
+        $nr = $this->getNumberOfPledgestatetypesAtDatum($datum);
+        
+        foreach ($this->linkDatabase->getPledgestatetypegroups() as $value0) {
+            foreach ($this->linkDatabase->getPledgestatetypegroup($value0->getID())->getPledgestatetypes() as $value) {
+                $group_nr[$value0->getID()] += $nr[$value->getID()];
+            }
+        }
+    
+        $chart1data = array();
+        foreach ($this->linkDatabase->getPledgestatetypegroups() as $value0) {
+            $tempar['name'] = $value0->getName();
+            $tempar['color'] = $value0->getColour();
+            $tempar['y'] = $group_nr[$value0->getID()];
+            $chart1data[$value0->getOrder()] = $tempar;
+        }
+        ksort($chart1data);
+        return array(array("type" => "pie", "data" => array_values($chart1data)));
+            
+    }
+    
+    public function getChartseriesPie($datum = false) {
+        
+        if (!$datum) $datum = time();
+        
+        $nr = $this->getNumberOfPledgestatetypesAtDatum($datum);
+        
+        $chart1data = array();
+        foreach ($this->linkDatabase->getPledgestatetypes() as $value0) {
+            if ( $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl() == 0) continue;
+            $tempar['name'] = $value0->getName();
+            $tempar['color'] = $value0->getColour();
+            $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl();
+            $chart1data[$value0->getOrder()] = $tempar;
+            //echo $value0->getOrder();
+        }
+        ksort($chart1data);
+        return array(array("type" => "pie", "data" => array_values($chart1data)));
+            
+    }
+    
+    public function getChartseriesTrendGroup($startdatum = false, $enddatum = false, $interval = 30) {
+    
+        if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
+        if (!$enddatum || ($enddatum > time())) $enddatum = time();
+        
+        
+        $c2d = array();
+
+        for ($a = $startdatum; $a < $enddatum; $a += $interval*86400) {
+            unset($temp0);
+            $temp0 = $this->getNumberOfPledgestatetypesAtDatum($a);
+            if (is_array($temp0)) {
+                foreach ($this->linkDatabase->getPledgestatetypegroups() as $val0) {
+                    foreach ($this->linkDatabase->getPledgestatetypegroup($val0->getID())->getPledgestatetypes() as $value) {
+                        if (!isset($temp0[$value->getID()])) $temp0[$value->getID()] = "0";
+                        $c2d[$val0->getID()][$a] += $temp0[$value->getID()]*$value->getMultipl();
+                    }
+                }
+            }
+        }
+        
+        
+        
+        foreach ($c2d as $key => $val) {
+            $sno = $this->linkDatabase->getPledgestatetypegroup($key)->getOrder();
+            $temp00 = null;
+            $temp00 = array(
+                'name' => $this->linkDatabase->getPledgestatetypegroup($key)->getName(),
+                'color' => $this->linkDatabase->getPledgestatetypegroup($key)->getColour(),
+            );
+            if (!array_sum($val) == 0) {
+                foreach ($val as $key2 => $val2) {
+                    if (!isset($valbef) || $valbef != $val2 || true) {
+                        //$temp00['data'][] = "[".$key2."000".",".$val2."]";  
+                        $ar['x'] = $key2."000";
+                        $ar['y'] = $val2;
+                        
+                        $temp00['data'][] = $ar;
+                    }
+                    $valbef = $val2;
+                }
+                $temp01 = $this->getNumberOfPledgestatetypesAtDatum($enddatum);
+                foreach ($this->linkDatabase->getPledgestatetypegroup($key)->getPledgestatetypes() as $value) {
+                    if (!isset($temp01[$value->getID()])) $temp01[$value->getID()] = "0";
+                    $temp010[$key] += $temp01[$value->getID()];
+                }
+                
+                $ar['x'] = $enddatum."000";
+                $ar['y'] = $temp010[$key];
+                $temp00['data'][] = $ar;
+                
+                unset($valbef);
+                $arsno[$sno] = $temp00;
+            }
+        }
+        krsort($arsno);
+        $retar = array();
+        foreach ($arsno as $val) {
+            $retar[] = $val;
+        }
+        return $retar;
+    
+    }
+    
+    public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30) {
+    
+        if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
+        if (!$enddatum || ($enddatum > time())) $enddatum = time();
+        
+        
+        $c2d = array();
+
+        for ($a = $startdatum; $a < $enddatum; $a += $interval*86400) {
+            unset($temp0);
+            $temp0 = $this->getNumberOfPledgestatetypesAtDatum($a);
+            if (is_array($temp0)) {
+                foreach ($this->linkDatabase->getPledgestatetypes() as $value) {
+                    if (!isset($temp0[$value->getID()])) $temp0[$value->getID()] = "0";
+                    $c2d[$value->getID()][$a] = $temp0[$value->getID()]*$value->getMultipl();
+                }
+            }
+        }
+        
+        
+        
+        foreach ($c2d as $key => $val) {
+            $sno = $this->linkDatabase->getPledgestatetype($key)->getOrder();
+            $groups = $this->linkDatabase->getGroupsOfPledgestatetype($key);
+            $temp00 = null;
+            $temp00 = array(
+                'name' => $this->linkDatabase->getPledgestatetype($key)->getName(),
+                'color' => $this->linkDatabase->getPledgestatetype($key)->getColour(),
+            );
+            if (!array_sum($val) == 0) {
+                foreach ($val as $key2 => $val2) {
+                    if (!isset($valbef) || $valbef != $val2 || true) {
+                        //$temp00['data'][] = "[".$key2."000".",".$val2."]";  
+                        $ar['x'] = $key2."000";
+                        $ar['y'] = $val2;
+                        
+                        $temp00['data'][] = $ar;
+                    }
+                    $valbef = $val2;
+                }
+                $temp01 = $this->getNumberOfPledgestatetypesAtDatum($enddatum);
+                if (!isset($temp01[$key])) $temp01[$key] = "0";
+                
+                $ar['x'] = $enddatum."000";
+                $ar['y'] = $temp01[$key];
+                
+                $temp00['data'][] = $ar;
+                unset($valbef);
+                $arsno[$sno] = $temp00;
+            }
+        }
+        krsort($arsno);
+        $retar = array();
+        foreach ($arsno as $val) {
+            $retar[] = $val;
+        }
+        return $retar;
+    
+    }
+ 
 }

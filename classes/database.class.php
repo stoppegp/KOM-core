@@ -136,7 +136,7 @@ class Database {
         $retar = $this->linkDB->Select("pledgestatetypegroups");
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
-                $this->pledgestatetypegroups[$val->id] = new Pledgestatetypegroup($this, $val->id, $val->pledgestatetype_ids, $val->name, $val->colour);
+                $this->pledgestatetypegroups[$val->id] = new Pledgestatetypegroup($this, $val->id, $val->pledgestatetype_ids, $val->name, $val->colour, $val->order);
             }
         }
     }

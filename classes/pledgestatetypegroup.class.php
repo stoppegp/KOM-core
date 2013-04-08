@@ -7,13 +7,15 @@ class Pledgestatetypegroup {
 	private $pledgestatetype_ids = array();
     private $colour;
     private $linkDatabase;
+    private $oder;
 
-	function __construct($database, $id, $pledgestatetype_ids, $name, $colour) {
+	function __construct($database, $id, $pledgestatetype_ids, $name, $colour, $order) {
 		$this->id = $id;
         $this->linkDatabase = &$database;
 		$this->name = $name;
 		$this->pledgestatetype_ids = unserialize($pledgestatetype_ids);
 		$this->colour = $colour;
+        $this->order = $order;
         
 	}
 
@@ -30,6 +32,9 @@ class Pledgestatetypegroup {
     
     public function getColour() {
         return $this->colour;
+    }
+    public function getOrder() {
+        return $this->order;
     }
     public function getPledgestatetypeIDs() {
         return $this->pledgestatetype_ids;
