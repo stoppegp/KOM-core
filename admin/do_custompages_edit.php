@@ -4,6 +4,9 @@ $workarray = $_REQUEST['custompages'];
 
 $workarray['name']  = trim($workarray['name']);
 
+$temp01 = $dblink->Select("custompages", "*", "WHERE `name`='".trim($workarray['name'])."' AND `id`<>".$workarray['id']);
+
+if (count($temp01) >0) $errors[] = "Der Seitenname ist schon vergeben.";
 
 if (is_array($errors)) {
     adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
