@@ -9,6 +9,7 @@ class KOM {
     static $pagenames;
 
     static $pages;
+    static $pagesByFile;
     static $active;
     static $scripts;
     static $styles;
@@ -37,13 +38,17 @@ class KOM {
     
     static function registerPage($page) {
         $name = $page['name'];
+        $file = $page['file'];
         KOM::$pages[$name]  = $page;
+        KOM::$pagesByFile[$file] = $page;
     }
     static function registerPages($pages) {
         if (is_array($pages)) {
             foreach ($pages as $value) {
                 $name = $value['name'];
+                $file = $value['file'];
                 KOM::$pages[$name] = $value;
+                KOM::$pagesByFile[$file] = $value;
             }
         }
     }
@@ -106,8 +111,8 @@ class KOM {
             $array = $nlactive;
             
             
-            if (is_array(KOM::$pages) && in_array($page, array_keys(KOM::$pages))) {
-                $url = $page."/";
+            if (is_array(KOM::$pages) && in_array($page, array_keys(KOM::$pagesByFile))) {
+                $url = KOM::$pagesByFile[$page]['name']."/";
                 $callback = KOM::$pages[$page]['doLink'];
                 if (function_exists($callback)) $url .= $callback($array);
             } else {
