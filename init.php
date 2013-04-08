@@ -1,14 +1,13 @@
 <?php
-require("config.php");
-
 require('helpers/errorclasses.php');
 require('helpers/MySQL.class.php');
 require('classes/KOM.class.php');
+require("config.php");
 
 
 
 require('autoload.php');
-require('functions.php');
+
 if (file_exists("interface/functions.php")) {
     require("interface/functions.php");
 }
@@ -18,9 +17,10 @@ KOM::$dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME);
 KOM::$dblink->connect();
 
 KOM::$mainDB = new Database(KOM::$dblink);
-
-
 KOM::$pagetitle = KOM::$mainDB->getOption("site_title");
+
+KOM::loadIssuelist();
+KOM::loadCustompagelist();
 
 require("interface/init.php");
 
@@ -29,7 +29,7 @@ if (strpos("-".parse_url($uri, PHP_URL_PATH), parse_url(SITE_URL, PHP_URL_PATH))
     $uri = substr($uri, strlen(parse_url(SITE_URL, PHP_URL_PATH)));
 }
 
-KOM::$active = KOM::modrewrite($uri);
+KOM::$active = KOM::urlrewrite($uri);
 
 
 function dolink($page = "", $arg = null, $clear = false) {

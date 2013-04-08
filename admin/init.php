@@ -1,11 +1,12 @@
 <?php
+require('../classes/KOM.class.php');
 require("../config.php");
 
 require('../helpers/errorclasses.php');
 require('../helpers/MySQL.class.php');
 
+
 require('../autoload.php');
-require('../functions.php');
 
 
 /* DB-Verbindung aufbauen */

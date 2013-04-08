@@ -6,12 +6,34 @@ class KOM {
     static $mainDB;
     static $pagetitle;
     static $site_url;
+    static $pagenames;
 
     static $pages;
     static $active;
     static $scripts;
     static $styles;
     static $menus;
+    
+    static $issuelist;
+    static $custompagelist;
+    
+    static function loadIssuelist() {
+        $tempar = KOM::$dblink->Select("issues", "id, name");
+        if (is_array($tempar)) {
+            foreach($tempar as $value) {
+                KOM::$issuelist[$value->id] = KOM::filteruri($value->name);
+            }
+        }
+    }
+    
+    static function loadCustompagelist() {
+        $tempar = KOM::$dblink->Select("custompages", "id, name");
+        if (is_array($tempar)) {
+            foreach($tempar as $value) {
+                KOM::$custompagelist[$value->id] = $value->name;
+            }
+        }
+    }
     
     static function registerPage($page) {
         $name = $page['name'];
@@ -86,21 +108,33 @@ class KOM {
             
             if (is_array(KOM::$pages) && in_array($page, array_keys(KOM::$pages))) {
                 $url = $page."/";
+                $callback = KOM::$pages[$page]['doLink'];
+                if (function_exists($callback)) $url .= $callback($array);
             } else {
                 switch ($page) {
                     case "category":
-                        $url = "liste/";
+                        if (KOM::$pagenames['category'] != "") {
+                            $url = KOM::$pagenames['category']."/";
+                        } else {
+                            $url = "";
+                        }
                         if (isset($array['cat'])) {
                             $url .= KOM::filteruri(KOM::$mainDB->getCategory($array['cat'])->getName())."/";
                         }
                     break;
                     case "single":
-                        $url = "detail/".$array['issueid'];
+                        if (KOM::$pagenames['single'] != "") {
+                            $url = KOM::$pagenames['single']."/";
+                        } else {
+                            $url = "";
+                        }
+                        $issueid = $array['issueid'];
+                        $url .= $issueid."--".KOM::$issuelist[$issueid]."/";
                     break;
                     case "custompage":
-                        if (isset($array['custompageid'])) {
-                            $url = "seite/";
-                            $url .= $array['custompageid']."/";
+                        if (isset($array['custompageid']) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
+                            $custompageid = $array['custompageid'];
+                            $url = KOM::$custompagelist[$custompageid]."/";
                         }
                     break;
                     case "home":
@@ -112,7 +146,7 @@ class KOM {
     
     }
     
-    static function modrewrite($uri) {
+    static function urlrewrite($uri) {
         
         
         foreach (KOM::$mainDB->getCategories() as $val) {
@@ -126,7 +160,133 @@ class KOM {
 
         $urisplit = explode("/", $uri);
         
-        if ($urisplit[1] == "liste") {
+        if (is_array($urisplit) && count($urisplit) > 0) {
+            foreach ($urisplit as $value) {
+                if ($value != "") {
+                    $uriparts[] = $value;
+                }
+            }
+        }
+        
+         if (is_array($uriparts)) {
+            
+            $endrewrite = false;
+         
+            /* Interface-Page */
+            if (!$endrewrite) {
+                for ($a = 0; $a < count($uriparts); $a++) {
+                    $tempname = implode("/", array_slice($uriparts, 0, (count($uriparts)-$a)));
+                    if (in_array($tempname, array_keys(KOM::$pages))) {
+                        $active['page'] = KOM::$pages[$tempname]['file'];
+                        $callback = KOM::$pages[$tempname]['urlrewrite'];
+                        if (function_exists($callback)) $active = array_merge($callback($uriparts), $active);
+                        $endrewrite = true;
+                        break;
+                    }
+                }
+            }
+            
+            /* Page 'single' */
+            if (!$endrewrite) {
+                if (KOM::$pagenames['single'] != "") {
+                    if (strpos(" ".KOM::$pagenames['single'], "/") > 0) {
+                    
+                        for ($a = 0; $a < count($uriparts); $a++) {
+                            $tempname = implode("/", array_slice($uriparts, 0, $a));
+                            if ($tempname == KOM::$pagenames['single']) {
+                                $lastnr = count($uriparts)-1;
+                                if (strpos($uriparts[$lastnr], "--") > 0) {
+                                    $nrstr = substr($uriparts[$lastnr], 0, strpos($uriparts[$lastnr], "-"));
+                                    if (is_numeric($nrstr)) {
+                                        $active['page'] = "single";
+                                        $active['issueid'] = $nrstr;
+                                        $endrewrite = true;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        
+                    } else {
+                        $tempname = $uriparts[0];
+                        if ($tempname == KOM::$pagenames['single']) {
+                            if (strpos($uriparts[1], "--") > 0) {
+                                $nrstr = substr($uriparts[1], 0, strpos($uriparts[1], "-"));
+                                if (is_numeric($nrstr)) {
+                                    $active['page'] = "single";
+                                    $active['issueid'] = $nrstr;
+                                    $endrewrite = true;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (strpos($uriparts[0], "--") > 0) {
+                        $nrstr = substr($uriparts[0], 0, strpos($uriparts[0], "-"));
+                        if (is_numeric($nrstr)) {
+                            $active['page'] = "single";
+                            $active['issueid'] = $nrstr;
+                            $endrewrite = true;
+                        }
+                    }
+                }
+            }
+            
+            /* Page 'category' */
+            if (!$endrewrite) {
+                if (KOM::$pagenames['category'] != "") {
+                    
+                    if (strpos(" ".KOM::$pagenames['category'], "/") > 0) {
+                    
+                        for ($a = 0; $a < count($uriparts); $a++) {
+                            $tempname = implode("/", array_slice($uriparts, 0, $a));
+                            if ($tempname == KOM::$pagenames['category']) {
+                                $lastnr = count($uriparts)-1;
+                                if (in_array(KOM::filteruri($uriparts[$lastnr]), array_keys($catarray))) {
+                                    $active['page'] = "category";
+                                    $active['cat'] = $catarray[KOM::filteruri($uriparts[$lastnr])];
+                                    $endrewrite = true;
+                                }
+                                break;
+                            }
+                        }
+                        
+                    } else {
+                        $tempname = $uriparts[0];
+                        if ($tempname == KOM::$pagenames['category']) {
+                            if (in_array(KOM::filteruri($uriparts[1]), array_keys($catarray))) {
+                                $active['page'] = "category";
+                                $active['cat'] = $catarray[KOM::filteruri($uriparts[1])];
+                                $endrewrite = true;
+                            }
+                        }
+                    }
+                } else {
+                    if (in_array(KOM::filteruri($uriparts[0]), array_keys($catarray))) {
+                        $active['page'] = "category";
+                        $active['cat'] = $catarray[KOM::filteruri($uriparts[0])];
+                        $endrewrite = true;
+                    }
+                }
+            }
+            
+            /* Custom-Page */
+            if (!$endrewrite) {
+                for ($a = 0; $a < count($uriparts); $a++) {
+                    $tempname = implode("/", array_slice($uriparts, 0, (count($uriparts)-$a)));
+                    if (in_array($tempname, KOM::$custompagelist)) {
+                        $active['page'] = "custompage";
+                        $temp0 = array_flip(KOM::$custompagelist);
+                        $active['custompageid'] = $temp0[$tempname];
+                        $endrewrite = true;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        /*
+        if ($urisplit[1] == "kategorie") {
             unset($active);
             $active['page'] = "category";
             
@@ -152,10 +312,16 @@ class KOM {
             unset($active);
             $active['page'] = "list";
         }
-        if ($urisplit[1] == "detail") {
-            unset($active);
-            $active['page'] = "single";
-            $active['issueid'] = $urisplit[2];
+        if ($urisplit[1] == "thema") {
+            if (strpos($urisplit[2], "-") > 0) {
+                $nrstr = substr($urisplit[2], 0, strpos($urisplit[2], "-"));
+                if (is_numeric($nrstr)) {
+                    unset($active);
+                    $active['page'] = "single";
+                    $active['issueid'] = $nrstr;
+                }
+            }
+
         }
         if ($urisplit[1] == "gehalten-gebrochen") {
             unset($active);
@@ -183,7 +349,7 @@ class KOM {
             $name = $urisplit[1];
             $active['page'] = KOM::$pages[$name]['file'];
         }
-        
+        */
         return $active;
     }
 
@@ -220,10 +386,10 @@ class KOM {
     }
 
     static function filteruri($str) {
-        $str = strtolower($str);
+        $str = mb_strtolower($str, 'UTF-8');
         $uml = array ("ä" => "ae", "ö" => "oe", "ü" => "ue", "ß" => "ss");
         $str = str_replace(array_keys($uml), array_values($uml), $str);
-        $str = preg_replace('![^a-z\s\-]!', '', $str);
+        $str = preg_replace('![^0-9a-z\s\-]!', '', $str);
         $str = str_replace(" ", "-", $str);
         while (strpos(" ".$str, "--") > 0) {
              $str = str_replace("--", "-", $str);
