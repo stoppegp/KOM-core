@@ -14,7 +14,7 @@ if (!isset($_REQUEST['submit_del'])) {
             foreach ($database->getIssues() as $val) {
                 unset($catarray[$val->getID()]);
                 $doit = false;
-                foreach ($val->getCategoryLinks() as $val2) {
+                foreach ($val->getCategories() as $val2) {
                     if ($val2->getID() == $workarray['id']) {
                         $catarray[$val->getID()][] = $workarray['newcat'];
                         $doit = true;

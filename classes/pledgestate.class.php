@@ -16,8 +16,8 @@ class Pledgestate {
 
 	function __construct(&$linkState, $id, $pledgestatetype_id, $pledge_id, $state_id) {
         $this->linkState = &$linkState;
-        $this->linkIssue = &$this->linkState->getIssueLink();
-        $this->linkDatabase = &$this->linkIssue->getDatabaseLink();
+        $this->linkIssue = &$this->linkState->getIssue();
+        $this->linkDatabase = &$this->linkIssue->getDatabase();
         $this->linkPledgestatetype = &$this->linkDatabase->getPledgestatetype($pledgestatetype_id);
         $this->linkPledge = &$this->linkIssue->getPledge($pledge_id);
         
@@ -55,11 +55,11 @@ class Pledgestate {
         return $this->pledge_id;
     }
 
-    public function getPledgestatetypeLink() {
+    public function getPledgestatetype() {
         return $this->linkPledgestatetype;
     }
     
-    public function getPledgeLink() {
+    public function getPledge() {
         return $this->linkPledge;
     }
 }

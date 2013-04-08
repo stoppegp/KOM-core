@@ -19,7 +19,7 @@ class State {
 
 	function __construct(&$linkIssue, $id, $issue_id, $name, $datum, $quotetext, $quotesource, $quoteurl) {
         $this->linkIssue = &$linkIssue;
-        $this->linkDatabase = &$this->linkIssue->getDatabaseLink();
+        $this->linkDatabase = &$this->linkIssue->getDatabase();
     
 		$this->id = $id;
         $this->issue_id = $issue_id;
@@ -65,11 +65,11 @@ class State {
         return $this->quote;
     }
     
-    public function getDatabaseLink() {
+    public function getDatabase() {
         return $this->linkDatabase;
     }   
 
-    public function getIssueLink() {
+    public function getIssue() {
         return $this->linkIssue;
     }   
     

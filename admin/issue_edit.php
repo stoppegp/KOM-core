@@ -8,7 +8,7 @@ if (!$database->getIssue($thisissueid)) {
     if (!isset($oldarray)) {
         $oldarray['name'] = $thisissue->getName();
         $oldarray['desc'] = $thisissue->getDesc();
-        foreach ($thisissue->getCategoryLinks() as $value) {
+        foreach ($thisissue->getCategories() as $value) {
             $oldarray['cat'][$value->getID()] = 1;
         }
     }

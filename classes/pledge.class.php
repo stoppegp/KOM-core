@@ -27,7 +27,7 @@ class Pledge {
 
 	function __construct(&$linkIssue, $id, $issue_id, $name, $desc, $type, $quotetext, $quotesource, $quoteurl, $quotetype, $party_id, $quotepage, $default_pledgestatetype_id) {
         $this->linkIssue = &$linkIssue;
-        $this->linkDatabase = &$this->linkIssue->getDatabaseLink();
+        $this->linkDatabase = &$this->linkIssue->getDatabase();
     
 		$this->id = $id;
         $this->issue_id = $issue_id;
@@ -83,7 +83,7 @@ class Pledge {
         if ($ret) {
             foreach ($ret->getPledgestates() as $key => $val) {
                 if ($val->getPledgeID() == $this->id) {
-                    return $val->getPledgestatetypeLink();
+                    return $val->getPledgestatetype();
                 }
             }
         } else {
@@ -100,7 +100,7 @@ class Pledge {
         
     }
     
-    public function getDefaultPledgestatetypeLink() {
+    public function getDefaultPledgestatetype() {
         return $this->linkDefaultPledgestatetype;
     }
     
@@ -123,7 +123,7 @@ class Pledge {
         }
     }
     
-    public function getIssueLink() {
+    public function getIssue() {
         return $this->linkIssue;
     }
 }

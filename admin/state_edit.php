@@ -21,7 +21,7 @@ if (!$database->getIssue($thisissueid)) {
             if (is_array($thisissue->getPledges())) {
                 foreach($thisissue->getPledges() as $value) {
                     if ($thisstate->getPledgestateOfPledge($value->getID())) {
-                        $oldarray['pledges'][$value->getID()] = $thisstate->getPledgestateOfPledge($value->getID())->getPledgestatetypeLink()->getID();
+                        $oldarray['pledges'][$value->getID()] = $thisstate->getPledgestateOfPledge($value->getID())->getPledgestatetype()->getID();
                     }
                 }
             }

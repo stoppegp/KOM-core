@@ -104,7 +104,7 @@ class Issue {
     
     /* Getter-Funktionen */
     
-    public function getCategoryLinks() {
+    public function getCategories() {
         if (is_array($this->category_ids)) {
             foreach ($this->category_ids as $val) {
                 $retar[$val] = &$this->linkDatabase->getCategory($val);
@@ -113,7 +113,7 @@ class Issue {
         return $retar;
     }
     
-    public function getDatabaseLink() {
+    public function getDatabase() {
         return $this->linkDatabase;
     }
 

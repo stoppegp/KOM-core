@@ -61,8 +61,8 @@ class Database {
                 break;
             case "pledgestatetypegroup":
                 if ($this->pledgestatetypegroups[$val]) {
-                    if (is_array($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks())) {
-                        foreach ($this->pledgestatetypegroups[$val]->getPledgestateTypeLinks() as $value) {
+                    if (is_array($this->pledgestatetypegroups[$val]->getPledgestatetypes())) {
+                        foreach ($this->pledgestatetypegroups[$val]->getPledgestatetypes() as $value) {
                             $t0[] = $value->getID();
                         }
                         $this->setFilter("pledgestatetypeids", $t0);
@@ -175,7 +175,7 @@ class Database {
                         unset($this->issues[$val->id]);
                     } else {
                         $this->issuesByName[] = $this->issues[$val->id];
-                        foreach ($this->issues[$val->id]->getCategoryLinks() as $value) {
+                        foreach ($this->issues[$val->id]->getCategories() as $value) {
                             $this->issuesByCategory[$value->getID()][$val->id] = $this->issues[$val->id];
                         }
                     }

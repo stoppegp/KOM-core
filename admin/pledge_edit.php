@@ -15,7 +15,7 @@ if (!$database->getIssue($thisissueid)) {
             $oldarray['name'] = $thispledge->getName();
             $oldarray['desc'] = $thispledge->getDesc();
             $oldarray['party'] = $thispledge->getParty()->getID();
-            $oldarray['default_pledgestatetype'] = $thispledge->getDefaultPledgestatetypeLink()->getID();
+            $oldarray['default_pledgestatetype'] = $thispledge->getDefaultPledgestatetype()->getID();
             $oldarray['quoteurl'] = $thispledge->getQuote()->getURL();
             $oldarray['quotetext'] = $thispledge->getQuote()->getText();
             $oldarray['quotepage'] = $thispledge->getQuote()->getPage();
