@@ -3,7 +3,7 @@
 sto-highchart-parser
 simple parser for highcharts
 
-version: 0.1
+version: 20130408-01
 
 author: Martin Stoppler
 licence: dowhateveryouwant
@@ -11,7 +11,7 @@ licence: dowhateveryouwant
 */
 
 
-class KOM_highchart {
+class sto_highchart_parser {
     
     private $id;
     public $options;
@@ -22,18 +22,23 @@ class KOM_highchart {
         $this->options = array("chart" => array("renderTo" => $id));
     }
     
-    public function activateLinks($what = "point") {
+    public function activateLinks($what = "point", $url = false) {
         switch ($what) {
             case "series":
                  $this->options['plotOptions']['series']['events']['click'] = "function(event) {
                             location.href = this.options.url;
                         }";
                 break;
+            case "custom":
+                $this->options['plotOptions']['series']['point']['events']['click'] = "function() {
+                                location.href = \"".$url."\";
+                            }";
+            break;
             case "point":
             default:
-            $this->options['plotOptions']['series']['point']['events']['click'] = "function() {
-                            location.href = this.options.url;
-                        }";
+                $this->options['plotOptions']['series']['point']['events']['click'] = "function() {
+                                location.href = this.options.url;
+                            }";
         }
         $this->options['plotOptions']['series']['cursor'] = "pointer";
     }
