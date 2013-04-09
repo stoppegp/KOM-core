@@ -113,7 +113,7 @@ class KOM {
             
             if (is_array(KOM::$pages) && in_array($page, array_keys(KOM::$pagesByFile))) {
                 $url = KOM::$pagesByFile[$page]['name']."/";
-                $callback = KOM::$pages[$page]['doLink'];
+                $callback = KOM::$pagesByFile[$page]['doLink'];
                 if (function_exists($callback)) $url .= $callback($array);
             } else {
                 switch ($page) {
@@ -178,13 +178,18 @@ class KOM {
             $endrewrite = false;
          
             /* Interface-Page */
-            if (!$endrewrite) {
+            if (!$endrewrite && is_array(KOM::$pages)) {
                 for ($a = 0; $a < count($uriparts); $a++) {
                     $tempname = implode("/", array_slice($uriparts, 0, (count($uriparts)-$a)));
                     if (in_array($tempname, array_keys(KOM::$pages))) {
                         $active['page'] = KOM::$pages[$tempname]['file'];
                         $callback = KOM::$pages[$tempname]['urlrewrite'];
-                        if (function_exists($callback)) $active = array_merge($callback($uriparts), $active);
+                        if (function_exists($callback)) {
+                            $active2 = $callback($uriparts);
+                            if (is_array($active2)) {
+                                $active = array_merge($active2, $active);
+                            }
+                        }
                         $endrewrite = true;
                         break;
                     }
