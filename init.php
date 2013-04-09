@@ -12,6 +12,7 @@ if (file_exists("interface/functions.php")) {
     require("interface/functions.php");
 }
 
+try {
 /* DB-Verbindung aufbauen */
 KOM::$dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME);
 KOM::$dblink->connect();
@@ -30,7 +31,10 @@ if (strpos("-".parse_url($uri, PHP_URL_PATH), parse_url(SITE_URL, PHP_URL_PATH))
 }
 
 KOM::$active = KOM::urlrewrite($uri);
-
+} catch (DBError $e) {
+    echo "Die Datenbankverbindung schlug fehl.";
+    exit;
+}
 
 function dolink($page = "", $arg = null, $clear = false) {
     return KOM::dolink($page, $arg, $clear);
