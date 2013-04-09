@@ -136,12 +136,22 @@ class KOM {
                         $issueid = $array['issueid'];
                         $url .= $issueid."--".KOM::$issuelist[$issueid]."/";
                     break;
+                    case "report":
+                        if (KOM::$pagenames['report'] != "") {
+                            $url = KOM::$pagenames['report']."/";
+                        } else {
+                            $url = "";
+                        }
+                        $issueid = $array['issueid'];
+                        $url .= $issueid."--".KOM::$issuelist[$issueid]."/";
+                    break;
                     case "custompage":
                         if (isset($array['custompageid']) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
                             $custompageid = $array['custompageid'];
                             $url = KOM::$custompagelist[$custompageid]."/";
                         }
                     break;
+
                     case "home":
                         $url = "";
                     break;
@@ -236,6 +246,43 @@ class KOM {
                         if (is_numeric($nrstr)) {
                             $active['page'] = "single";
                             $active['issueid'] = $nrstr;
+                            $endrewrite = true;
+                        }
+                    }
+                }
+            }
+            
+            /* Page 'report' */
+            if (!$endrewrite) {
+                if (KOM::$pagenames['report'] != "") {
+                    if (strpos(" ".KOM::$pagenames['report'], "/") > 0) {
+                    
+                        for ($a = 0; $a < count($uriparts); $a++) {
+                            $tempname = implode("/", array_slice($uriparts, 0, $a));
+                            if ($tempname == KOM::$pagenames['report']) {
+                                $active['page'] = "report";
+                                $lastnr = count($uriparts)-1;
+                                if (strpos($uriparts[$lastnr], "--") > 0) {
+                                    $nrstr = substr($uriparts[$lastnr], 0, strpos($uriparts[$lastnr], "-"));
+                                    if (is_numeric($nrstr)) {
+                                        $active['issueid'] = $nrstr;
+                                    }
+                                }
+                                $endrewrite = true;
+                                break;
+                            }
+                        }
+                        
+                    } else {
+                        $tempname = $uriparts[0];
+                        if ($tempname == KOM::$pagenames['report']) {
+                            $active['page'] = "report";
+                            if (strpos($uriparts[1], "--") > 0) {
+                                $nrstr = substr($uriparts[1], 0, strpos($uriparts[1], "-"));
+                                if (is_numeric($nrstr)) {
+                                    $active['issueid'] = $nrstr;
+                                }
+                            }
                             $endrewrite = true;
                         }
                     }

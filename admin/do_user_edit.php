@@ -21,6 +21,7 @@ if (is_array($errors)) {
     try {
         $dbarray['name'] = trim($workarray['name']);
         $dbarray['username'] = trim($workarray['username']);
+        $dbarray['email'] = trim($workarray['email']);
         if ($workarray['admin'] == 1) {
             $dbarray['admin'] = 1;
         } else {

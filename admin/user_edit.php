@@ -8,7 +8,8 @@ if (!$users[0]) {
 } else {
     $thisuser = $users[0];
     if (!isset($oldarray)) {
-        $oldarray['name'] = $thisuser->name;;
+        $oldarray['name'] = $thisuser->name;
+        $oldarray['email'] = $thisuser->email;
         $oldarray['username'] = $thisuser->username;
         $oldarray['admin'] = $thisuser->admin;
     }

@@ -18,6 +18,14 @@
     </tr>
     <tr>
         <td>
+            E-Mail:
+        </td>
+        <td>
+            <input type="text" name="user[email]" value="<?=$oldarray['email'];?>" /><br><small>Wenn angegeben, bekommt der Benutzer Benachrichtigungen per E-Mail</small>
+        </td>
+    </tr>
+    <tr>
+        <td>
             Administrator:
         </td>
         <td>
