@@ -34,7 +34,7 @@ class Issue {
 	}
     
     public function setFilter($key, $val) {
-        if ($this->isLoaded) {
+        if (isset($this->isLoaded) && $this->isLoaded) {
             throw new Exception('Modifying filters not possible when content is load');
         } else {
             switch ($key) {
@@ -68,10 +68,10 @@ class Issue {
         $retar = $this->linkDatabase->getLinkDB()->Select("pledges", "*", "WHERE issue_id = ".$this->id);
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
-                if ((!is_array($this->filters['parties'])) || in_array($val->party_id, $this->filters['parties'])) {
+                if ((!(isset($this->filters['parties']) && is_array($this->filters['parties']))) || in_array($val->party_id, $this->filters['parties'])) {
                     $this->pledges[$val->id] = new Pledge($this, $val->id, $this->id, $val->name, $val->desc, $val->type, $val->quotetext, $val->quotesource, $val->quoteurl, $val->quotetype, $val->party_id, $val->quotepage, $val->default_pledgestatetype_id);
                     
-                    if ((is_array($this->filters['pledgestatetypeids'])) && !in_array($this->pledges[$val->id]->getCurrentPledgestatetype()->getID(), $this->filters['pledgestatetypeids']) || !$this->pledges[$val->id]->getParty()->getDoValue()) {
+                    if (isset($this->filters['pledgestatetypeids']) && (is_array($this->filters['pledgestatetypeids'])) && !in_array($this->pledges[$val->id]->getCurrentPledgestatetype()->getID(), $this->filters['pledgestatetypeids']) || !$this->pledges[$val->id]->getParty()->getDoValue()) {
                         unset($this->pledges[$val->id]);
                     } else {
                         $this->pledgesByParty[$val->party_id][] = $this->pledges[$val->id];
@@ -107,7 +107,7 @@ class Issue {
     public function getCategories() {
         if (is_array($this->category_ids)) {
             foreach ($this->category_ids as $val) {
-                $retar[$val] = &$this->linkDatabase->getCategory($val);
+                $retar[$val] = $this->linkDatabase->getCategory($val);
             }
         }
         return $retar;
@@ -118,15 +118,27 @@ class Issue {
     }
 
     public function getPledges() {
-        return $this->pledges;
+		if (isset($this->pledges)) {
+			return $this->pledges;
+		} else {
+			return false;
+		}
     }
     
     public function getPledge($id) {
-        return $this->pledges[$id];
+        if (isset($this->pledges[$id])) {
+			return $this->pledges[$id];
+		} else {
+			return false;
+		}
     }
     
     public function getPledgesOfParty($party_id) {
-        return $this->pledgesByParty[$party_id];
+        if (isset($this->pledgesByParty[$party_id])) {
+			return $this->pledgesByParty[$party_id];
+		} else {
+			return false;
+		}
     }
     
     public function getStates($order = "id", $orient = "ASC") {

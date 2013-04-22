@@ -42,7 +42,7 @@ class Pledgestatetypegroup {
     public function getPledgestatetypes() {
         if (is_array($this->pledgestatetype_ids)) {
             foreach ($this->pledgestatetype_ids as $val) {
-                $retar[$val] = &$this->linkDatabase->getPledgestatetype($val);
+                $retar[$val] = $this->linkDatabase->getPledgestatetype($val);
             }
         }
         return $retar;

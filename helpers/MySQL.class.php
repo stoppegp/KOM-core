@@ -32,7 +32,9 @@ class MySQL {
 			while ($ds = mysql_fetch_object($sql)) {
 				$erg[] = $ds;
 			}
-			return $erg;
+			if (isset($erg)) {
+				return $erg;
+			}
 		}
 	}
 	

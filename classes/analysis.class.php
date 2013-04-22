@@ -70,8 +70,9 @@ class Analysis {
         if (!$datum) $datum = time();
         
         $nr = $this->getNumberOfPledgestatetypesAtDatum($datum);
-        
+        $group_nr = array();
         foreach ($this->linkDatabase->getPledgestatetypegroups() as $value0) {
+			$group_nr[$value0->getID()] = 0;
             foreach ($this->linkDatabase->getPledgestatetypegroup($value0->getID())->getPledgestatetypes() as $value) {
                 $group_nr[$value0->getID()] += $nr[$value->getID()];
             }
@@ -83,7 +84,7 @@ class Analysis {
             $tempar['name'] = $value0->getName();
             $tempar['color'] = $value0->getColour();
             $tempar['y'] = $group_nr[$value0->getID()];
-            if (is_array($options[$value0->getID()])) {
+            if (isset($options[$value0->getID()]) && is_array($options[$value0->getID()])) {
                 foreach ($options[$value0->getID()] as $key => $val) {
                     $tempar[$key] = $val;
                 }
@@ -134,6 +135,7 @@ class Analysis {
             $temp0 = $this->getNumberOfPledgestatetypesAtDatum($a);
             if (is_array($temp0)) {
                 foreach ($this->linkDatabase->getPledgestatetypegroups() as $val0) {
+					$c2d[$val0->getID()][$a] = 0;
                     foreach ($this->linkDatabase->getPledgestatetypegroup($val0->getID())->getPledgestatetypes() as $value) {
                         if (!isset($temp0[$value->getID()])) $temp0[$value->getID()] = "0";
                         $c2d[$val0->getID()][$a] += $temp0[$value->getID()]*$value->getMultipl();
@@ -169,8 +171,10 @@ class Analysis {
                     $valbef = $val2;
                 }
                 $temp01 = $this->getNumberOfPledgestatetypesAtDatum($enddatum);
+				$temp010 = array();
                 foreach ($this->linkDatabase->getPledgestatetypegroup($key)->getPledgestatetypes() as $value) {
                     if (!isset($temp01[$value->getID()])) $temp01[$value->getID()] = "0";
+					if (!isset($temp010[$key])) $temp010[$key] = 0;
                     $temp010[$key] += $temp01[$value->getID()];
                 }
                 

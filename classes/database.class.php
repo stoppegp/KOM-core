@@ -27,7 +27,7 @@ class Database {
     
     
     public function setFilter($key, $val) {
-        if ($this->isLoaded) {
+        if (isset($this->isLoaded) && ($this->isLoaded)) {
             throw new Exception('Modifying filters not possible when content is load');
         } else {
             switch ($key) {
@@ -162,7 +162,7 @@ class Database {
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
                 
-                if ((!is_array($this->filters['categories'])) || (count(array_intersect($this->filters['categories'], unserialize($val->category_ids))) > 0)) {
+                if ((!(isset($this->filters['categories']) && is_array($this->filters['categories']))) || (count(array_intersect($this->filters['categories'], unserialize($val->category_ids))) > 0)) {
                     $this->issues[$val->id] = new Issue($this, $val->id, $val->name, $val->desc, $val->category_ids);
                     if (isset($this->filters['parties'])) {
                         $this->issues[$val->id]->setFilter("parties", $this->filters['parties']);
@@ -271,11 +271,13 @@ class Database {
     public function getGroupsOfPledgestatetype($id) {
         if (isset($this->pledgestatetypes[$id]) && is_array($this->pledgestatetypegroups)) {
             foreach ($this->pledgestatetypegroups as $val) {
-                if (in_array($id, $val->getPledgestatetypes())) {
+                if (in_array($this->pledgestatetypes[$id], $val->getPledgestatetypes())) {
                     $retar[] = $val->getID();
                 }
             }
-            return $retar;
+            
+			if (isset($retar)) return $retar;
+			return false;
         } else {
             return false;
         }

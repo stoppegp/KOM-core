@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
+
 require('helpers/errorclasses.php');
 require('helpers/MySQL.class.php');
 require('classes/KOM.class.php');

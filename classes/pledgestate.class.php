@@ -16,17 +16,16 @@ class Pledgestate {
 
 	function __construct(&$linkState, $id, $pledgestatetype_id, $pledge_id, $state_id) {
         $this->linkState = &$linkState;
-        $this->linkIssue = &$this->linkState->getIssue();
-        $this->linkDatabase = &$this->linkIssue->getDatabase();
-        $this->linkPledgestatetype = &$this->linkDatabase->getPledgestatetype($pledgestatetype_id);
-        $this->linkPledge = &$this->linkIssue->getPledge($pledge_id);
+        $this->linkIssue = $this->linkState->getIssue();
+        $this->linkDatabase = $this->linkIssue->getDatabase();
+        $this->linkPledgestatetype = $this->linkDatabase->getPledgestatetype($pledgestatetype_id);
+        $this->linkPledge = $this->linkIssue->getPledge($pledge_id);
         
 		$this->id = $id;
         $this->pledgestatetype_id = $pledgestatetype_id;
 		$this->pledge_id = $pledge_id;
 		$this->state_id = $state_id;
 
-        $this->quote = new Quote(1, $quotetext, $quotesource, $quoteurl, $quotepage);
 	}
     
     

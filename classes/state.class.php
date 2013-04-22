@@ -19,14 +19,14 @@ class State {
 
 	function __construct(&$linkIssue, $id, $issue_id, $name, $datum, $quotetext, $quotesource, $quoteurl) {
         $this->linkIssue = &$linkIssue;
-        $this->linkDatabase = &$this->linkIssue->getDatabase();
+        $this->linkDatabase = $this->linkIssue->getDatabase();
     
 		$this->id = $id;
         $this->issue_id = $issue_id;
 		$this->name = $name;
 		$this->datum = strtotime($datum);
 
-        $this->quote = new Quote(1, $quotetext, $quotesource, $quoteurl, $quotepage);
+        $this->quote = new Quote(1, $quotetext, $quotesource, $quoteurl, null);
 	}
     
     public function loadContent() {

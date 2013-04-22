@@ -27,7 +27,7 @@ class Pledge {
 
 	function __construct(&$linkIssue, $id, $issue_id, $name, $desc, $type, $quotetext, $quotesource, $quoteurl, $quotetype, $party_id, $quotepage, $default_pledgestatetype_id) {
         $this->linkIssue = &$linkIssue;
-        $this->linkDatabase = &$this->linkIssue->getDatabase();
+        $this->linkDatabase = $this->linkIssue->getDatabase();
     
 		$this->id = $id;
         $this->issue_id = $issue_id;
@@ -39,8 +39,8 @@ class Pledge {
 
         $this->quote = new Quote($quotetype, $quotetext, $quotesource, $quoteurl, $quotepage);
         
-        $this->linkParty = &$this->linkDatabase->getParty($party_id);
-        $this->linkDefaultPledgestatetype = &$this->linkDatabase->getPledgestatetype($default_pledgestatetype_id);
+        $this->linkParty = $this->linkDatabase->getParty($party_id);
+        $this->linkDefaultPledgestatetype = $this->linkDatabase->getPledgestatetype($default_pledgestatetype_id);
 	}
     
     

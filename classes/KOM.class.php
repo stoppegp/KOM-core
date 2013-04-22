@@ -72,7 +72,7 @@ class KOM {
         if (!is_array(KOM::$menus[$name])) return;
         
         foreach (KOM::$menus[$name] as $value) {
-            if ($value['showonlywhenactive'] == true) continue;
+            if (isset($value['showonlywhenactive']) && ($value['showonlywhenactive'] == true)) continue;
             if (is_array($value['active'])) {
                 $ret0['active'] = true;
                 foreach($value['active'] as $key => $val) {
@@ -84,6 +84,8 @@ class KOM {
             }
             
             $ret0['text'] = $value['text'];
+			if (!isset($value['args'])) $value['args'] = null;
+			if (!isset($value['args'])) $value['clearargs'] = null;
             $ret0['link'] = KOM::dolink($value['page'], $value['args'], $value['clearargs']);
             
             $ret[] = $ret0;
@@ -113,8 +115,10 @@ class KOM {
             
             if (is_array(KOM::$pages) && in_array($page, array_keys(KOM::$pagesByFile))) {
                 $url = KOM::$pagesByFile[$page]['name']."/";
-                $callback = KOM::$pagesByFile[$page]['doLink'];
-                if (function_exists($callback)) $url .= $callback($array);
+				if (isset(KOM::$pagesByFile[$page]['doLink'])) {
+					$callback = KOM::$pagesByFile[$page]['doLink'];
+				}
+                if (isset($callback) && function_exists($callback)) $url .= $callback($array);
             } else {
                 switch ($page) {
                     case "category":
@@ -142,8 +146,12 @@ class KOM {
                         } else {
                             $url = "";
                         }
-                        $issueid = $array['issueid'];
-                        $url .= $issueid."--".KOM::$issuelist[$issueid]."/";
+						if (isset($array['issueid'])) {
+							$issueid = $array['issueid'];
+							$url .= $issueid."--".KOM::$issuelist[$issueid]."/";
+						} else {
+							$url = "";
+						}
                     break;
                     case "custompage":
                         if (isset($array['custompageid']) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
@@ -183,7 +191,7 @@ class KOM {
             }
         }
         
-         if (is_array($uriparts)) {
+         if (isset($uriparts) && is_array($uriparts)) {
             
             $endrewrite = false;
          
@@ -193,8 +201,10 @@ class KOM {
                     $tempname = implode("/", array_slice($uriparts, 0, (count($uriparts)-$a)));
                     if (in_array($tempname, array_keys(KOM::$pages))) {
                         $active['page'] = KOM::$pages[$tempname]['file'];
-                        $callback = KOM::$pages[$tempname]['urlrewrite'];
-                        if (function_exists($callback)) {
+						if (isset(KOM::$pages[$tempname]['urlrewrite'])) {
+							$callback = KOM::$pages[$tempname]['urlrewrite'];
+						}
+                        if (isset($callback) && function_exists($callback)) {
                             $active2 = $callback($uriparts);
                             if (is_array($active2)) {
                                 $active = array_merge($active2, $active);

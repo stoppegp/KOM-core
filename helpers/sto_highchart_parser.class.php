@@ -44,6 +44,7 @@ class sto_highchart_parser {
     }
     
     public function exploderec($array) {
+		$ret = "";
         foreach ($array as $key => $val) {
             if (is_numeric($val) || strpos(" ".$val, "function(") > 0) {
                 $val0 = $val;
@@ -88,7 +89,7 @@ class sto_highchart_parser {
     }
     
     public function render() {
-        $ret .= "$(function () {";
+        $ret = "$(function () {";
             $ret .= "$('#".$this->id."').highcharts({";
             $ret .= $this->exploderec($this->options);
             $ret .= "});";
