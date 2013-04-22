@@ -165,7 +165,7 @@ class KOM {
                     break;
                 }
             }
-            return SITE_URL."/".$url;
+            return KOM::$site_url."/".$url;
     
     }
     

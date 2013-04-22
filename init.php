@@ -21,6 +21,7 @@ KOM::$dblink->connect();
 
 KOM::$mainDB = new Database(KOM::$dblink);
 KOM::$pagetitle = KOM::$mainDB->getOption("site_title");
+KOM::$site_url = SITE_URL;
 
 KOM::loadIssuelist();
 KOM::loadCustompagelist();
