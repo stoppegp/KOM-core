@@ -8,16 +8,18 @@ class Party {
     private $colour;
 	private $programme_url;
 	private $programme_offset;
+	private $programme_name;
 	private $doValue;
     private $order;
 
-	function __construct($id, $name, $acronym, $colour, $programme_url, $programme_offset, $doValue, $order) {
+	function __construct($id, $name, $acronym, $colour, $programme_url, $programme_offset, $programme_name, $doValue, $order) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->acronym = $acronym;
         $this->colour = $colour;
 		$this->programme_url = $programme_url;
 		$this->programme_offset = $programme_offset;
+		$this->programme_name = $programme_name;
 		$this->doValue = $doValue;
         $this->order = $order;
 	}
@@ -47,6 +49,10 @@ class Party {
     
     public function getProgrammeOffset() {
         return $this->programme_offset;
+    }
+    
+    public function getProgrammeName() {
+        return $this->programme_name;
     }
     
     public function getDoValue() {

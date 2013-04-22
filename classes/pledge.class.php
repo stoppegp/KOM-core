@@ -110,7 +110,7 @@ class Pledge {
     }
     public function getQuoteSource() {
         if ($this->quote->getType() == "programme") {
-            return "Wahlprogramm, Seite ".$this->quote->getPage();
+            return $this->linkParty->getProgrammeName().", Seite ".$this->quote->getPage();
         } else {
             return $this->quote->getSource();
         }

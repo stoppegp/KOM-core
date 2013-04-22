@@ -117,7 +117,7 @@ class Database {
         $retar = $this->linkDB->Select("parties", "*", "ORDER BY `order` ASC");
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
-                $this->parties[$val->id] = new Party($val->id, $val->name, $val->acronym, $val->colour, $val->programme_url, $val->programme_offset, $val->doValue, $val->order);
+                $this->parties[$val->id] = new Party($val->id, $val->name, $val->acronym, $val->colour, $val->programme_url, $val->programme_offset, $val->programme_name, $val->doValue, $val->order);
                 $this->partiesByOrder[] = $this->parties[$val->id];
             }
         }
