@@ -108,13 +108,14 @@ class Pledge {
     public function getQuoteText() {
         return $this->quote->getText();
     }
-    public function getQuoteSource() {
+    public function getQuoteSource($pagename = "Seite") {
         if ($this->quote->getType() == "programme") {
-            return $this->linkParty->getProgrammeName().", Seite ".$this->quote->getPage();
+            return $this->linkParty->getProgrammeName().", ".$pagename." ".$this->quote->getPage();
         } else {
             return $this->quote->getSource();
         }
     }
+    
     public function getQuoteURL() {
         if ($this->quote->getType() == "programme") {
             return $this->linkParty->getProgrammeURL()."#page=".($this->linkParty->getProgrammeOffset()+$this->quote->getPage());
