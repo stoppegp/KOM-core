@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Bezeichnung:
+            <?=_("Label");?>:
         </td>
         <td>
             <input type="text" name="pledgestatetype[name]" value="<?=$oldarray['name'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Punkte:
+            <?=_("Points");?>:
         </td>
         <td>
             <input type="text" name="pledgestatetype[value]" value="<?=$oldarray['value'];?>" />
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>
-            In die Wertung aufnehmen:
+            <?=_("Include into valuation");?>:
         </td>
         <td>
             <input type="checkbox" name="pledgestatetype[multipl]" value="1" <? echo ($oldarray['multipl']==1) ? "checked=\"checked\"" : ""; ?> />
@@ -28,17 +28,17 @@
     if (!$hidetype) { ?>
     <tr>
         <td>
-            Typ:
+            <?=_("Type");?>:
         </td>
         <td>
-            <input type="radio" name="pledgestatetype[type]" value="0" <? echo ($oldarray['type']!=1) ? "checked=\"checked\"" : ""; ?> /> Forderung<br>
-            <input type="radio" name="pledgestatetype[type]" value="1" <? echo ($oldarray['type']==1) ? "checked=\"checked\"" : ""; ?> /> Zustand
+            <input type="radio" name="pledgestatetype[type]" value="0" <? echo ($oldarray['type']!=1) ? "checked=\"checked\"" : ""; ?> /> <?=_("Request");?><br>
+            <input type="radio" name="pledgestatetype[type]" value="1" <? echo ($oldarray['type']==1) ? "checked=\"checked\"" : ""; ?> /> <?=_("Status quo");?>
         </td>
     </tr>
     <? } ?>
     <tr>
         <td>
-            Reihenfolge:
+            <?=_("Order");?>:
         </td>
         <td>
             <input type="text" name="pledgestatetype[order]" value="<?=$oldarray['order'];?>" />
@@ -46,7 +46,7 @@
     </tr>
     <tr>
         <td>
-            Farbe:
+            <?=_("Colour");?>:
         </td>
         <td>
             <input type="text" name="pledgestatetype[colour]" value="<?=$oldarray['colour'];?>" />
@@ -54,7 +54,7 @@
     </tr>
     <tr>
         <td>
-            Farbe 2:
+            <?=_("Colour");?> 2:
         </td>
         <td>
             <input type="text" name="pledgestatetype[colour2]" value="<?=$oldarray['colour2'];?>" />

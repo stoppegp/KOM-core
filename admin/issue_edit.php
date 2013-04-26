@@ -1,7 +1,7 @@
 <?php
 $thisissueid = $adminactive['issueid'];
 if (!$database->getIssue($thisissueid)) {
-    echo "Die Issue-ID wurde nicht gefunden.";
+    echo _("Issue-ID not found.");
 } else {
     $thisissue = &$database->getIssue($thisissueid);
     
@@ -15,8 +15,8 @@ if (!$database->getIssue($thisissueid)) {
 
     ?>
 
-    <h2>Thema bearbeiten</h2>
-    <h3>Thema <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
+    <h2><?=_("Edit issue");?></h2>
+    <h3><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
     
     <form method="post">
 
@@ -30,4 +30,4 @@ if (!$database->getIssue($thisissueid)) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>"><?=_("Back");?></a></p>

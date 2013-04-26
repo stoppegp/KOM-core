@@ -1,7 +1,7 @@
 <?php
 $thiscatid = $adminactive['catid'];
 if (!$database->getCategory($thiscatid)) {
-    echo "Die Cat-ID wurde nicht gefunden.";
+    echo _("Category ID not found.");
 } else {
     $thiscat = &$database->getCategory($thiscatid);
     
@@ -13,8 +13,8 @@ if (!$database->getCategory($thiscatid)) {
 
     ?>
 
-    <h2>Karegorie bearbeiten</h2>
-    <h3>Kategorie <?=$thiscat->getID();?> – <?=$thiscat->getName();?></h3>
+    <h2><?=_("Edit category");?></h2>
+    <h3><?=_("Category");?> <?=$thiscat->getID();?> – <?=$thiscat->getName();?></h3>
     
     <form method="post">
 
@@ -28,4 +28,4 @@ if (!$database->getCategory($thiscatid)) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("cat_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("cat_list");?>"><?=_("Back");?></a></p>

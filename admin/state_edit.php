@@ -2,12 +2,12 @@
 $thisissueid = $adminactive['issueid'];
 $thisstateid = $adminactive['stateid'];
 if (!$database->getIssue($thisissueid)) {
-    echo "Die Issue-ID wurde nicht gefunden.";
+    echo _("Issue-ID not found.");
 } else {
     $thisissue = &$database->getIssue($thisissueid);
     
     if (!$thisissue->getState($thisstateid)) {
-        echo "Die State-ID wurde nicht gefunden.";
+        echo _("State-ID not found.");
     } else {
         $thisstate = $thisissue->getState($thisstateid);
         if (!isset($oldarray)) {
@@ -28,9 +28,9 @@ if (!$database->getIssue($thisissueid)) {
         }
         ?>
 
-        <h2>Versprechen bearbeiten</h2>
-        <h3>Thema <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
-        <h3>Thema <?=$thisstate->getID();?> – <?=$thisstate->getName();?></h3>
+        <h2><?=_("Edit state");?></h2>
+        <h3><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
+        <h3><?=_("State");?> <?=$thisstate->getID();?> – <?=$thisstate->getName();?></h3>
         
         <form method="post">
 
@@ -46,4 +46,4 @@ if (!$database->getIssue($thisissueid)) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>

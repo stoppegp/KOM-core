@@ -14,7 +14,7 @@ if (trim($workarray['acronym']) == "") $errors[] = "Kürzel";
 
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "party_new";
 } else {
@@ -41,9 +41,9 @@ if (is_array($errors)) {
         }
         $dblink->Insert("parties", $dbarray);
         $adminactive['page'] = "party_list";
-        adminaddsuccess("Partei wurde erfolgreich hinzugefügt.");
+        adminaddsuccess(_("Added successfully."));
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

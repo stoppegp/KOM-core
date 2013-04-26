@@ -2,11 +2,11 @@
 $workarray = $_REQUEST['issue'];
 $workarray = $_REQUEST['issue'];
 
-if (trim($workarray['name']) == "") $errors[] = "Thema";
-if (!is_array($workarray['cat'])) $errors[] = "Kategorie";
+if (trim($workarray['name']) == "") $errors[] = _("issue");
+if (!is_array($workarray['cat'])) $errors[] = _("category");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "issue_edit";
     $adminactive['issueid'] = $workarray['id'];
@@ -17,10 +17,10 @@ if (is_array($errors)) {
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
         $dblink->Update("issues", $dbarray, "WHERE `id`=".$workarray['id']);
         $adminactive['page'] = "issue_list";
-        adminaddsuccess("Datensatz wurde erfolgreich geändert.");
+        adminaddsuccess(_("Editing successful."));
         $database->reloadContent();
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

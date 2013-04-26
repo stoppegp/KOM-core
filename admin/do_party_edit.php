@@ -8,11 +8,11 @@ $workarray['colour']  = trim($workarray['colour']);
 $workarray['programme_url']  = trim($workarray['programme_url']);
 $workarray['programme_name']  = trim($workarray['programme_name']);
 
-if (trim($workarray['name']) == "") $errors[] = "Name";
-if (trim($workarray['acronym']) == "") $errors[] = "Kürzel";
+if (trim($workarray['name']) == "") $errors[] = _("name");
+if (trim($workarray['acronym']) == "") $errors[] = _("acronym");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "party_edit";
 } else {
@@ -39,9 +39,9 @@ if (is_array($errors)) {
         }
         $dblink->Update("parties", $dbarray, "WHERE `id`=".$workarray['id']);
         $adminactive['page'] = "party_list";
-        adminaddsuccess("Partei wurde erfolgreich bearbeitet.");
+        adminaddsuccess(_("Editing successful."));
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

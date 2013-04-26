@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Text:
+            <?=_("Text");?>:
         </td>
         <td>
             <input type="text" name="state[name]" value="<?=$oldarray['name'];?>" />
@@ -10,20 +10,20 @@
     </tr>
     <tr>
         <td>
-            Datum:
+            <?=_("Date");?>:
         </td>
         <td>
             <input type="text" name="state[datum]" value="<?=$oldarray['datum'];?>" />
         </td>
     </tr>
     <tr>
-        <td>Quelle:</td>
+        <td><?=_("Source");?>:</td>
         <td>
-            Zitat:<br>
+            <?=_("Quote");?>:<br>
             <textarea name="state[quotetext]"><?=$oldarray['quotetext'];?></textarea><br>
-            Quelle:<br>
+            <?=_("Source");?>:<br>
             <input type="text" name="state[quotesource]" value="<?=$oldarray['quotesource'];?>" /><br>
-            URL:<br>
+            <?=_("URL");?>:<br>
             <input type="text" name="state[quoteurl]" value="<?=$oldarray['quoteurl'];?>" /><br>
         </td>
     </tr>
@@ -31,7 +31,7 @@
 
 
 </table>
-<h4>Bewertung</h4>
+<h4><?=_("Rating");?></h4>
 <table class="bordertable">
     <?php
     if (is_array($thisissue->getPledges("party"))) {
@@ -40,7 +40,7 @@
             echo "<td>".$value->getParty()->getName().": ".$value->getName()."</td>";
             echo "<td>";
             echo "<select name=\"state[pledges][".$value->getID()."]\">";
-            echo "<option value=\"0\">Keine Information</option>";
+            echo "<option value=\"0\">"._("No information")."</option>";
             foreach ($database->getPledgestatetypes("order") as $value2) {
                 if ($value2->getType() == $value->getType()) {
                     if ($oldarray['pledges'][$value->getID()] == $value2->getID()) {

@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Name:
+            <?=_("Name");?>:
         </td>
         <td>
             <input type="text" name="party[name]" value="<?=$oldarray['name'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Kürzel:
+            <?=_("Acronym");?>:
         </td>
         <td>
             <input type="text" name="party[acronym]" value="<?=$oldarray['acronym'];?>" />
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>
-            Programm-URL:
+            <?=_("Programme URL");?>
         </td>
         <td>
             <input type="text" name="party[programme_url]" value="<?=$oldarray['programme_url'];?>" />
@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td>
-            Programm-Offset:
+            <?=_("Programme offset");?>
         </td>
         <td>
             <input type="text" name="party[programme_offset]" value="<?=$oldarray['programme_offset'];?>" />
@@ -34,7 +34,7 @@
     </tr>
     <tr>
         <td>
-            Programm-Name:
+            <?=_("Programm name");?>
         </td>
         <td>
             <input type="text" name="party[programme_name]" value="<?=$oldarray['programme_name'];?>" />
@@ -72,4 +72,4 @@
     </tr>
 
 
-</table>
+</table>n

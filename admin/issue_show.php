@@ -2,14 +2,14 @@
 <?php
 $thisissueid = $adminactive['issueid'];
 if (!$database->getIssue($thisissueid)) {
-    echo "Die Issue-ID wurde nicht gefunden.";
+    echo _("Issue-ID not found.");
 } else {
     $thisissue = &$database->getIssue($thisissueid);
     ?>
     
-    <h2>Thema <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h2>
-    <h3 class="trenner">Versprechen</h3>
-    <p><a class="button newbutton" href="<? echo doadminlink("pledge_new"); ?>">Neues Versprechen</a></p>
+    <h2><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h2>
+    <h3 class="trenner"><?=_("Pledge");?></h3>
+    <p><a class="button newbutton" href="<? echo doadminlink("pledge_new"); ?>"><?=_("New Pledge");?></a></p>
     <?
     echo "<table class=\"bordertable issuelist\"";
     foreach ($database->getParties("order") as $val) {
@@ -18,18 +18,18 @@ if (!$database->getIssue($thisissueid)) {
             foreach ($thisissue->getPledgesOfParty($val->getID()) as $value) {
                 echo "<tr><td>#".$value->getID()."</td>";
                 echo "<td class=\"big\">".$value->getName()."</td><td>";
-                echo "<a class=\"listbutton\" href=\"".doadminlink("pledge_edit", array("pledgeid" => $value->getID()))."\">bearbeiten</a>";
-                echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("pledge_del", array("pledgeid" => $value->getID()))."\">löschen</a>";
+                echo "<a class=\"listbutton\" href=\"".doadminlink("pledge_edit", array("pledgeid" => $value->getID()))."\">"._("edit")."</a>";
+                echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("pledge_del", array("pledgeid" => $value->getID()))."\">"._("delete")."</a>";
                 echo "</td></tr>";
             }
         } else {
-            echo "<tr><td>&nbsp;</td><td colspan=\"2\">Keine Einträge.</td></tr>";
+            echo "<tr><td>&nbsp;</td><td colspan=\"2\">"._("No entries found.")."</td></tr>";
         }
     }
 echo "</table>";
 ?>
-<h3 class="trenner">Verlauf</h3>
-<p><a class="button newbutton" href="<? echo doadminlink("state_new"); ?>">Neuer Status</a></p>
+<h3 class="trenner"><?=_("Progress");?></h3>
+<p><a class="button newbutton" href="<? echo doadminlink("state_new"); ?>"><?=_("New state");?></a></p>
 <?    
 
 if (count($thisissue->getStates("datum", "DESC")) > 0) {
@@ -39,8 +39,8 @@ if (count($thisissue->getStates("datum", "DESC")) > 0) {
         echo "<td>".date("d.m.Y", $value->getDatum())."</td>";
         echo "<td class=\"big\">".$value->getName()."</td>";
         echo "<td>";
-        echo "<a class=\"listbutton\" href=\"".doadminlink("state_edit", array("stateid" => $value->getID()))."\">bearbeiten</a>";
-        echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("state_del", array("stateid" => $value->getID()))."\">löschen</a>";
+        echo "<a class=\"listbutton\" href=\"".doadminlink("state_edit", array("stateid" => $value->getID()))."\">"._("edit")."</a>";
+        echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("state_del", array("stateid" => $value->getID()))."\">"._("delete")."</a>";
         echo "</td>";
         echo "</tr>";
     }
@@ -50,4 +50,4 @@ if (count($thisissue->getStates("datum", "DESC")) > 0) {
 }
 
 ?>
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>"><?=_("Back");?></a></p>

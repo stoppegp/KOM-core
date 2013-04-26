@@ -2,15 +2,15 @@
 
 $workarray = $_REQUEST['state'];
 
-if (trim($workarray['name']) == "") $errors[] = "Text";
-if (trim($workarray['quotetext']) == "") $errors[] = "Zitat";
-if (trim($workarray['quotesource']) == "") $errors[] = "Zitatquelle";
-if (!strtotime($workarray['datum'])) $errors[] = "Datum";
-if (!in_array($workarray['issue_id'], array_keys($database->getIssues()))) $errors[] = "Thema";
+if (trim($workarray['name']) == "") $errors[] = _("text");
+if (trim($workarray['quotetext']) == "") $errors[] = _("quote");
+if (trim($workarray['quotesource']) == "") $errors[] = _("quote source");
+if (!strtotime($workarray['datum'])) $errors[] = _("date");
+if (!in_array($workarray['issue_id'], array_keys($database->getIssues()))) $errors[] = _("issue");
 
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "state_new";
 } else {
@@ -44,10 +44,10 @@ if (is_array($errors)) {
         }
         
         $adminactive['page'] = "issue_show";
-        adminaddsuccess("Datensatz wurde erfolgreich eingefügt.");
+        adminaddsuccess(_("Added successfully."));
         $database->reloadContent();
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

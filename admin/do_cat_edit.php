@@ -1,10 +1,10 @@
 <?php
 $workarray = $_REQUEST['cat'];
 
-if (trim($workarray['name']) == "") $errors[] = "Name";
+if (trim($workarray['name']) == "") $errors[] = _("Label");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "cat_edit";
 } else {
@@ -17,11 +17,11 @@ if (is_array($errors)) {
         }
         $dblink->Update("categories", $dbarray, "WHERE `id`=".$workarray['id']);
         $adminactive['page'] = "cat_list";
-        adminaddsuccess("Datensatz wurde erfolgreich geändert.");
+        adminaddsuccess(_("Editing successful."));
         $database->reloadBasics();
         $database->reloadContent();
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

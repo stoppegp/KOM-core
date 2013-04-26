@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Thema:
+            <?=_("Issue");?>:
         </td>
         <td>
             <input type="text" name="issue[name]" value="<?=$oldarray['name'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Beschreibung:
+            <?=_("Description");?>:
         </td>
         <td>
             <textarea name="issue[desc]"><?=$oldarray['desc'];?></textarea>
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>
-            Kategorie:
+            <?=_("Category");?>:
         </td>
         <td>
             <?php

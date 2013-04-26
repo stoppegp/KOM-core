@@ -1,4 +1,4 @@
-    <h2>Benutzer hinzufügen</h2>
+    <h2><?=_("New user");?></h2>
 
 <form method="post">
 
@@ -7,4 +7,4 @@
 <input type="hidden" name="do" value="user_new" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("user_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("user_list");?>"><?=_("Back");?></a></p>

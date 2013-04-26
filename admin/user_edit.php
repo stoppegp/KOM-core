@@ -4,7 +4,7 @@ $thisuserid = $adminactive['userid'];
 $users = $dblink->Select("users", "*", "WHERE `id`=".$thisuserid);
 
 if (!$users[0]) {
-    echo "Die User-ID wurde nicht gefunden.";
+    echo _("User-ID not found.");
 } else {
     $thisuser = $users[0];
     if (!isset($oldarray)) {
@@ -15,8 +15,8 @@ if (!$users[0]) {
     }
     ?>
 
-    <h2>Benutzer bearbeiten</h2>
-    <h3>Benutzer <?=$thisuser->id;?> – <?=$thisuser->username;?></h3>
+    <h2><?=_("Edit user");?></h2>
+    <h3><?=_("User");?> <?=$thisuser->id;?> – <?=$thisuser->username;?></h3>
     
     <form method="post">
 
@@ -30,4 +30,4 @@ if (!$users[0]) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("user_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("user_list");?>"><?=_("Back");?></a></p>

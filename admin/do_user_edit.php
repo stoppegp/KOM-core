@@ -5,16 +5,16 @@ $workarray = $_REQUEST['user'];
 $workarray['name']  = trim($workarray['name']);
 $workarray['username']  = trim($workarray['username']);
 
-if (trim($workarray['name']) == "") $errors[] = "Name";
-if (trim($workarray['username']) == "") $errors[] = "Benutzername";
-if ($workarray['password'] != $workarray['password2']) $errors[] = "Passwort";
+if (trim($workarray['name']) == "") $errors[] = _("name");
+if (trim($workarray['username']) == "") $errors[] = _("username");
+if ($workarray['password'] != $workarray['password2']) $errors[] = _("password");
 
 $temp01 = $dblink->Select("users", "*", "WHERE `username`='".trim($workarray['username'])."' AND `id`<>".$workarray['id']);
 
-if (count($temp01) >0) $errors[] = "Der Benutzername ist schon vergeben.";
+if (count($temp01) >0) $errors[] = _("This username ist not available.");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "user_edit";
 } else {
@@ -32,9 +32,9 @@ if (is_array($errors)) {
         }
         $dblink->Update("users", $dbarray, "WHERE `id`=".$workarray['id']);
         $adminactive['page'] = "user_list";
-        adminaddsuccess("Benutzer wurde erfolgreich bearbeitet.");
+        adminaddsuccess(_("Editing successful."));
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

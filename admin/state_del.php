@@ -2,30 +2,30 @@
 $thisissueid = $adminactive['issueid'];
 $thisstateid = $adminactive['stateid'];
 if (!$database->getIssue($thisissueid)) {
-    echo "Die Issue-ID wurde nicht gefunden.";
+    echo _("Issue-ID not found.");
 } else {
     $thisissue = &$database->getIssue($thisissueid);
     
     if (!$thisissue->getState($thisstateid)) {
-        echo "Die State-ID wurde nicht gefunden.";
+        echo _("State-ID not found.");
     } else {
         $thisstate = $thisissue->getState($thisstateid);
 ?>
-        <h2>Status löschen</h2>
-        <h3>Thema <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
-        <h3>Status <?=$thisstate->getID();?> – <?=$thisstate->getName();?></h3>
+        <h2><?=_("Delete state");?></h2>
+        <h3><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
+        <h3><?=_("State");?> <?=$thisstate->getID();?> – <?=$thisstate->getName();?></h3>
         <form method="post">
 
-        <p style="color:red;">Soll dieser Eintrag wirklich gelöscht werden? Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+        <p style="color:red;"><?=_("Do you really want to delete this entry? This operation can't be undone!");?></p>
 
-        <input type="submit" name="submit_del" value="Ja, löschen!" />
-        <input type="submit" value="Nein" />
+        <input type="submit" name="submit_del" value="<?=_("Yes, delete!");?>" />
+        <input type="submit" value="<?=_("No");?>" />
 
         <input type="hidden" name="do" value="state_del" />
         <input type="hidden" name="state[issue_id]" value="<?=$thisissueid;?>" />
         <input type="hidden" name="state[id]" value="<?=$thisstateid;?>" />
         </form>
-        <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>">Zurück</a></p>
+        <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>
 
 <?php
     }

@@ -4,7 +4,7 @@ $thispledgestatetypeid = $adminactive['pledgestatetypeid'];
 $pledgestatetypes = $dblink->Select("pledgestatetypes", "*", "WHERE `id`=".$thispledgestatetypeid);
 
 if (!$pledgestatetypes[0]) {
-    echo "Die Bewertungs-ID wurde nicht gefunden.";
+    echo _("Rating-ID not found.");
 } else {
     $thispledgestatetype = $pledgestatetypes[0];
     if (!isset($oldarray)) {
@@ -18,8 +18,8 @@ if (!$pledgestatetypes[0]) {
     }
     ?>
 
-    <h2>Bewertung bearbeiten</h2>
-    <h3>Bewertung <?=$thispledgestatetype->id;?> – <?=$thispledgestatetype->name;?></h3>
+    <h2><?=_("Edit rating");?></h2>
+    <h3><?=_("Rating");?> <?=$thispledgestatetype->id;?> – <?=$thispledgestatetype->name;?></h3>
     
     <form method="post">
 
@@ -34,4 +34,4 @@ if (!$pledgestatetypes[0]) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list");?>"><?=_("Back");?></a></p>

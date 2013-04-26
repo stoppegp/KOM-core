@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Name:
+            <?=_("Label:");?>
         </td>
         <td>
             <input type="text" name="custompages[name]" value="<?=$oldarray['name'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Inhalt:
+            <?=_("Content:");?>
         </td>
         <td>
             <textarea  name="custompages[content]"><? echo htmlspecialchars($oldarray['content']); ?></textarea>

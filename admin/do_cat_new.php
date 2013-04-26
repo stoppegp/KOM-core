@@ -2,10 +2,10 @@
 
 $workarray = $_REQUEST['cat'];
 
-if (trim($workarray['name']) == "") $errors[] = "Name";
+if (trim($workarray['name']) == "") $errors[] = _("Label");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "cat_new";
 } else {
@@ -18,11 +18,11 @@ if (is_array($errors)) {
         }
         $dblink->Insert("categories", $dbarray);
         $adminactive['page'] = "cat_list";
-        adminaddsuccess("Datensatz wurde erfolgreich eingefügt.");
+        adminaddsuccess(_("Added successfully."));
         $database->reloadBasics();
         $database->reloadContent();
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

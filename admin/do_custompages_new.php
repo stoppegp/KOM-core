@@ -4,14 +4,14 @@ $workarray = $_REQUEST['custompages'];
 
 $workarray['name']  = trim($workarray['name']);
 
-if (trim($workarray['name']) == "") $errors[] = "Name";
+if (trim($workarray['name']) == "") $errors[] = _("Label");
 
 $temp01 = $dblink->Select("custompages", "*", "WHERE `name`='".trim($workarray['name'])."'");
 
-if (count($temp01) >0) $errors[] = "Der Seitenname ist schon vergeben.";
+if (count($temp01) >0) $errors[] = _("This label exists already.");
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "custompages_new";
 } else {
@@ -20,9 +20,9 @@ if (is_array($errors)) {
         $dbarray['content'] = htmlspecialchars_decode($workarray['content']);
         $dblink->Insert("custompages", $dbarray);
         $adminactive['page'] = "custompages_list";
-        adminaddsuccess("Seite wurde erfolgreich hinzugefügt.");
+        adminaddsuccess(_("Added successfully."));
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

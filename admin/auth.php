@@ -17,9 +17,9 @@ if (isset($_REQUEST['login'])) {
                         $_SESSION['userid'] = $val->id;
                         $_SESSION['admin'] = $val->admin;
                         $_SESSION['lastvisit'] = time();
-                        adminaddsuccess("Anmeldung erfolgreich.");
+                        adminaddsuccess(_("Login successful."));
                     } else {
-                        adminadderror("Anmeldung fehlgeschlagen: Falsches Kennwort");
+                        adminadderror(_("Login error: Wrong password."));
                         $logouterror = true;
                     }
                     break;
@@ -28,7 +28,7 @@ if (isset($_REQUEST['login'])) {
             
         }
         if (!$_SESSION['login'] && !$logouterror) {
-            adminadderror("Anmeldung fehlgeschlagen: Benutzer exisitert nicht.");
+            adminadderror(_("Login error: User does not exist."));
             $logouterror = true;
         }
 
@@ -38,7 +38,7 @@ if (isset($_REQUEST['login'])) {
 if (isset($_REQUEST['logout']) && $_REQUEST['logout'] == 'true') {
     session_destroy();
     session_start();
-    adminaddsuccess("Du wurdest abgemeldet");
+    adminaddsuccess(_("You are logged out."));
     $logouterror = true;
 }
 
@@ -46,7 +46,7 @@ if (isset($_REQUEST['logout']) && $_REQUEST['logout'] == 'true') {
 if ((time()-$_SESSION['lastvisit']) > 1800 && $_SESSION['login']) {
     session_destroy();
     session_start();
-    adminadderror("Du warst zu lange inaktiv und wurdest abgemeldet.");
+    adminadderror(_("You were inactive for too long and ahve been logged out."));
     $logouterror = true;
 }
 
@@ -58,7 +58,7 @@ if (isset($_SESSION['login'])) {
         if (!is_array($actuser0)) {
             session_destroy();
             session_start();
-            adminadderror("Der Benutzer wurde nicht gefunden.");
+            adminadderror(_("User not found."));
             $logouterror = true;
         } else {
             $actuser = $actuser0[0];
@@ -71,7 +71,7 @@ if (isset($_SESSION['login'])) {
     } catch (DBError $e) {
         session_destroy();
         session_start();
-        adminadderror("Der Benutzer wurde nicht gefunden.");
+        adminadderror(_("User not found."));
         $logouterror = true;
     }
 }
@@ -81,7 +81,7 @@ if (!isset($_SESSION['login']) || !$_SESSION['login']) {
     unset($adminactive);
     $adminactive['page'] = "login";
     if (!$logouterror) {
-        adminadderror("Zugriff verweigert.");
+        adminadderror(_("Access denied."));
     }
 }
 
@@ -90,7 +90,7 @@ if ((strpos(" ".$adminactive['do'], "user") > 0) || (strpos(" ".$adminactive['pa
     if ($_SESSION['admin'] != 1) {
         $adminactive['do'] = "";
         $adminactive['page'] = "";
-        adminadderror("Zugriff verweigert.");
+        adminadderror(_("Access denied."));
     }
 }
 

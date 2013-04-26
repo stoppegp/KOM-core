@@ -1,4 +1,4 @@
-    <h2>Seite hinzufügen</h2>
+    <h2><?=_("New page");?></h2>
 
 <form method="post">
 
@@ -7,4 +7,4 @@
 <input type="hidden" name="do" value="custompages_new" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>"><?=_("Back");?></a></p>

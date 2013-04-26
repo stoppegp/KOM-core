@@ -24,9 +24,9 @@ if (!isset($_REQUEST['submit_del'])) {
         
         
         $adminactive['page'] = "party_list";
-        adminaddsuccess("Partei wurde erfolgreich gelöscht.");
+        adminaddsuccess(_("Deletion successful."));
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Benutzername:
+            <?=_("Username");?>:
         </td>
         <td>
             <input type="text" name="user[username]" value="<?=$oldarray['username'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Name:
+            <?=_("Name");?>:
         </td>
         <td>
             <input type="text" name="user[name]" value="<?=$oldarray['name'];?>" />
@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>
-            E-Mail:
+            <?=_("E-Mail");?>:
         </td>
         <td>
             <input type="text" name="user[email]" value="<?=$oldarray['email'];?>" /><br><small>Wenn angegeben, bekommt der Benutzer Benachrichtigungen per E-Mail</small>
@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td>
-            Administrator:
+            <?=_("Administrator");?>:
         </td>
         <td>
             <input type="checkbox" name="user[admin]" value="1" <? echo ($oldarray['admin']==1) ? "checked=\"checked\"" : ""; ?> />
@@ -34,7 +34,7 @@
     </tr>
     <tr>
         <td>
-            Kennwort:
+            <?=_("Password");?>:
         </td>
         <td>
             <input type="password" name="user[password]" value="" />
@@ -42,7 +42,7 @@
     </tr>
     <tr>
         <td>
-            Kennwort bestätigen:
+            <?=_("Confirm password");?>:
         </td>
         <td>
             <input type="password" name="user[password2]" value="" />

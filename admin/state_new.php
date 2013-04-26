@@ -1,4 +1,4 @@
-    <h2>Status hinzufügen</h2>
+    <h2><?=_("New state");?></h2>
 
 <form method="post">
 
@@ -12,4 +12,4 @@
 <input type="hidden" name="state[issue_id]" value="<?=$thisissueid;?>" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>

@@ -1,6 +1,6 @@
-<h2>Kategorien</h2>
+<h2><?=_("Categories:");?></h2>
 
-<p><a class="button newbutton" href="<? echo doadminlink("cat_new"); ?>">Neuer Eintrag</a></p>
+<p><a class="button newbutton" href="<? echo doadminlink("cat_new"); ?>"><?=_("New entry");?></a></p>
 
 <?php
 
@@ -12,15 +12,15 @@ if (is_array($database->getCategories("name")) && count($database->getCategories
 
         echo "<tr><td>#".$value->getID()."</td>";
         echo "<td class=\"big\">".$value->getName()."</td><td>";
-        echo "<a class=\"listbutton\" href=\"".doadminlink("cat_edit", array("catid" => $value->getID()))."\">bearbeiten</a>";
-        echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("cat_del", array("catid" => $value->getID()))."\">löschen</a>";
+        echo "<a class=\"listbutton\" href=\"".doadminlink("cat_edit", array("catid" => $value->getID()))."\">"._("edit")."</a>";
+        echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("cat_del", array("catid" => $value->getID()))."\">"._("delete")."</a>";
         echo "</td></tr>";
     }
     
 
     echo "</table>";
 } else {
-    echo "Keine Einträge vorhanden.";
+    echo _("No entries found.");
 }
 
 ?>

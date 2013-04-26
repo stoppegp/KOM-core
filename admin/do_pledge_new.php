@@ -2,16 +2,16 @@
 
 $workarray = $_REQUEST['pledge'];
 
-if (trim($workarray['name']) == "") $errors[] = "Versprechen";
-if (!is_numeric($workarray['party'])) $errors[] = "Partei";
-if (!is_numeric($workarray['default_pledgestatetype'])) $errors[] = "Startinfo";
-if (!in_array($workarray['party'], array_keys($database->getParties()))) $errors[] = "Partei";
-if (!in_array($workarray['default_pledgestatetype'], array_keys($database->getPledgestatetypes()))) $errors[] = "Startinfo";
-if (!in_array($workarray['issue_id'], array_keys($database->getIssues()))) $errors[] = "Thema";
+if (trim($workarray['name']) == "") $errors[] = _("pledge");
+if (!is_numeric($workarray['party'])) $errors[] = _("party");
+if (!is_numeric($workarray['default_pledgestatetype'])) $errors[] = _("start info");
+if (!in_array($workarray['party'], array_keys($database->getParties()))) $errors[] = _("party");
+if (!in_array($workarray['default_pledgestatetype'], array_keys($database->getPledgestatetypes()))) $errors[] = _("start info");
+if (!in_array($workarray['issue_id'], array_keys($database->getIssues()))) $errors[] = _("issue");
 
 
 if (is_array($errors)) {
-    adminadderror("Folgende Felder wurden nicht korrekt ausgefüllt: ".implode(", ", $errors));
+    adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
     $oldarray = $workarray;
     $adminactive['page'] = "pledge_new";
 } else {
@@ -47,10 +47,10 @@ if (is_array($errors)) {
         }
         
         $adminactive['page'] = "issue_show";
-        adminaddsuccess("Datensatz wurde erfolgreich eingefügt.");
+        adminaddsuccess(_("Added successfully."));
         $database->reloadContent();
     } catch (DBError $e) {
-        adminadderror("Es gab einen Fehler mit der Datenbank. ".$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

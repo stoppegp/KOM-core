@@ -2,7 +2,7 @@
 
     <tr>
         <td>
-            Name:
+            <?=_("Label:");?>
         </td>
         <td>
             <input type="text" name="cat[name]" value="<?=$oldarray['name'];?>" />
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td>
-            Ausblenden:
+            <?=_("Do not display:");?>
         </td>
         <td>
             <input type="checkbox" name="cat[disabled]" value="1" <? echo ($oldarray['disabled']==1) ? "checked=\"checked\"" : ""; ?>" />
@@ -19,7 +19,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <input type="submit" value="OK" />
+            <input type="submit" value="<?=_("OK");?>" />
         </td>
     </tr>
 

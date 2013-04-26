@@ -4,7 +4,7 @@ $thiscustompageid = $adminactive['custompageid'];
 $custompages = $dblink->Select("custompages", "*", "WHERE `id`=".$thiscustompageid);
 
 if (!$custompages[0]) {
-    echo "Die Page-ID wurde nicht gefunden.";
+    echo _("Page-ID not found.");
 } else {
     $thiscustompage = $custompages[0];
     if (!isset($oldarray)) {
@@ -13,8 +13,8 @@ if (!$custompages[0]) {
     }
     ?>
 
-    <h2>Seite bearbeiten</h2>
-    <h3>Seite <?=$thiscustompage->id;?> – <?=$thiscustompage->name;?></h3>
+    <h2><?=_("Edit page");?></h2>
+    <h3><?=_("Page");?> <?=$thiscustompage->id;?> – <?=$thiscustompage->name;?></h3>
     
     <form method="post">
 
@@ -28,4 +28,4 @@ if (!$custompages[0]) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>"><?=_("Back");?></a></p>

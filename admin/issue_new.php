@@ -1,4 +1,4 @@
-    <h2>Thema hinzufügen</h2>
+    <h2><?=_("New issue");?></h2>
 
 <form method="post">
 
@@ -7,4 +7,4 @@
 <input type="hidden" name="do" value="issue_new" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>"><?=_("Back");?></a></p>

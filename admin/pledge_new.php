@@ -1,4 +1,4 @@
-    <h2>Versprechen hinzufügen</h2>
+    <h2><?=_("New Pledge");?></h2>
 
 <form method="post">
 
@@ -11,4 +11,4 @@
 <input type="hidden" name="pledge[issue_id]" value="<?=$thisissueid;?>" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>

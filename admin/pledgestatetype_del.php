@@ -6,28 +6,28 @@ $pledgestates = $dblink->Select("pledgestates", "*", "WHERE `pledgestatetype_id`
 $pledges = $dblink->Select("pledges", "*", "WHERE `default_pledgestatetype_id`=".$thispledgestatetypeid);
 
 if (!$pledgestatetypes[0]) {
-    echo "Die Bewertungs-ID wurde nicht gefunden.";
+    echo _("Rating-ID not found.");
 } elseif ((count($pledgestates) > 0) || (count($pledges) > 0)) {
-    echo "Diese Bewertung wird zur Zeit verwendet und kann nicht gelöscht werden.";
+    echo _("This rating is assigned to a state and cannot be deleted.");
 } else {
     $thispledgestatetype = $pledgestatetypes[0];
     
 
 ?>
-    <h2>Bewertung löschen</h2>
-    <h3>Bewertung <?=$thispledgestatetype->id;?> – <?=$thispledgestatetype->name;?></h3>
+    <h2><?=_("Delete rating");?></h2>
+    <h3><?=_("Rating");?> <?=$thispledgestatetype->id;?> – <?=$thispledgestatetype->name;?></h3>
 <form method="post">
 
 
-<p style="color:red;">Soll dieser Eintrag wirklich gelöscht werden? Dieser Vorgang kann nicht rückgängig gemacht werden.</p>
+<p style="color:red;"><?=_("Do you really want to delete this entry? This operation can't be undone!");?></p>
 
-<input type="submit" name="submit_del" value="Ja, löschen!" />
-<input type="submit" value="Nein" />
+<input type="submit" name="submit_del" value="<?=_("Yes, delete!");?>" />
+<input type="submit" value="<?=_("No");?>" />
 
 <input type="hidden" name="do" value="pledgestatetype_del" />
 <input type="hidden" name="pledgestatetype[id]" value="<?=$thispledgestatetypeid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list");?>"><?=_("Back");?></a></p>
 <?php
 } 
 

@@ -4,7 +4,7 @@ $thispartyid = $adminactive['partyid'];
 $parties = $dblink->Select("parties", "*", "WHERE `id`=".$thispartyid);
 
 if (!$parties[0]) {
-    echo "Die Partei-ID wurde nicht gefunden.";
+    echo _("Party-ID not found.");
 } else {
     $thisparty = $parties[0];
     if (!isset($oldarray)) {
@@ -19,8 +19,8 @@ if (!$parties[0]) {
     }
     ?>
 
-    <h2>Partei bearbeiten</h2>
-    <h3>Partei <?=$thisparty->id;?> – <?=$thisparty->name;?></h3>
+    <h2><?=_("Edit Party");?></h2>
+    <h3><?=_("Party");?> <?=$thisparty->id;?> – <?=$thisparty->name;?></h3>
     
     <form method="post">
 
@@ -34,4 +34,4 @@ if (!$parties[0]) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("party_list");?>">Zurück</a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("party_list");?>"><?=_("Back");?></a></p>
