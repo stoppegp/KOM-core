@@ -39,6 +39,34 @@ class Analysis {
         }
     }
     
+    public function getNumberOfPledges($onlyValued = true) {
+        $nr = $this->getCurrentNumberOfPledgestatetypes();
+        $count = 0;
+        if (is_array($nr)) {
+            foreach ($nr as $key => $val) {
+                if (!$onlyValued || ($this->linkDatabase->getPledgestatetype($key)->getMultipl() > 0)) {
+                    $count += $val;
+                }
+            }
+        }
+        return $count;
+    }
+    
+    public function getCurrentPoints() {
+        return $this->getPointsAtDatum(time());
+    }
+    
+    public function getPointsAtDatum($datum) {
+        $nr = $this->getNumberOfPledgestatetypesAtDatum($datum);
+        $count = 0;
+        if (is_array($nr)) {
+            foreach ($nr as $key => $val) {
+                $count += $val*($this->linkDatabase->getPledgestatetype($key)->getValue());
+            }
+        }
+        return $count;
+    }
+    
     public function getCurrentNumberOfPledgestatetypes() {
         return $this->getNumberOfPledgestatetypesAtDatum(time());
     }
