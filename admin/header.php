@@ -30,6 +30,7 @@
     ?>
         <li><a <? echo (in_array($adminactive['page'], array("cat_list", "cat_del", "cat_edit"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("cat_list");?>">Kategorien</a></li>
         <li><a <? echo (in_array($adminactive['page'], array("party_list", "party_del", "party_edit"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("party_list");?>">Parteien</a></li>
+        <li><a <? echo (in_array($adminactive['page'], array("pledgestatetype_list", "pledgestatetype_new", "pledgestatetype_del", "pledgestatetype_edit"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("pledgestatetype_list");?>">Bewertungen</a></li>
         <li><a <? echo (in_array($adminactive['page'], array("user_list", "user_new", "user_edit", "user_del"))) ? "id=\"active_main\"" : ""; ?>  href="<?=doadminlink("user_list");?>">Benutzer</a></li>
     <?php } ?>
     </ul>
