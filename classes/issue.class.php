@@ -70,14 +70,12 @@ class Issue {
             foreach ($retar as $key => $val) {
                 if ((!(isset($this->filters['parties']) && is_array($this->filters['parties']))) || in_array($val->party_id, $this->filters['parties'])) {
                     $this->pledges[$val->id] = new Pledge($this, $val->id, $this->id, $val->name, $val->desc, $val->type, $val->quotetext, $val->quotesource, $val->quoteurl, $val->quotetype, $val->party_id, $val->quotepage, $val->default_pledgestatetype_id);
-                    
-                    if (isset($this->filters['pledgestatetypeids']) && (is_array($this->filters['pledgestatetypeids'])) && !in_array($this->pledges[$val->id]->getCurrentPledgestatetype()->getID(), $this->filters['pledgestatetypeids']) || !$this->pledges[$val->id]->getParty()->getDoValue()) {
+                    if (isset($this->filters['pledgestatetypeids']) && (is_array($this->filters['pledgestatetypeids'])) && !in_array($this->pledges[$val->id]->getCurrentPledgestatetype()->getID(), $this->filters['pledgestatetypeids'])) {
                         unset($this->pledges[$val->id]);
                     } else {
                         $this->pledgesByParty[$val->party_id][] = $this->pledges[$val->id];
                     }
                 }
-                
             }
         }
     }
