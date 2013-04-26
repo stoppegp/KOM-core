@@ -7,7 +7,7 @@ require('../helpers/MySQL.class.php');
 
 
 require('../autoload.php');
-require('../helpers/gettext/gettext.inc');
+require_once('../helpers/gettext/gettext.inc');
 
 
 /* DB-Verbindung aufbauen */

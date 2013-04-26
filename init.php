@@ -5,7 +5,7 @@ require('helpers/errorclasses.php');
 require('helpers/MySQL.class.php');
 require('classes/KOM.class.php');
 require("config.php");
-
+require_once('helpers/gettext/gettext.inc');
 
 
 require('autoload.php');
@@ -42,4 +42,14 @@ KOM::$active = KOM::urlrewrite($uri);
 function dolink($page = "", $arg = null, $clear = false) {
     return KOM::dolink($page, $arg, $clear);
 }
+
+$locale = "de_DE";
+$domain = "kom_admin";
+$encoding = "UTF-8";
+putenv('LC_ALL=de_DE');
+setlocale(LC_ALL, $locale);
+bindtextdomain($domain, './interface/locale');
+bind_textdomain_codeset($domain, $encoding);
+textdomain($domain);
+
 ?>
