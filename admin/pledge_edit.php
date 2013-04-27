@@ -7,7 +7,7 @@ if (!$database->getIssue($thisissueid)) {
     $thisissue = &$database->getIssue($thisissueid);
     
     if (!$thisissue->getPledge($thispledgeid)) {
-        echo _("Pledge-ID not found.");
+        echo _("Promise-ID not found.");
     } else {
         $thispledge = $thisissue->getPledge($thispledgeid);
         
@@ -24,9 +24,9 @@ if (!$database->getIssue($thisissueid)) {
 
         ?>
 
-        <h2><?=_("Edit pledge");?></h2>
+        <h2><?=_("Edit promise");?></h2>
         <h3><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h3>
-        <h3><?=_("Pledge");?> <?=$thispledge->getID();?> – <?=$thispledge->getName();?></h3>
+        <h3><?=_("Promise");?> <?=$thispledge->getID();?> – <?=$thispledge->getName();?></h3>
         
         <form method="post">
 

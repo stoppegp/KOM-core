@@ -1,4 +1,4 @@
-    <h2><?=_("New Pledge");?></h2>
+    <h2><?=_("New Promise");?></h2>
 
 <form method="post">
 

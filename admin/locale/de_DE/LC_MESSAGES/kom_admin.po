@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kom_admin\n"
-"POT-Creation-Date: 2013-04-27 10:51+0100\n"
-"PO-Revision-Date: 2013-04-27 10:52+0100\n"
+"POT-Creation-Date: 2013-04-27 14:34+0100\n"
+"PO-Revision-Date: 2013-04-27 14:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: stoppe\n"
 "Language: de_DE\n"
@@ -90,7 +90,7 @@ msgstr "Nein"
 #: admin/cat_del.php:36 admin/cat_edit.php:31 admin/cat_new.php:10
 #: admin/custompages_del.php:25 admin/custompages_edit.php:31
 #: admin/custompages_new.php:10 admin/issue_del.php:23 admin/issue_edit.php:33
-#: admin/issue_new.php:10 admin/issue_show.php:53 admin/party_del.php:25
+#: admin/issue_new.php:10 admin/issue_show.php:60 admin/party_del.php:25
 #: admin/party_edit.php:37 admin/party_new.php:15
 #: admin/pledgestatetypegroup_del.php:27
 #: admin/pledgestatetypegroup_edit.php:39
@@ -127,7 +127,7 @@ msgid "New entry"
 msgstr "Neuer Eintrag"
 
 #: admin/cat_list.php:15 admin/custompages_list.php:19 admin/issue_list.php:20
-#: admin/issue_show.php:21 admin/issue_show.php:42 admin/party_list.php:19
+#: admin/issue_show.php:22 admin/issue_show.php:47 admin/party_list.php:19
 #: admin/pledgestatetype_list.php:21 admin/pledgestatetype_list.php:41
 #: admin/pledgestatetype_list.php:75 admin/pledgestatetype_list.php:96
 #: admin/user_list.php:21
@@ -135,14 +135,15 @@ msgid "edit"
 msgstr "bearbeiten"
 
 #: admin/cat_list.php:16 admin/custompages_list.php:20 admin/issue_list.php:21
-#: admin/issue_show.php:22 admin/issue_show.php:43 admin/party_list.php:20
+#: admin/issue_show.php:23 admin/issue_show.php:48 admin/party_list.php:20
 #: admin/pledgestatetype_list.php:22 admin/pledgestatetype_list.php:42
 #: admin/pledgestatetype_list.php:97 admin/user_list.php:22
 msgid "delete"
 msgstr "löschen"
 
-#: admin/cat_list.php:23 admin/issue_list.php:25 admin/issue_list.php:32
-#: admin/issue_show.php:26
+#: admin/cat_list.php:23 admin/custompages_list.php:27 admin/issue_list.php:25
+#: admin/issue_list.php:31 admin/issue_show.php:27 admin/issue_show.php:54
+#: admin/party_list.php:27
 msgid "No entries found."
 msgstr "Keine Einträge gefunden."
 
@@ -406,20 +407,25 @@ msgstr "Neues Thema"
 msgid "open"
 msgstr "öffnen"
 
-#: admin/issue_show.php:11 admin/pledge_del.php:16 admin/pledge_edit.php:29
-#: admin/pledge_form.php:22
-msgid "Pledge"
+#: admin/issue_show.php:11
+msgid "Promises"
 msgstr "Versprechen"
 
-#: admin/issue_show.php:12 admin/pledge_new.php:1
-msgid "New Pledge"
+#: admin/issue_show.php:14 admin/pledge_new.php:1
+msgid "New Promise"
 msgstr "Neues Versprechen"
 
-#: admin/issue_show.php:31
+#: admin/issue_show.php:32
+msgid "You have to create at least one party before your can create promises."
+msgstr ""
+"Es muss zuerst eine Partei erstell werden, bevor Versprechen erstellt werden "
+"können."
+
+#: admin/issue_show.php:36
 msgid "Progress"
 msgstr "Verlauf"
 
-#: admin/issue_show.php:32 admin/state_new.php:1
+#: admin/issue_show.php:37 admin/state_new.php:1
 msgid "New state"
 msgstr "Neuer Status"
 
@@ -593,16 +599,24 @@ msgid "custom"
 msgstr "benutzerdefiniert"
 
 #: admin/pledge_del.php:10 admin/pledge_edit.php:10
-msgid "Pledge-ID not found."
+msgid "Promise-ID not found."
 msgstr "Die Versprechen-ID wurde nicht gefunden."
 
 #: admin/pledge_del.php:14
-msgid "Delete Pledge"
+msgid "Delete Promise"
 msgstr "Versprechen löschen"
 
+#: admin/pledge_del.php:16 admin/pledge_edit.php:29
+msgid "Promise"
+msgstr "Versprechen"
+
 #: admin/pledge_edit.php:27
-msgid "Edit pledge"
+msgid "Edit promise"
 msgstr "Versprechen bearbeiten"
+
+#: admin/pledge_form.php:22
+msgid "Pledge"
+msgstr "Versprechen"
 
 #: admin/pledge_form.php:38
 msgid "Start info"
@@ -688,6 +702,18 @@ msgstr "Passwort bestätigen"
 #: admin/user_list.php:3 admin/user_new.php:1
 msgid "New user"
 msgstr "Neuer Benutzer"
+
+#~ msgid "Pledge-ID not found."
+#~ msgstr "Die Versprechen-ID wurde nicht gefunden."
+
+#~ msgid "Delete Pledge"
+#~ msgstr "Versprechen löschen"
+
+#~ msgid "Edit pledge"
+#~ msgstr "Versprechen bearbeiten"
+
+#~ msgid "New Pledge"
+#~ msgstr "Neues Versprechen"
 
 #~ msgid "halo"
 #~ msgstr "asdasd"
