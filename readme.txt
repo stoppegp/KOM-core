@@ -7,6 +7,22 @@ Autor: Martin Stoppler @stoppegp
 Lizenz: GPL
 
 
+Anleitung (work in prograss)
+=============================
+
+1. Installation
+
+Die ./install/install.php aufrufen. Auf der Seite Seitentitel, URL zum KOM-Core (ohne "/" am Ende), Start- und Enddatum der Betrachtungszeit (Legislaturperiode) sowie Datenbank-Zugangsdaten eingaben. Um mehrere Installationen innerhalb einer Datenbank zu verwalten, kann noch ein Präfix für die Tabellen angegeben werden.
+Es wird nun automatisch eine config.php im hauptordner bestellt und eine Grundstruktur in der Datenbank. Anschließend unbedingt das Verzeichnis "install" löschen!
+Für ein Frontend muss nun noch das KOM-Interface in den Ordner "interface" kopiert werden.
+
+2. Administration
+
+Die Administration wird über ./admin/admin.php ausgerufen. Nach der Installation kann man sich mit dem Benutzernamen "admin" und dem Kennwort "admin" einloggen. Diese Daten sollten sofort unter "Benutzer" (siehe 2.x) geändert werden!
+
+...
+
+
 
 Dokumentation (work in progress)
 =============================
