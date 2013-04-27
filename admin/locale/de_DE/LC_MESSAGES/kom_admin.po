@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kom_admin\n"
-"POT-Creation-Date: 2013-04-27 14:34+0100\n"
-"PO-Revision-Date: 2013-04-27 14:34+0100\n"
+"POT-Creation-Date: 2013-04-27 23:25+0100\n"
+"PO-Revision-Date: 2013-04-27 23:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: stoppe\n"
 "Language: de_DE\n"
@@ -633,7 +633,7 @@ msgstr "Zitat"
 
 #: admin/pledge_form.php:75 admin/state_form.php:26
 msgid "URL"
-msgstr "UTL"
+msgstr "URL"
 
 #: admin/pledge_form.php:77
 msgid "Page in the electoral platform"
