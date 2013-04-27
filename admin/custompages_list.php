@@ -23,6 +23,8 @@ if (is_array($custompages)) {
     }
     
     echo "</table>";
+} else {
+    echo _("No entries found.");
 }
 ?>
 

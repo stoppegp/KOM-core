@@ -8,25 +8,30 @@ if (!$database->getIssue($thisissueid)) {
     ?>
     
     <h2><?=_("Issue");?> <?=$thisissue->getID();?> – <?=$thisissue->getName();?></h2>
-    <h3 class="trenner"><?=_("Pledge");?></h3>
-    <p><a class="button newbutton" href="<? echo doadminlink("pledge_new"); ?>"><?=_("New Pledge");?></a></p>
+    <h3 class="trenner"><?=_("Promises");?></h3>
     <?
-    echo "<table class=\"bordertable issuelist\"";
-    foreach ($database->getParties("order") as $val) {
-        echo "<tr><td class=\"big\" colspan=\"3\"><strong>".$val->getName()."</strong></td></tr>";
-        if (is_array($thisissue->getPledgesOfParty($val->getID()))) {
-            foreach ($thisissue->getPledgesOfParty($val->getID()) as $value) {
-                echo "<tr><td>#".$value->getID()."</td>";
-                echo "<td class=\"big\">".$value->getName()."</td><td>";
-                echo "<a class=\"listbutton\" href=\"".doadminlink("pledge_edit", array("pledgeid" => $value->getID()))."\">"._("edit")."</a>";
-                echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("pledge_del", array("pledgeid" => $value->getID()))."\">"._("delete")."</a>";
-                echo "</td></tr>";
+    if (is_array($database->getParties("order")) && (count($database->getParties("order")) > 0)) {
+        ?> <p><a class="button newbutton" href="<? echo doadminlink("pledge_new"); ?>"><?=_("New Promise");?></a></p> <?
+        echo "<table class=\"bordertable issuelist\">";
+        foreach ($database->getParties("order") as $val) {
+            echo "<tr><td class=\"big\" colspan=\"3\"><strong>".$val->getName()."</strong></td></tr>";
+            if (is_array($thisissue->getPledgesOfParty($val->getID()))) {
+                foreach ($thisissue->getPledgesOfParty($val->getID()) as $value) {
+                    echo "<tr><td>#".$value->getID()."</td>";
+                    echo "<td class=\"big\">".$value->getName()."</td><td>";
+                    echo "<a class=\"listbutton\" href=\"".doadminlink("pledge_edit", array("pledgeid" => $value->getID()))."\">"._("edit")."</a>";
+                    echo "<a class=\"listbutton delbutton\" href=\"".doadminlink("pledge_del", array("pledgeid" => $value->getID()))."\">"._("delete")."</a>";
+                    echo "</td></tr>";
+                }
+            } else {
+                echo "<tr><td>&nbsp;</td><td colspan=\"2\">"._("No entries found.")."</td></tr>";
             }
-        } else {
-            echo "<tr><td>&nbsp;</td><td colspan=\"2\">"._("No entries found.")."</td></tr>";
         }
+        echo "</table>";
+    } else {
+        echo "<p>"._("You have to create at least one party before your can create promises.")."</p>";
     }
-echo "</table>";
+
 ?>
 <h3 class="trenner"><?=_("Progress");?></h3>
 <p><a class="button newbutton" href="<? echo doadminlink("state_new"); ?>"><?=_("New state");?></a></p>
@@ -45,6 +50,8 @@ if (count($thisissue->getStates("datum", "DESC")) > 0) {
         echo "</tr>";
     }
     echo "</table>";
+} else {
+    echo "<p>"._("No entries found.")."</p>";
 }
     
 }

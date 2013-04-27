@@ -23,6 +23,8 @@ if (is_array($users)) {
     }
     
     echo "</table>";
+} else {
+    echo _("No entries found.");
 }
 ?>
 
