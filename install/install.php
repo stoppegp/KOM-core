@@ -63,7 +63,8 @@ CONFIG;
     
         $sql = mysql_connect($install['dbhost'], $install['dbuser'], $install['dbpassword']);
 		mysql_select_db($install['dbname'], $sql);
-        
+        $query = "SET NAMES 'utf8'";
+        mysql_query($query, $sql);
         ob_start();
         
         include('sql.inc.php');
