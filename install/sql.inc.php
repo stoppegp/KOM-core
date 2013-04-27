@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>options` (
   PRIMARY KEY (`key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 INSERT INTO `<?=$install['dbprefix'];?>options` (`key`, `value`) VALUES
-('start_datum', '<?=$install['startdatum'];?>'),
+('start_datum', '<?=date("Y-m-d", strtotime($install['startdatum']));?>'),
 ('end_datum', '<?=date("Y-m-d", strtotime($install['enddatum']));?>'),
 ('site_title', '<?=$install['pagetitle'];?>');
 CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>parties` (
