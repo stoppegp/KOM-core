@@ -154,7 +154,7 @@ class KOM {
 						}
                     break;
                     case "custompage":
-                        if (isset($array['custompageid']) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
+                        if (isset($array['custompageid']) && is_array(KOM::$custompagelist) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
                             $custompageid = $array['custompageid'];
                             $url = KOM::$custompagelist[$custompageid]."/";
                         }
@@ -171,14 +171,16 @@ class KOM {
     
     static function urlrewrite($uri) {
         
-        
-        foreach (KOM::$mainDB->getCategories() as $val) {
-            $catarray[KOM::filteruri($val->getName())] = $val->getID();
+        if (is_array(KOM::$mainDB->getCategories())) {
+            foreach (KOM::$mainDB->getCategories() as $val) {
+                $catarray[KOM::filteruri($val->getName())] = $val->getID();
+            }
         }
-        foreach (KOM::$dblink->Select("custompages") as $val) {
-            $cparray[$val->name] = $val->id;
+        if (is_array(KOM::$dblink->Select("custompages"))) {
+            foreach (KOM::$dblink->Select("custompages") as $val) {
+                $cparray[$val->name] = $val->id;
+            }
         }
-        
         $active['page'] = "home";
 
         $urisplit = explode("/", $uri);

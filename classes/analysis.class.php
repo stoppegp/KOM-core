@@ -214,13 +214,16 @@ class Analysis {
                 $arsno[$sno] = $temp00;
             }
         }
-        krsort($arsno);
-        $retar = array();
-        foreach ($arsno as $val) {
-            $retar[] = $val;
+        if (is_array($arsno)) {
+            krsort($arsno);
+            $retar = array();
+            foreach ($arsno as $val) {
+                $retar[] = $val;
+            }
+            return $retar;
+        } else {
+            return false;
         }
-        return $retar;
-    
     }
     
     public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30, $options = false) {

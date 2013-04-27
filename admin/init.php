@@ -11,7 +11,7 @@ require_once('../helpers/gettext/gettext.inc');
 
 
 /* DB-Verbindung aufbauen */
-KOM::$dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME);
+KOM::$dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME, DB_PREFIX);
 KOM::$dblink->connect();
 
 $dblink = &KOM::$dblink;

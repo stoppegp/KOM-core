@@ -6,14 +6,16 @@ class MySQL {
 	private $user;
 	private $pass;
 	private $database;
+    private $prefix;
 	
 	private $sql;
     
-    function __construct($host, $user, $pass, $database) {
+    function __construct($host, $user, $pass, $database, $prefix = "") {
         $this->host = $host;
         $this->user = $user;
         $this->pass = $pass;
         $this->database = $database;
+        $this->prefix = $prefix;
     }
 	
 	public function connect() {
@@ -23,7 +25,7 @@ class MySQL {
 		mysql_query($query, $this->sql);
 	}
 	public function Select($table, $what = "*", $misc = "") {
-		$query = "SELECT $what FROM $table ".$misc;
+		$query = "SELECT $what FROM ".$this->prefix.$table." ".$misc;
 		$sql = mysql_query($query, $this->sql);
 		if (mysql_errno()) {
 			throw new DBError(mysql_error()."<br />".$query);
@@ -46,7 +48,7 @@ class MySQL {
                 $insar2["`".$key."`"] = $val;
             }
         }
-		$query = "INSERT INTO ".$table." (";
+		$query = "INSERT INTO ".$this->prefix.$table." (";
 		$query .= implode(", ", array_keys($insar2));
 		$query .= ") VALUES (";
 		$query .= implode(", ", $insar2);
@@ -70,7 +72,7 @@ class MySQL {
                 $updar2["`".$key."`"] = $val;
             }
         }
-		$query = "UPDATE ".$table." SET";
+		$query = "UPDATE ".$this->prefix.$table." SET";
 		foreach ($updar2 as $key2 => $val2) {
 			$updar3[] = " ".$key2."=".$val2;
 		}
@@ -88,7 +90,7 @@ class MySQL {
 	}
 	
 	public function Delete($table, $misc) {
-		$query = "DELETE FROM $table ".$misc;
+		$query = "DELETE FROM ".$this->prefix.$table." ".$misc;
 		mysql_query($query, $this->sql);
 		if (mysql_errno()) {
 			throw new DBError(mysql_error()."<br />".$query);
