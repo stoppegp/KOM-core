@@ -18,13 +18,14 @@ CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>issues` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=232 ;
 CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>options` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) CHARACTER SET latin1 NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`key`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 INSERT INTO `<?=$install['dbprefix'];?>options` (`key`, `value`) VALUES
-('start_datum', '<?=date("Y-m-d", strtotime($install['startdatum']));?>'),
-('end_datum', '<?=date("Y-m-d", strtotime($install['enddatum']));?>'),
+('start_datum', '<?=strtotime($install['startdatum']);?>'),
+('end_datum', '<?=strtotime($install['enddatum']);?>'),
 ('site_title', '<?=$install['pagetitle'];?>');
 CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>parties` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
