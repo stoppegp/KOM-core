@@ -8,7 +8,7 @@ if (!is_numeric($workarray['default_pledgestatetype'])) $errors[] = _("start inf
 if (!in_array($workarray['party'], array_keys($database->getParties()))) $errors[] = _("party");
 if (!in_array($workarray['default_pledgestatetype'], array_keys($database->getPledgestatetypes()))) $errors[] = _("start info");
 if (!in_array($workarray['issue_id'], array_keys($database->getIssues()))) $errors[] = _("issue");
-if ($database->getPledgestatetype($workarray['default_pledgestatetype'])->getType() != $database->getIssue($workarray['issue_id'])->getPledge($workarray['id'])->getType()) $errors[] = _("It is impossible to change the type")." (")._("request")."/"._("status quo").") "._("of the pledge!");
+if ($database->getPledgestatetype($workarray['default_pledgestatetype'])->getType() != $database->getIssue($workarray['issue_id'])->getPledge($workarray['id'])->getType()) $errors[] = _("It is impossible to change the type")." ("._("request")."/"._("status quo").") "._("of the pledge!");
 
 
 if (is_array($errors)) {
