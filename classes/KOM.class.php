@@ -121,14 +121,16 @@ class KOM {
                 if (isset($callback) && function_exists($callback)) $url .= $callback($array);
             } else {
                 switch ($page) {
-                    case "category":
-                        if (KOM::$pagenames['category'] != "") {
-                            $url = KOM::$pagenames['category']."/";
+                    case "list":
+                        if (KOM::$pagenames['list'] != "") {
+                            $url = KOM::$pagenames['list']."/";
                         } else {
                             $url = "";
                         }
                         if (isset($array['cat'])) {
                             $url .= KOM::filteruri(KOM::$mainDB->getCategory($array['cat'])->getName())."/";
+                        } else {
+                            $url = KOM::$pagenames['list-all']."/";
                         }
                     break;
                     case "single":
@@ -301,18 +303,18 @@ class KOM {
                 }
             }
             
-            /* Page 'category' */
+            /* Page 'list' */
             if (!$endrewrite) {
-                if (KOM::$pagenames['category'] != "") {
+                if (KOM::$pagenames['list'] != "") {
                     
-                    if (strpos(" ".KOM::$pagenames['category'], "/") > 0) {
+                    if (strpos(" ".KOM::$pagenames['list'], "/") > 0) {
                     
                         for ($a = 0; $a < count($uriparts); $a++) {
                             $tempname = implode("/", array_slice($uriparts, 0, $a));
-                            if ($tempname == KOM::$pagenames['category']) {
+                            if ($tempname == KOM::$pagenames['list']) {
                                 $lastnr = count($uriparts)-1;
                                 if (in_array(KOM::filteruri($uriparts[$lastnr]), array_keys($catarray))) {
-                                    $active['page'] = "category";
+                                    $active['page'] = "list";
                                     $active['cat'] = $catarray[KOM::filteruri($uriparts[$lastnr])];
                                     $endrewrite = true;
                                 }
@@ -322,9 +324,9 @@ class KOM {
                         
                     } else {
                         $tempname = $uriparts[0];
-                        if ($tempname == KOM::$pagenames['category']) {
+                        if ($tempname == KOM::$pagenames['list']) {
                             if (in_array(KOM::filteruri($uriparts[1]), array_keys($catarray))) {
-                                $active['page'] = "category";
+                                $active['page'] = "list";
                                 $active['cat'] = $catarray[KOM::filteruri($uriparts[1])];
                                 $endrewrite = true;
                             }
@@ -332,9 +334,34 @@ class KOM {
                     }
                 } else {
                     if (in_array(KOM::filteruri($uriparts[0]), array_keys($catarray))) {
-                        $active['page'] = "category";
+                        $active['page'] = "list";
                         $active['cat'] = $catarray[KOM::filteruri($uriparts[0])];
                         $endrewrite = true;
+                    }
+                }
+            }
+            
+            /* Page 'list-all' */
+            if (!$endrewrite) {
+                if (KOM::$pagenames['list-all'] != "") {
+                    
+                    if (strpos(" ".KOM::$pagenames['list-all'], "/") > 0) {
+                    
+                        for ($a = 0; $a < count($uriparts); $a++) {
+                            $tempname = implode("/", array_slice($uriparts, 0, $a));
+                            if ($tempname == KOM::$pagenames['list-all']) {
+                                $active['page'] = "list";
+                                $endrewrite = true;
+                                break;
+                            }
+                        }
+                        
+                    } else {
+                        $tempname = $uriparts[0];
+                        if ($tempname == KOM::$pagenames['list-all']) {
+                            $active['page'] = "list";
+                            $endrewrite = true;
+                        }
                     }
                 }
             }

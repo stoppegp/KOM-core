@@ -12,7 +12,8 @@ define(  'SITE_URL',    "");
 
 KOM::$pagenames = array(
 
-    "category"  =>  "kategorie",
+    "list"  =>  "kategorie",
+    "list-all"  => "versprechen",
     "single"    =>  "versprechen",
     "report"    =>  "fehler-melden"
 
