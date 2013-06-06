@@ -3,14 +3,20 @@ require("init.php");
 
 
 ob_start();
-require("interface/".KOM::$active['page'].".php");
+if (file_exists("interface/".KOM::$active['page'].".php")) {
+    require("interface/".KOM::$active['page'].".php");
+}
 $KOM_CONTENT = ob_get_contents();
 ob_end_clean();
 
 
-require("interface/header.php");
+if (file_exists("interface/header.php")) {
+    require("interface/header.php");
+}
 echo $KOM_CONTENT;
-require("interface/footer.php");
+if (file_exists("interface/footer.php")) {
+    require("interface/footer.php");
+}
 
 
 ?>

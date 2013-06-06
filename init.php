@@ -26,7 +26,9 @@ KOM::$site_url = SITE_URL;
 KOM::loadIssuelist();
 KOM::loadCustompagelist();
 
-require("interface/init.php");
+if (file_exists('interface/init.php')) {
+    require("interface/init.php");
+}
 
 $uri = $_SERVER['REQUEST_URI'];
 if (strpos("-".parse_url($uri, PHP_URL_PATH), parse_url(SITE_URL, PHP_URL_PATH)) == 1) {
