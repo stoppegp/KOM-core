@@ -93,7 +93,7 @@ class Analysis {
         }
     }
     
-    public function getChartseriesPieGroup($datum = false, $options = null) {
+    public function getChartseriesPieGroup($datum = false, $options = null, $opacity = 1) {
         
         if (!$datum) $datum = time();
         
@@ -110,7 +110,8 @@ class Analysis {
         foreach ($this->linkDatabase->getPledgestatetypegroups() as $value0) {
             unset($tempar);
             $tempar['name'] = $value0->getName();
-            $tempar['color'] = $value0->getColour();
+            $col = Analysis::hex2rgb($value0->getColour());
+            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")";
             $tempar['y'] = $group_nr[$value0->getID()];
             if (isset($options[$value0->getID()]) && is_array($options[$value0->getID()])) {
                 foreach ($options[$value0->getID()] as $key => $val) {
@@ -124,7 +125,7 @@ class Analysis {
             
     }
     
-    public function getChartseriesPie($datum = false, $options = null) {
+    public function getChartseriesPie($datum = false, $options = null, $opacity = 1) {
         
         if (!$datum) $datum = time();
         
@@ -135,7 +136,8 @@ class Analysis {
             unset($tempar);
             if ( $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl() == 0) continue;
             $tempar['name'] = $value0->getName();
-            $tempar['color'] = $value0->getColour();
+            $col = Analysis::hex2rgb($value0->getColour());
+            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")";
             $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl();
             if (is_array($options[$value0->getID()])) {
                 foreach ($options[$value0->getID()] as $key => $val) {
@@ -150,7 +152,7 @@ class Analysis {
             
     }
     
-    public function getChartseriesTrendGroup($startdatum = false, $enddatum = false, $interval = 30, $options = null) {
+    public function getChartseriesTrendGroup($startdatum = false, $enddatum = false, $interval = 30, $options = null, $opacity = 1) {
     
         if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
         if (!$enddatum || ($enddatum > time())) $enddatum = time();
@@ -177,9 +179,10 @@ class Analysis {
         foreach ($c2d as $key => $val) {
             $sno = $this->linkDatabase->getPledgestatetypegroup($key)->getOrder();
             $temp00 = null;
+            $col = Analysis::hex2rgb($this->linkDatabase->getPledgestatetypegroup($key)->getColour());
             $temp00 = array(
                 'name' => $this->linkDatabase->getPledgestatetypegroup($key)->getName(),
-                'color' => $this->linkDatabase->getPledgestatetypegroup($key)->getColour(),
+                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")",
             );
             if (is_array($options[$key])) {
                 foreach ($options[$key] as $key0 => $val0) {
@@ -226,7 +229,7 @@ class Analysis {
         }
     }
     
-    public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30, $options = false) {
+    public function getChartseriesTrend($startdatum = false, $enddatum = false, $interval = 30, $options = false, $opacity = 1) {
     
         if (!$startdatum) $startdatum = $this->linkDatabase->getOption("start_datum");
         if (!$enddatum || ($enddatum > time())) $enddatum = time();
@@ -251,9 +254,10 @@ class Analysis {
             $sno = $this->linkDatabase->getPledgestatetype($key)->getOrder();
             $groups = $this->linkDatabase->getGroupsOfPledgestatetype($key);
             $temp00 = null;
+            $col = $this->linkDatabase->getPledgestatetype($key)->getColour();
             $temp00 = array(
                 'name' => $this->linkDatabase->getPledgestatetype($key)->getName(),
-                'color' => $this->linkDatabase->getPledgestatetype($key)->getColour(),
+                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")",
             );
             if (is_array($options[$key])) {
                 foreach ($options[$key] as $key0 => $val0) {
@@ -290,5 +294,20 @@ class Analysis {
         return $retar;
     
     }
- 
+    static function hex2rgb($hex) {
+       $hex = str_replace("#", "", $hex);
+
+       if(strlen($hex) == 3) {
+          $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+          $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+          $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+       } else {
+          $r = hexdec(substr($hex,0,2));
+          $g = hexdec(substr($hex,2,2));
+          $b = hexdec(substr($hex,4,2));
+       }
+       $rgb = array($r, $g, $b);
+       //return implode(",", $rgb); // returns the rgb values separated by commas
+       return $rgb; // returns an array with the rgb values
+    }
 }
