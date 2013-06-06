@@ -84,6 +84,7 @@ class KOM {
             }
             
             $ret0['text'] = $value['text'];
+            $ret0['id'] = $value['id'];
 			if (!isset($value['args'])) $value['args'] = null;
 			if (!isset($value['args'])) $value['clearargs'] = null;
             $ret0['link'] = KOM::dolink($value['page'], $value['args'], $value['clearargs']);
