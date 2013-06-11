@@ -24,7 +24,7 @@
             <?php
                 foreach ($database->getCategories("name") as $value) {
                     ?>
-                        <input <? echo (in_array($value->getID(), array_keys($oldarray['cat']))) ? "checked=\"checked\"": ""; ?> type="checkbox" name="issue[cat][<?=$value->getID();?>]" value="1" /> <?=$value->getName();?><br>
+                        <input <? echo ((is_array($oldarray['cat'])) && (in_array($value->getID(), array_keys($oldarray['cat'])))) ? "checked=\"checked\"": ""; ?> type="checkbox" name="issue[cat][<?=$value->getID();?>]" value="1" /> <?=$value->getName();?><br>
                     <?
                 }
             ?>
