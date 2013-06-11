@@ -1,7 +1,7 @@
 <?php
 
 $thisuserid = $adminactive['userid'];
-$users = $dblink->Select("users", "*", "WHERE `id`=".$thisuserid);
+$users = $dblink->Select("users", "*", "WHERE `id`=".(int)$thisuserid);
 
 if (!$users[0]) {
     echo _("User-ID not found.");

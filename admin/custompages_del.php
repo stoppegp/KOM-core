@@ -2,7 +2,7 @@
 
 $thiscustompageid = $adminactive['custompageid'];
 
-$custompages = $dblink->Select("custompages", "*", "WHERE `id`=".$thiscustompageid);
+$custompages = $dblink->Select("custompages", "*", "WHERE `id`=".(int)$thiscustompageid);
 
 if (!$custompages[0]) {
     echo _("Page-ID not found.");

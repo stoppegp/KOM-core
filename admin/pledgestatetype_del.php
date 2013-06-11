@@ -1,9 +1,9 @@
 <?php
 $thispledgestatetypeid = $adminactive['pledgestatetypeid'];
 
-$pledgestatetypes = $dblink->Select("pledgestatetypes", "*", "WHERE `id`=".$thispledgestatetypeid);
-$pledgestates = $dblink->Select("pledgestates", "*", "WHERE `pledgestatetype_id`=".$thispledgestatetypeid);
-$pledges = $dblink->Select("pledges", "*", "WHERE `default_pledgestatetype_id`=".$thispledgestatetypeid);
+$pledgestatetypes = $dblink->Select("pledgestatetypes", "*", "WHERE `id`=".(int)$thispledgestatetypeid);
+$pledgestates = $dblink->Select("pledgestates", "*", "WHERE `pledgestatetype_id`=".(int)$thispledgestatetypeid);
+$pledges = $dblink->Select("pledges", "*", "WHERE `default_pledgestatetype_id`=".(int)$thispledgestatetypeid);
 
 if (!$pledgestatetypes[0]) {
     echo _("Rating-ID not found.");

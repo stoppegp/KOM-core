@@ -1,6 +1,6 @@
 <?php
 $thispledgestatetypegroupid = $adminactive['pledgestatetypegroupid'];
-$pledgestatetypegroups = $dblink->Select("pledgestatetypegroups", "*", "WHERE `id`=".$thispledgestatetypegroupid);
+$pledgestatetypegroups = $dblink->Select("pledgestatetypegroups", "*", "WHERE `id`=".(int)$thispledgestatetypegroupid);
 
 if (!$pledgestatetypegroups[0]) {
     echo _("Group-ID not found.");

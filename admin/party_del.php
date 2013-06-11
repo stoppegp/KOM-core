@@ -1,7 +1,7 @@
 <?php
 
 $thispartyid = $adminactive['partyid'];
-$parties = $dblink->Select("parties", "*", "WHERE `id`=".$thispartyid);
+$parties = $dblink->Select("parties", "*", "WHERE `id`=".(int)$thispartyid);
 
 if (!$parties[0]) {
      echo _("Party-ID not found.");
