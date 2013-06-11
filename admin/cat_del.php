@@ -5,7 +5,7 @@ if (!$database->getCategory($thiscatid)) {
 } elseif (count($database->getCategories()) < 2) {
     echo _("It ist impossible to delete the last category!");
 } else {
-    $thiscat = &$database->getCategory($thiscatid);
+    $thiscat = $database->getCategory($thiscatid);
     
 
 ?>

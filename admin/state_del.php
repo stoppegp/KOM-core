@@ -4,7 +4,7 @@ $thisstateid = $adminactive['stateid'];
 if (!$database->getIssue($thisissueid)) {
     echo _("Issue-ID not found.");
 } else {
-    $thisissue = &$database->getIssue($thisissueid);
+    $thisissue = $database->getIssue($thisissueid);
     
     if (!$thisissue->getState($thisstateid)) {
         echo _("State-ID not found.");

@@ -4,7 +4,7 @@ $thispledgeid = $adminactive['pledgeid'];
 if (!$database->getIssue($thisissueid)) {
     echo _("Issue-ID not found.");
 } else {
-    $thisissue = &$database->getIssue($thisissueid);
+    $thisissue = $database->getIssue($thisissueid);
     
     if (!$thisissue->getPledge($thispledgeid)) {
         echo _("Promise-ID not found.");

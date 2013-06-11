@@ -3,7 +3,7 @@ $thiscatid = $adminactive['catid'];
 if (!$database->getCategory($thiscatid)) {
     echo _("Category ID not found.");
 } else {
-    $thiscat = &$database->getCategory($thiscatid);
+    $thiscat = $database->getCategory($thiscatid);
     
     if (!isset($oldarray)) {
         $oldarray['name'] = $thiscat->getName();
