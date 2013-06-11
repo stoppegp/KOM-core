@@ -2,7 +2,9 @@
 
 $workarray = $_REQUEST['pledgestatetypegroup'];
 
-$workarray['name']  = trim($workarray['name']);
+$workarray['name']  = htmlspecialchars(trim($workarray['name']));
+$workarray['colour']  = htmlspecialchars(trim($workarray['colour']));
+$workarray['order']  = (int) $workarray['order'];
 
 if (trim($workarray['name']) == "") $errors[] = _("label");
 
@@ -12,8 +14,8 @@ if (is_array($errors)) {
     $adminactive['page'] = "pledgestatetypegroup_edit";
 } else {
     try {
-        $dbarray['name'] = trim($workarray['name']);
-        $dbarray['colour'] = trim($workarray['colour']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['colour'] = $workarray['colour'];
         if (is_numeric($workarray['order'])) {
             $dbarray['order'] = $workarray['order'];
         } else {
@@ -32,7 +34,7 @@ if (is_array($errors)) {
                 $dbarray['pledgestatetype_ids'] = serialize($pstids);
             }
         }
-        $dblink->Update("pledgestatetypegroups", $dbarray, "WHERE `id`=".$workarray['id']);
+        $dblink->Update("pledgestatetypegroups", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         $adminactive['page'] = "pledgestatetype_list";
         adminaddsuccess(_("Editing successful."));
     } catch (DBError $e) {

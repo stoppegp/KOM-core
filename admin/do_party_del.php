@@ -9,17 +9,17 @@ if (!isset($_REQUEST['submit_del'])) {
 } else {
 
     try {
-        $dblink->Delete("parties", "WHERE `id`=".$thispartyid);
+        $dblink->Delete("parties", "WHERE `id`=".(int)$thispartyid);
      
-        $delids = $dblink->Select("pledges", "id", "WHERE `party_id`=".$thispartyid);
-        $dblink->Delete("pledges", "WHERE `party_id`=".$thispartyid);
+        $delids = $dblink->Select("pledges", "id", "WHERE `party_id`=".(int)$thispartyid);
+        $dblink->Delete("pledges", "WHERE `party_id`=".(int)$thispartyid);
         
         if (is_array($delids)) {
             $delar = array();
             foreach ($delids as $val) {
                 $delar[] = $val->id;
             }
-            $dblink->Delete("pledgestates", "WHERE `pledge_id` IN (".implode(",", $delar).")");
+            $dblink->Delete("pledgestates", "WHERE `pledge_id` IN (".implode(",", array_map("intval", $delar)).")");
         }
         
         

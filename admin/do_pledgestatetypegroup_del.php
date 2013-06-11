@@ -9,7 +9,7 @@ if (!isset($_REQUEST['submit_del'])) {
 } else {
 
     try {
-        $dblink->Delete("pledgestatetypegroups", "WHERE `id`=".$thispledgestatetypegroupid);
+        $dblink->Delete("pledgestatetypegroups", "WHERE `id`=".(int)$thispledgestatetypegroupid);
      
         
         $adminactive['page'] = "pledgestatetype_list";

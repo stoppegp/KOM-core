@@ -2,7 +2,8 @@
 
 $workarray = $_REQUEST['custompages'];
 
-$workarray['name']  = trim($workarray['name']);
+$workarray['name']  = htmlspecialchars(trim($workarray['name']));
+$workarray['content']  = $workarray['content'];
 
 if (trim($workarray['name']) == "") $errors[] = _("Label");
 
@@ -16,8 +17,8 @@ if (is_array($errors)) {
     $adminactive['page'] = "custompages_new";
 } else {
     try {
-        $dbarray['name'] = trim($workarray['name']);
-        $dbarray['content'] = htmlspecialchars_decode($workarray['content']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['content'] = $workarray['content'];
         $dblink->Insert("custompages", $dbarray);
         $adminactive['page'] = "custompages_list";
         adminaddsuccess(_("Added successfully."));

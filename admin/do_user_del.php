@@ -9,7 +9,7 @@ if (!isset($_REQUEST['submit_del'])) {
 } else {
 
     try {
-        $dblink->Delete("users", "WHERE `id`=".$thisuserid);
+        $dblink->Delete("users", "WHERE `id`=".(int)$thisuserid);
      
         
         $adminactive['page'] = "user_list";

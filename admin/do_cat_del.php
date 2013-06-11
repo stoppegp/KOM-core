@@ -24,12 +24,12 @@ if (!isset($_REQUEST['submit_del'])) {
                 }
                 if ($doit == true) {
                     $dbarray['category_ids'] = serialize(array_unique($catarray[$val->getID()]));
-                    $dblink->Update("issues", $dbarray, "WHERE `id`=".$val->getID());
+                    $dblink->Update("issues", $dbarray, "WHERE `id`=".(int)$val->getID());
                 }
             }
         }
         
-        $dblink->Delete("categories", "WHERE `id`=".$workarray['id']);
+        $dblink->Delete("categories", "WHERE `id`=".(int)$workarray['id']);
 
        
         $adminactive['page'] = "cat_list";

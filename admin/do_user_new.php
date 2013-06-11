@@ -2,8 +2,10 @@
 
 $workarray = $_REQUEST['user'];
 
-$workarray['name']  = trim($workarray['name']);
-$workarray['username']  = trim($workarray['username']);
+$workarray['name']  = htmlspecialchars(trim($workarray['name']));
+$workarray['username']  = htmlspecialchars(trim($workarray['username']));
+$workarray['email']  = htmlspecialchars(trim($workarray['email']));
+$workarray['admin'] = (int) $workarray['admin'];
 
 if (trim($workarray['name']) == "") $errors[] = _("name");
 if (trim($workarray['username']) == "") $errors[] = _("username");
@@ -20,8 +22,8 @@ if (is_array($errors)) {
     $adminactive['page'] = "user_new";
 } else {
     try {
-        $dbarray['name'] = trim($workarray['name']);
-        $dbarray['username'] = trim($workarray['username']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['username'] = $workarray['username'];
         $dbarray['password'] = sha1($workarray['password']);
         $dbarray['email'] = sha1($workarray['email']);
         if ($workarray['admin'] == 1) {

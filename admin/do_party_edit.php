@@ -2,14 +2,17 @@
 
 $workarray = $_REQUEST['party'];
 
-$workarray['name']  = trim($workarray['name']);
-$workarray['acronym']  = trim($workarray['acronym']);
-$workarray['colour']  = trim($workarray['colour']);
-$workarray['programme_url']  = trim($workarray['programme_url']);
-$workarray['programme_name']  = trim($workarray['programme_name']);
+$workarray['name']  = htmlspecialchars(trim($workarray['name']));
+$workarray['acronym']  = htmlspecialchars(trim($workarray['acronym']));
+$workarray['colour']  = htmlspecialchars(trim($workarray['colour']));
+$workarray['programme_url']  = htmlspecialchars(trim($workarray['programme_url']));
+$workarray['programme_name']  = htmlspecialchars(trim($workarray['programme_name']));
+$workarray['programme_offset']  = (int) $workarray['programme_offset'];
+$workarray['order']  = (int) $workarray['order'];
+$workarray['doValue']  = (int) $workarray['doValue'];
 
-if (trim($workarray['name']) == "") $errors[] = _("name");
-if (trim($workarray['acronym']) == "") $errors[] = _("acronym");
+if ($workarray['name'] == "") $errors[] = _("name");
+if ($workarray['acronym'] == "") $errors[] = _("acronym");
 
 if (is_array($errors)) {
     adminadderror(_("These fields have been filled in incorrectly: ").implode(", ", $errors));
@@ -17,11 +20,11 @@ if (is_array($errors)) {
     $adminactive['page'] = "party_edit";
 } else {
     try {
-        $dbarray['name'] = trim($workarray['name']);
-        $dbarray['acronym'] = trim($workarray['acronym']);
-        $dbarray['colour'] = trim($workarray['colour']);
-        $dbarray['programme_url'] = trim($workarray['programme_url']);
-        $dbarray['programme_name'] = trim($workarray['programme_name']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['acronym'] = $workarray['acronym'];
+        $dbarray['colour'] = $workarray['colour'];
+        $dbarray['programme_url'] = $workarray['programme_url'];
+        $dbarray['programme_name'] = $workarray['programme_name'];
         if (is_numeric($workarray['programme_offset'])) {
             $dbarray['programme_offset'] = $workarray['programme_offset'];
         } else {
@@ -37,7 +40,7 @@ if (is_array($errors)) {
         } else {
             $dbarray['doValue'] = 0;
         }
-        $dblink->Update("parties", $dbarray, "WHERE `id`=".$workarray['id']);
+        $dblink->Update("parties", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         $adminactive['page'] = "party_list";
         adminaddsuccess(_("Editing successful."));
     } catch (DBError $e) {

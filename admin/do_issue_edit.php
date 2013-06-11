@@ -1,6 +1,9 @@
 <?php
+
 $workarray = $_REQUEST['issue'];
-$workarray = $_REQUEST['issue'];
+
+$workarray['name'] = htmlspecialchars(trim($workarray['name']));
+$workarray['desc'] = htmlspecialchars($workarray['desc']);
 
 if (trim($workarray['name']) == "") $errors[] = _("issue");
 if (!is_array($workarray['cat'])) $errors[] = _("category");
@@ -12,10 +15,10 @@ if (is_array($errors)) {
     $adminactive['issueid'] = $workarray['id'];
 } else {
     try {
-        $dbarray['name'] = htmlspecialchars($workarray['name']);
-        $dbarray['desc'] = htmlspecialchars($workarray['desc']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['desc'] = $workarray['desc'];
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
-        $dblink->Update("issues", $dbarray, "WHERE `id`=".$workarray['id']);
+        $dblink->Update("issues", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         $adminactive['page'] = "issue_list";
         adminaddsuccess(_("Editing successful."));
         $database->reloadContent();

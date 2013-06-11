@@ -1,5 +1,9 @@
 <?php
+
 $workarray = $_REQUEST['cat'];
+
+$workarray['name'] = htmlspecialchars(trim($workarray['name']));
+$workarray['disabled'] = (int) $workarray['disabled'];
 
 if (trim($workarray['name']) == "") $errors[] = _("Label");
 
@@ -9,13 +13,13 @@ if (is_array($errors)) {
     $adminactive['page'] = "cat_edit";
 } else {
     try {
-        $dbarray['name'] = htmlspecialchars($workarray['name']);
+        $dbarray['name'] = $workarray['name'];
         if ($workarray['disabled'] == 1) {
             $dbarray['disabled'] = 1;
         } else {
             $dbarray['disabled'] = 0;
         }
-        $dblink->Update("categories", $dbarray, "WHERE `id`=".$workarray['id']);
+        $dblink->Update("categories", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         $adminactive['page'] = "cat_list";
         adminaddsuccess(_("Editing successful."));
         $database->reloadBasics();

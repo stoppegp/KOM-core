@@ -2,6 +2,9 @@
 
 $workarray = $_REQUEST['issue'];
 
+$workarray['name'] = htmlspecialchars(trim($workarray['name']));
+$workarray['desc'] = htmlspecialchars($workarray['desc']);
+
 if (trim($workarray['name']) == "") $errors[] = _("issue");
 if (!is_array($workarray['cat'])) $errors[] = _("category");
 
@@ -11,8 +14,8 @@ if (is_array($errors)) {
     $adminactive['page'] = "issue_new";
 } else {
     try {
-        $dbarray['name'] = htmlspecialchars($workarray['name']);
-        $dbarray['desc'] = htmlspecialchars($workarray['desc']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['desc'] = $workarray['desc'];
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
         $dblink->Insert("issues", $dbarray);
         $adminactive['page'] = "issue_show";

@@ -7,8 +7,8 @@ if (!isset($_REQUEST['submit_del'])) {
 } else {
 
     try {
-        $dblink->Delete("states", "WHERE `id`=".$workarray['id']);
-        $dblink->Delete("pledgestates", "WHERE `state_id`=".$workarray['id']);
+        $dblink->Delete("states", "WHERE `id`=".(int)$workarray['id']);
+        $dblink->Delete("pledgestates", "WHERE `state_id`=".(int)$workarray['id']);
         
         $adminactive['page'] = "issue_show";
         adminaddsuccess(_("Deletion successful."));

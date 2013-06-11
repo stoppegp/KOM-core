@@ -2,7 +2,13 @@
 
 $workarray = $_REQUEST['pledgestatetype'];
 
-$workarray['name']  = trim($workarray['name']);
+$workarray['name']  = htmlspecialchars(trim($workarray['name']));
+$workarray['colour']  = htmlspecialchars(trim($workarray['colour']));
+$workarray['colour2']  = htmlspecialchars(trim($workarray['colour2']));
+$workarray['value']  = (int) $workarray['value'];
+$workarray['multipl']  = (int) $workarray['multipl'];
+$workarray['type']  = (int) $workarray['type'];
+$workarray['order']  = (int) $workarray['order'];
 
 if (trim($workarray['name']) == "") $errors[] = _("label");
 
@@ -12,9 +18,9 @@ if (is_array($errors)) {
     $adminactive['page'] = "pledgestatetype_new";
 } else {
     try {
-        $dbarray['name'] = trim($workarray['name']);
-        $dbarray['colour'] = trim($workarray['colour']);
-        $dbarray['colour2'] = trim($workarray['colour2']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['colour'] = $workarray['colour'];
+        $dbarray['colour2'] = $workarray['colour2'];
         if (is_numeric($workarray['order'])) {
             $dbarray['order'] = $workarray['order'];
         } else {

@@ -24,8 +24,22 @@ class MySQL {
 		$query = "SET NAMES 'utf8'";
 		mysql_query($query, $this->sql);
 	}
+    
+    private function trans($value, $like = false) {
+        if (is_numeric($value)) {
+            return $value;
+        } else {
+            if ($like) {
+                return "'".addcslashes(mysql_real_escape_string($value, $this->sql), "%_")."'";
+            } else {
+                return "'".mysql_real_escape_string($value, $this->sql)."'";
+            }
+        }
+    }
+    
 	public function Select($table, $what = "*", $misc = "") {
-		$query = "SELECT $what FROM ".$this->prefix.$table." ".$misc;
+		
+        $query = "SELECT $what FROM ".$this->prefix.$table." ".$misc;
 		$sql = mysql_query($query, $this->sql);
 		if (mysql_errno()) {
 			throw new DBError(mysql_error()."<br />".$query);
@@ -42,11 +56,7 @@ class MySQL {
 	
 	public function Insert($table, $insar) {
         foreach ($insar as $key => $val) {
-            if (!is_numeric($val)) {
-                $insar2["`".$key."`"] = "'".$val."'";
-            } else {
-                $insar2["`".$key."`"] = $val;
-            }
+            $insar2["`".$key."`"] = $this->trans($val);
         }
 		$query = "INSERT INTO ".$this->prefix.$table." (";
 		$query .= implode(", ", array_keys($insar2));
@@ -66,11 +76,7 @@ class MySQL {
 	
 	public function Update($table, $updar, $misc) {
         foreach ($updar as $key => $val) {
-            if (!is_numeric($val)) {
-                $updar2["`".$key."`"] = "'".$val."'";
-            } else {
-                $updar2["`".$key."`"] = $val;
-            }
+            $updar2["`".$key."`"] = $this->trans($val);
         }
 		$query = "UPDATE ".$this->prefix.$table." SET";
 		foreach ($updar2 as $key2 => $val2) {

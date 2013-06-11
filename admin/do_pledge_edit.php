@@ -2,6 +2,16 @@
 
 $workarray = $_REQUEST['pledge'];
 
+$workarray['issue_id'] = (int) $workarray['issue_id'];
+$workarray['name'] = htmlspecialchars(trim($workarray['name']));
+$workarray['desc'] = htmlspecialchars($workarray['desc']);
+$workarray['quotetext'] = htmlspecialchars($workarray['quotetext']);
+$workarray['quotesource'] = htmlspecialchars(trim($workarray['quotesource']));
+$workarray['quoteurl'] = htmlspecialchars(trim($workarray['quoteurl']));
+$workarray['quotepage'] = htmlspecialchars(trim($workarray['quotepage']));
+$workarray['default_pledgestatetype'] = (int) $workarray['default_pledgestatetype'];
+$workarray['party'] = (int) $workarray['party'];
+
 if (trim($workarray['name']) == "") $errors[] = _("pledge");
 if (!is_numeric($workarray['party'])) $errors[] = _("party");
 if (!is_numeric($workarray['default_pledgestatetype'])) $errors[] = _("start info");
@@ -18,12 +28,12 @@ if (is_array($errors)) {
 } else {
     try {
         $dbarray['issue_id'] = $workarray['issue_id'];
-        $dbarray['name'] = htmlspecialchars($workarray['name']);
-        $dbarray['desc'] = htmlspecialchars($workarray['desc']);
-        $dbarray['quotetext'] = htmlspecialchars($workarray['quotetext']);
-        $dbarray['quotesource'] = htmlspecialchars($workarray['quotesource']);
-        $dbarray['quoteurl'] = htmlspecialchars($workarray['quoteurl']);
-        $dbarray['quotepage'] = htmlspecialchars($workarray['quotepage']);
+        $dbarray['name'] = $workarray['name'];
+        $dbarray['desc'] = $workarray['desc'];
+        $dbarray['quotetext'] = $workarray['quotetext'];
+        $dbarray['quotesource'] = $workarray['quotesource'];
+        $dbarray['quoteurl'] = $workarray['quoteurl'];
+        $dbarray['quotepage'] = $workarray['quotepage'];
         if ($dbarray['quotepage'] != "") {
             $dbarray['quotetype'] = "programme";
         } else {    
@@ -32,7 +42,7 @@ if (is_array($errors)) {
         $dbarray['party_id'] = $workarray['party'];
         $dbarray['default_pledgestatetype_id'] = $workarray['default_pledgestatetype'];
         
-        $dblink->Update("pledges", $dbarray, "WHERE `id`=".$workarray['id']);
+        $dblink->Update("pledges", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         
         $adminactive['page'] = "issue_show";
         adminaddsuccess(_("Editing successful."));

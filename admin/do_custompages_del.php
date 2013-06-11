@@ -9,7 +9,7 @@ if (!isset($_REQUEST['submit_del'])) {
 } else {
 
     try {
-        $dblink->Delete("custompages", "WHERE `id`=".$thiscustompageid);
+        $dblink->Delete("custompages", "WHERE `id`=".(int)$thiscustompageid);
      
         
         $adminactive['page'] = "custompages_list";
