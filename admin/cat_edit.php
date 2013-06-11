@@ -28,4 +28,4 @@ if (!$database->getCategory($thiscatid)) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("cat_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("cat_list", null, true);?>"><?=_("Back");?></a></p>

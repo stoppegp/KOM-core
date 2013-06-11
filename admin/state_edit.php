@@ -46,4 +46,4 @@ if (!$database->getIssue($thisissueid)) {
 }
 ?>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_show", array("issueid" => $adminactive['issueid']), true);?>"><?=_("Back");?></a></p>

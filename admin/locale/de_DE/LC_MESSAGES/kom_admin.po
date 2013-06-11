@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kom_admin\n"
-"POT-Creation-Date: 2013-06-11 22:35+0100\n"
-"PO-Revision-Date: 2013-06-11 22:35+0100\n"
+"POT-Creation-Date: 2013-04-27 23:25+0100\n"
+"PO-Revision-Date: 2013-04-27 23:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: stoppe\n"
 "Language: de_DE\n"
@@ -14,22 +14,6 @@ msgstr ""
 "X-Poedit-Basepath: D:\\GitHub\\KOM-core\\\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: admin\n"
-
-#: admin/admin.php:45
-msgid "Added successfully."
-msgstr "Der Eintrag wurde hinzugefügt."
-
-#: admin/admin.php:48
-msgid "Deletion successful."
-msgstr "Der Eintrag wurde gelöscht."
-
-#: admin/admin.php:51
-msgid "Editing successful."
-msgstr "Der Eintrag wurde bearbeitet."
-
-#: admin/admin.php:53
-msgid "Success."
-msgstr "Aktion erfolgreich."
 
 #: admin/auth.php:20
 msgid "Login successful."
@@ -202,128 +186,151 @@ msgstr "Neue Seite"
 msgid "ID"
 msgstr "ID"
 
-#: admin/custompages_list.php:12 admin/do_cat_edit.php:8
-#: admin/do_cat_new.php:8 admin/do_custompages_new.php:8
+#: admin/custompages_list.php:12 admin/do_cat_edit.php:4
+#: admin/do_cat_new.php:5 admin/do_custompages_new.php:7
 #: admin/pledgestatetypegroup_form.php:5 admin/pledgestatetype_form.php:5
 #: admin/pledgestatetype_list.php:13 admin/pledgestatetype_list.php:33
 #: admin/pledgestatetype_list.php:60 admin/pledgestatetype_list.php:88
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: admin/do_cat_del.php:36 admin/do_cat_edit.php:26 admin/do_cat_new.php:26
+#: admin/do_cat_del.php:36 admin/do_custompages_del.php:16
+#: admin/do_issue_del.php:28 admin/do_party_del.php:27
+#: admin/do_pledgestatetypegroup_del.php:16
+#: admin/do_pledgestatetype_del.php:19 admin/do_pledge_del.php:14
+#: admin/do_state_del.php:14 admin/do_user_del.php:16
+msgid "Deletion successful."
+msgstr "Der Eintrag wurde gelöscht."
+
+#: admin/do_cat_del.php:40 admin/do_cat_edit.php:24 admin/do_cat_new.php:25
 #: admin/do_custompages_del.php:18 admin/do_custompages_edit.php:23
-#: admin/do_custompages_new.php:25 admin/do_issue_del.php:28
-#: admin/do_issue_edit.php:24 admin/do_issue_new.php:23
-#: admin/do_party_del.php:28 admin/do_party_edit.php:46
-#: admin/do_party_new.php:48 admin/do_pledgestatetypegroup_del.php:17
-#: admin/do_pledgestatetypegroup_edit.php:40
-#: admin/do_pledgestatetypegroup_new.php:42
-#: admin/do_pledgestatetype_del.php:20 admin/do_pledgestatetype_edit.php:42
-#: admin/do_pledgestatetype_new.php:47 admin/do_pledge_del.php:15
-#: admin/do_pledge_edit.php:49 admin/do_pledge_new.php:61
-#: admin/do_state_del.php:15 admin/do_state_edit.php:56
-#: admin/do_state_new.php:56 admin/do_user_del.php:17
-#: admin/do_user_edit.php:38 admin/do_user_new.php:37
+#: admin/do_custompages_new.php:25 admin/do_issue_del.php:31
+#: admin/do_issue_edit.php:23 admin/do_issue_new.php:23
+#: admin/do_party_del.php:29 admin/do_party_edit.php:44
+#: admin/do_party_new.php:46 admin/do_pledgestatetypegroup_del.php:18
+#: admin/do_pledgestatetypegroup_edit.php:39
+#: admin/do_pledgestatetypegroup_new.php:40
+#: admin/do_pledgestatetype_del.php:21 admin/do_pledgestatetype_edit.php:37
+#: admin/do_pledgestatetype_new.php:42 admin/do_pledge_del.php:17
+#: admin/do_pledge_edit.php:41 admin/do_pledge_new.php:53
+#: admin/do_state_del.php:17 admin/do_state_edit.php:50
+#: admin/do_state_new.php:50 admin/do_user_del.php:18
+#: admin/do_user_edit.php:37 admin/do_user_new.php:36
 msgid "There was a database problem."
 msgstr "Es gab ein Problem mit der Datenbank."
 
-#: admin/do_cat_edit.php:11 admin/do_cat_new.php:11
-#: admin/do_custompages_edit.php:13 admin/do_custompages_new.php:15
-#: admin/do_issue_edit.php:12 admin/do_issue_new.php:12
-#: admin/do_party_edit.php:18 admin/do_party_new.php:20
-#: admin/do_pledgestatetypegroup_edit.php:12
-#: admin/do_pledgestatetypegroup_new.php:13
-#: admin/do_pledgestatetype_edit.php:16 admin/do_pledgestatetype_new.php:16
-#: admin/do_pledge_edit.php:25 admin/do_pledge_new.php:24
-#: admin/do_state_edit.php:21 admin/do_state_new.php:21
-#: admin/do_user_edit.php:19 admin/do_user_new.php:20
+#: admin/do_cat_edit.php:7 admin/do_cat_new.php:8
+#: admin/do_custompages_edit.php:12 admin/do_custompages_new.php:14
+#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
+#: admin/do_party_edit.php:15 admin/do_party_new.php:17
+#: admin/do_pledgestatetypegroup_edit.php:10
+#: admin/do_pledgestatetypegroup_new.php:10
+#: admin/do_pledgestatetype_edit.php:10 admin/do_pledgestatetype_new.php:10
+#: admin/do_pledge_edit.php:15 admin/do_pledge_new.php:14
+#: admin/do_state_edit.php:13 admin/do_state_new.php:13
+#: admin/do_user_edit.php:17 admin/do_user_new.php:18
 msgid "These fields have been filled in incorrectly: "
 msgstr "Diese Felder wurden nicht korrekt ausgefüllt: "
 
-#: admin/do_custompages_edit.php:10 admin/do_custompages_new.php:12
+#: admin/do_cat_edit.php:20 admin/do_custompages_edit.php:21
+#: admin/do_issue_edit.php:20 admin/do_party_edit.php:42
+#: admin/do_pledgestatetypegroup_edit.php:37
+#: admin/do_pledgestatetype_edit.php:35 admin/do_pledge_edit.php:38
+#: admin/do_state_edit.php:47 admin/do_user_edit.php:35
+msgid "Editing successful."
+msgstr "Der Eintrag wurde bearbeitet."
+
+#: admin/do_cat_new.php:21 admin/do_custompages_new.php:23
+#: admin/do_issue_new.php:20 admin/do_party_new.php:44
+#: admin/do_pledgestatetypegroup_new.php:38
+#: admin/do_pledgestatetype_new.php:40 admin/do_pledge_new.php:50
+#: admin/do_state_new.php:47 admin/do_user_new.php:34
+msgid "Added successfully."
+msgstr "Der Eintrag wurde hinzugefügt."
+
+#: admin/do_custompages_edit.php:9 admin/do_custompages_new.php:11
 msgid "This label exists already."
 msgstr "Die Seitenbezeichnung ist schon vergeben."
 
-#: admin/do_issue_edit.php:8 admin/do_issue_new.php:8
-#: admin/do_pledge_edit.php:20 admin/do_pledge_new.php:20
-#: admin/do_state_edit.php:17 admin/do_state_new.php:17
+#: admin/do_issue_edit.php:5 admin/do_issue_new.php:5
+#: admin/do_pledge_edit.php:10 admin/do_pledge_new.php:10
+#: admin/do_state_edit.php:9 admin/do_state_new.php:9
 msgid "issue"
 msgstr "Thema"
 
-#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
+#: admin/do_issue_edit.php:6 admin/do_issue_new.php:6
 msgid "category"
 msgstr "Kategorie"
 
-#: admin/do_party_edit.php:14 admin/do_party_new.php:14
-#: admin/do_user_edit.php:10 admin/do_user_new.php:10
+#: admin/do_party_edit.php:11 admin/do_user_edit.php:8 admin/do_user_new.php:8
 msgid "name"
 msgstr "Name"
 
-#: admin/do_party_edit.php:15 admin/do_party_new.php:15
+#: admin/do_party_edit.php:12
 msgid "acronym"
 msgstr "Kürzel"
 
-#: admin/do_pledgestatetypegroup_edit.php:9
-#: admin/do_pledgestatetypegroup_new.php:10
-#: admin/do_pledgestatetype_edit.php:13 admin/do_pledgestatetype_new.php:13
+#: admin/do_pledgestatetypegroup_edit.php:7
+#: admin/do_pledgestatetypegroup_new.php:7 admin/do_pledgestatetype_edit.php:7
+#: admin/do_pledgestatetype_new.php:7
 msgid "label"
 msgstr "Bezeichnung"
 
-#: admin/do_pledge_edit.php:15 admin/do_pledge_new.php:15
+#: admin/do_pledge_edit.php:5 admin/do_pledge_new.php:5
 msgid "pledge"
 msgstr "Versprechen"
 
-#: admin/do_pledge_edit.php:16 admin/do_pledge_edit.php:18
-#: admin/do_pledge_new.php:16 admin/do_pledge_new.php:18
+#: admin/do_pledge_edit.php:6 admin/do_pledge_edit.php:8
+#: admin/do_pledge_new.php:6 admin/do_pledge_new.php:8
 msgid "party"
 msgstr "Partei"
 
-#: admin/do_pledge_edit.php:17 admin/do_pledge_edit.php:19
-#: admin/do_pledge_new.php:17 admin/do_pledge_new.php:19
+#: admin/do_pledge_edit.php:7 admin/do_pledge_edit.php:9
+#: admin/do_pledge_new.php:7 admin/do_pledge_new.php:9
 msgid "start info"
 msgstr "Startinfo"
 
-#: admin/do_pledge_edit.php:21
+#: admin/do_pledge_edit.php:11
 msgid "It is impossible to change the type"
 msgstr "Die Art"
 
-#: admin/do_pledge_edit.php:21
+#: admin/do_pledge_edit.php:11
 msgid "request"
 msgstr "Forderung"
 
-#: admin/do_pledge_edit.php:21
+#: admin/do_pledge_edit.php:11
 msgid "status quo"
 msgstr "Zustand"
 
-#: admin/do_pledge_edit.php:21
+#: admin/do_pledge_edit.php:11
 msgid "of the pledge!"
 msgstr "des Versprechens kann nicht verändert werden!"
 
-#: admin/do_state_edit.php:13 admin/do_state_new.php:13
+#: admin/do_state_edit.php:5 admin/do_state_new.php:5
 msgid "text"
 msgstr "Text"
 
-#: admin/do_state_edit.php:14 admin/do_state_new.php:14
+#: admin/do_state_edit.php:6 admin/do_state_new.php:6
 msgid "quote"
 msgstr "Zitat"
 
-#: admin/do_state_edit.php:15 admin/do_state_new.php:15
+#: admin/do_state_edit.php:7 admin/do_state_new.php:7
 msgid "quote source"
 msgstr "Zitatquelle"
 
-#: admin/do_state_edit.php:16 admin/do_state_new.php:16
+#: admin/do_state_edit.php:8 admin/do_state_new.php:8
 msgid "date"
 msgstr "Datum"
 
-#: admin/do_user_edit.php:11 admin/do_user_new.php:11
+#: admin/do_user_edit.php:9 admin/do_user_new.php:9
 msgid "username"
 msgstr "Benutzername"
 
-#: admin/do_user_edit.php:12 admin/do_user_new.php:12 admin/do_user_new.php:13
+#: admin/do_user_edit.php:10 admin/do_user_new.php:10 admin/do_user_new.php:11
 msgid "password"
 msgstr "Passwort"
 
-#: admin/do_user_edit.php:16 admin/do_user_new.php:17
+#: admin/do_user_edit.php:14 admin/do_user_new.php:15
 msgid "This username ist not available."
 msgstr "Der Benutzername ist schon vergeben."
 

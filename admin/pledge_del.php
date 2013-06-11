@@ -25,7 +25,7 @@ if (!$database->getIssue($thisissueid)) {
         <input type="hidden" name="pledge[issue_id]" value="<?=$thisissueid;?>" />
         <input type="hidden" name="pledge[id]" value="<?=$thispledgeid;?>" />
         </form>
-        <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show");?>"><?=_("Back");?></a></p>
+        <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show", array("issueid" => $adminactive['issueid']), true);?>"><?=_("Back");?></a></p>
 
 <?php
     }

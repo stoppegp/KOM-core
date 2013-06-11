@@ -12,4 +12,4 @@
 <input type="hidden" name="do" value="party_new" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("party_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("party_list", null, true);?>"><?=_("Back");?></a></p>

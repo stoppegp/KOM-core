@@ -1,9 +1,14 @@
 <?php
-function doadminlink($page = "", $arg = null) {
+function doadminlink($page = "", $arg = null, $clear = false) {
     global $adminactive;
-    $nlactive = $adminactive;
+    if (!$clear) {
+        $adminactive2 = $adminactive;
+    } else {
+        $adminactive2 = array();
+    }
+    $nlactive = $adminactive2;
     if (is_array($arg)) {
-        $nlactive = array_merge($adminactive, $arg);
+        $nlactive = array_merge($adminactive2, $arg);
     }
     unset($nlactive2);
     
@@ -42,7 +47,7 @@ function redirect($adminactive, $success = false) {
     if ($success && in_array($success, array("add", "del", "edit"))) {
          $adminactive['success'] = $success;
     }
-    header('Location: '.htmlspecialchars_decode(doadminlink($page, $adminactive)));
+    header('Location: '.htmlspecialchars_decode(doadminlink($page, $adminactive, true)));
 }
 
 ?>

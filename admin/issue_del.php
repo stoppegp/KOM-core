@@ -20,4 +20,4 @@ if (!$database->getIssue($thisissueid)) {
 <input type="hidden" name="do" value="issue_del" />
 <input type="hidden" name="issue[id]" value="<?=$thisissueid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("issue_list", null, true);?>"><?=_("Back");?></a></p>

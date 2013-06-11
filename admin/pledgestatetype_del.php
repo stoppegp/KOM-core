@@ -27,7 +27,7 @@ if (!$pledgestatetypes[0]) {
 <input type="hidden" name="do" value="pledgestatetype_del" />
 <input type="hidden" name="pledgestatetype[id]" value="<?=$thispledgestatetypeid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list", null, true);?>"><?=_("Back");?></a></p>
 <?php
 } 
 

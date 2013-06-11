@@ -22,7 +22,7 @@ if (!$parties[0]) {
 <input type="hidden" name="do" value="party_del" />
 <input type="hidden" name="party[id]" value="<?=$thispartyid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("party_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("party_list", null, true);?>"><?=_("Back");?></a></p>
 
 <?php
 

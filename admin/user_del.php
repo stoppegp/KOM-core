@@ -21,7 +21,7 @@ if (!$users[0]) {
 <input type="hidden" name="do" value="user_del" />
 <input type="hidden" name="user[id]" value="<?=$thisuserid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("user_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("user_list", null, true);?>"><?=_("Back");?></a></p>
 
 <?php
 

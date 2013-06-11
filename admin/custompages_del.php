@@ -22,7 +22,7 @@ if (!$custompages[0]) {
 <input type="hidden" name="do" value="custompages_del" />
 <input type="hidden" name="custompages[id]" value="<?=$thiscustompageid;?>" />
 </form>
-<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list", null, true);?>"><?=_("Back");?></a></p>
 
 <?php
 

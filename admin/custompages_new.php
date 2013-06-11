@@ -7,4 +7,4 @@
 <input type="hidden" name="do" value="custompages_new" />
 </form>
 
-<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list");?>"><?=_("Back");?></a></p>
+<hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list", null, true);?>"><?=_("Back");?></a></p>
