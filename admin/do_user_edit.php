@@ -33,8 +33,7 @@ if (is_array($errors)) {
             $dbarray['password'] = sha1($workarray['password']);
         }
         $dblink->Update("users", $dbarray, "WHERE `id`=".(int)$workarray['id']);
-        $adminactive['page'] = "user_list";
-        adminaddsuccess(_("Editing successful."));
+        redirect(array("page" => "user_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

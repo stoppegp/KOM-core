@@ -12,8 +12,7 @@ if (!isset($_REQUEST['submit_del'])) {
         $dblink->Delete("pledgestatetypegroups", "WHERE `id`=".(int)$thispledgestatetypegroupid);
      
         
-        $adminactive['page'] = "pledgestatetype_list";
-        adminaddsuccess(_("Deletion successful."));
+        redirect(array("page" => "pledgestatetype_list"), "del");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

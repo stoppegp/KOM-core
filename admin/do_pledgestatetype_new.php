@@ -42,8 +42,7 @@ if (is_array($errors)) {
             $dbarray['multipl'] = 0;
         }
         $dblink->Insert("pledgestatetypes", $dbarray);
-        $adminactive['page'] = "pledgestatetype_list";
-        adminaddsuccess(_("Added successfully."));
+        redirect(array("page" => "pledgestatetype_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

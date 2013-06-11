@@ -19,9 +19,7 @@ if (is_array($errors)) {
         $dbarray['desc'] = $workarray['desc'];
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
         $dblink->Update("issues", $dbarray, "WHERE `id`=".(int)$workarray['id']);
-        $adminactive['page'] = "issue_list";
-        adminaddsuccess(_("Editing successful."));
-        $database->reloadContent();
+        redirect(array("page" => "issue_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

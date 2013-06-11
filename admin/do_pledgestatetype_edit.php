@@ -37,8 +37,7 @@ if (is_array($errors)) {
             $dbarray['multipl'] = 0;
         }
         $dblink->Update("pledgestatetypes", $dbarray, "WHERE `id`=".(int)$workarray['id']);
-        $adminactive['page'] = "pledgestatetype_list";
-        adminaddsuccess(_("Editing successful."));
+        redirect(array("page" => "pledgestatetype_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

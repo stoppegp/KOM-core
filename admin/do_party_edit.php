@@ -41,8 +41,7 @@ if (is_array($errors)) {
             $dbarray['doValue'] = 0;
         }
         $dblink->Update("parties", $dbarray, "WHERE `id`=".(int)$workarray['id']);
-        $adminactive['page'] = "party_list";
-        adminaddsuccess(_("Editing successful."));
+        redirect(array("page" => "party_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

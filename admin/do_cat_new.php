@@ -21,9 +21,7 @@ if (is_array($errors)) {
         }
         $dblink->Insert("categories", $dbarray);
         $adminactive['page'] = "cat_list";
-        adminaddsuccess(_("Added successfully."));
-        $database->reloadBasics();
-        $database->reloadContent();
+        redirect(array("page" => "cat_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

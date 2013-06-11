@@ -51,9 +51,7 @@ if (is_array($errors)) {
             }
         }
         
-        $adminactive['page'] = "issue_show";
-        adminaddsuccess(_("Editing successful."));
-        $database->reloadContent();
+        redirect(array("page" => "issue_show", "issueid" => $adminactive['issueid']), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

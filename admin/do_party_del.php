@@ -23,8 +23,7 @@ if (!isset($_REQUEST['submit_del'])) {
         }
         
         
-        $adminactive['page'] = "party_list";
-        adminaddsuccess(_("Deletion successful."));
+        redirect(array("page" => "party_list"), "del");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

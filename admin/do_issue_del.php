@@ -23,10 +23,7 @@ if (!isset($_REQUEST['submit_del'])) {
             $dblink->Delete("pledgestates", "WHERE `pledge_id` IN (".implode(",", array_map("intval", $pledgeids)).")"); 
         }
         
-        
-        $adminactive['page'] = "issue_list";
-        adminaddsuccess(_("Deletion successful."));
-        $database->reloadContent();
+        redirect(array("page" => "issue_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

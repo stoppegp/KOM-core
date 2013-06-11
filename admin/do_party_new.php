@@ -43,8 +43,7 @@ if (is_array($errors)) {
             $dbarray['doValue'] = 0;
         }
         $dblink->Insert("parties", $dbarray);
-        $adminactive['page'] = "party_list";
-        adminaddsuccess(_("Added successfully."));
+        redirect(array("page" => "party_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

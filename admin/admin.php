@@ -37,6 +37,24 @@ if (in_array($adminactive['do'], array("issue_new", "issue_edit", "issue_del", "
 
 include('header.php');
 
+if ($_GET['success']) {
+    $getsuccess = $_GET['success'];
+    if (in_array($getsuccess, array("add", "del", "edit"))) {
+        switch ($getsuccess) {
+            case "add":
+                adminaddsuccess(_("Added successfully."));
+                break;
+            case "del":
+                adminaddsuccess(_("Deletion successful."));
+                break;
+            case "edit":
+                adminaddsuccess(_("Editing successful."));
+                break;
+            default: adminaddsuccess(_("Success."));
+        }
+    }
+}
+
 if (is_array($adminerrors)) {
     echo "<div class=\"adminerror\">".implode("</div><div class=\"adminerror\">", $adminerrors)."</div>";
 }

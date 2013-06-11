@@ -21,9 +21,7 @@ if (is_array($errors)) {
         }
         $dblink->Update("categories", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         $adminactive['page'] = "cat_list";
-        adminaddsuccess(_("Editing successful."));
-        $database->reloadBasics();
-        $database->reloadContent();
+        redirect(array("page" => "cat_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

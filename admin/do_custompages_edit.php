@@ -18,8 +18,7 @@ if (is_array($errors)) {
         $dbarray['name'] = $workarray['name'];
         $dbarray['content'] = $workarray['content'];
         $dblink->Update("custompages", $dbarray, "WHERE `id`=".(int)$workarray['id']);
-        $adminactive['page'] = "custompages_list";
-        adminaddsuccess(_("Editing successful."));
+        redirect(array("page" => "custompages_list"), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

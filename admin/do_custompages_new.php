@@ -20,8 +20,7 @@ if (is_array($errors)) {
         $dbarray['name'] = $workarray['name'];
         $dbarray['content'] = $workarray['content'];
         $dblink->Insert("custompages", $dbarray);
-        $adminactive['page'] = "custompages_list";
-        adminaddsuccess(_("Added successfully."));
+        redirect(array("page" => "custompages_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

@@ -32,8 +32,7 @@ if (is_array($errors)) {
             $dbarray['admin'] = 0;
         }
         $dblink->Insert("users", $dbarray);
-        $adminactive['page'] = "user_list";
-        adminaddsuccess(_("Added successfully."));
+        redirect(array("page" => "user_list"), "add");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

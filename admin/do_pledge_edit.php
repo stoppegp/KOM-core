@@ -44,9 +44,7 @@ if (is_array($errors)) {
         
         $dblink->Update("pledges", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         
-        $adminactive['page'] = "issue_show";
-        adminaddsuccess(_("Editing successful."));
-        $database->reloadContent();
+        redirect(array("page" => "issue_show", "issueid" => $adminactive['issueid']), "edit");
     } catch (DBError $e) {
         adminadderror(_("There was a database problem.").$e->getMessage());
     }

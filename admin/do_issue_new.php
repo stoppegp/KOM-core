@@ -18,12 +18,9 @@ if (is_array($errors)) {
         $dbarray['desc'] = $workarray['desc'];
         $dbarray['category_ids'] = serialize(array_keys($workarray['cat']));
         $dblink->Insert("issues", $dbarray);
-        $adminactive['page'] = "issue_show";
-        $adminactive['issueid'] = mysql_insert_id();
-        adminaddsuccess(_("Added successfully."));
-        $database->reloadContent();
+        redirect(array("page" => "issue_show", "issueid" => mysql_insert_id()), "add");
     } catch (DBError $e) {
-        aadminadderror(_("There was a database problem.").$e->getMessage());
+        adminadderror(_("There was a database problem.").$e->getMessage());
     }
 
 }

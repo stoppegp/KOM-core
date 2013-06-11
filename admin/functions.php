@@ -34,4 +34,15 @@ function adminaddsuccess($c) {
     $adminsuccs[] = $c;
 }
 
+function redirect($adminactive, $success = false) {
+    global $adminsuccs;
+    unset($adminactive['do']);
+    $page = $adminactive['page'];
+    unset($adminactive['page']);
+    if ($success && in_array($success, array("add", "del", "edit"))) {
+         $adminactive['success'] = $success;
+    }
+    header('Location: '.htmlspecialchars_decode(doadminlink($page, $adminactive)));
+}
+
 ?>
