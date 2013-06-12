@@ -35,7 +35,7 @@ class State {
     }
     
     private function loadPledgestates() {
-        $retar = $this->linkDatabase->getLinkDB()->Select("pledgestates", "*", "WHERE state_id = ".$this->id);
+        $retar = $this->linkDatabase->getLinkDB()->Select("pledgestates", "*", "WHERE state_id = ".(int)$this->id);
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
                 if ($val->pledgestatetype_id != 0) {

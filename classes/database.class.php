@@ -157,7 +157,7 @@ class Database {
         if (!isset($this->filters['issues'])) {
             $retar = $this->linkDB->Select("issues", "*", "ORDER BY name ASC");
         } else {
-            $retar = $this->linkDB->Select("issues", "*", "WHERE id IN (".implode(",", $this->filters['issues']).") ORDER BY name ASC");
+            $retar = $this->linkDB->Select("issues", "*", "WHERE id IN (".implode(",", array_map("intval", $this->filters['issues'])).") ORDER BY name ASC");
         }
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {

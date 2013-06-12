@@ -65,7 +65,7 @@ class Issue {
     }
     
     private function loadPledges() {
-        $retar = $this->linkDatabase->getLinkDB()->Select("pledges", "*", "WHERE issue_id = ".$this->id);
+        $retar = $this->linkDatabase->getLinkDB()->Select("pledges", "*", "WHERE issue_id = ".(int)$this->id);
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
                 if ((!(isset($this->filters['parties']) && is_array($this->filters['parties']))) || in_array($val->party_id, $this->filters['parties'])) {
@@ -81,7 +81,7 @@ class Issue {
     }
     
     private function loadStates() {
-        $retar = $this->linkDatabase->getLinkDB()->Select("states", "*", "WHERE issue_id = ".$this->id." ORDER BY datum ASC");
+        $retar = $this->linkDatabase->getLinkDB()->Select("states", "*", "WHERE issue_id = ".(int)$this->id." ORDER BY datum ASC");
         if (is_array($retar)) {
             foreach ($retar as $key => $val) {
                     $this->states[$val->id] = new State($this, $val->id, $this->id, $val->name, $val->datum, $val->quotetext, $val->quotesource, $val->quoteurl);
