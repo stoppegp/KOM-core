@@ -5,7 +5,7 @@
             <?=_("Label:");?>
         </td>
         <td>
-            <input type="text" name="custompages[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="custompages[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Content:");?>
         </td>
         <td>
-            <textarea  name="custompages[content]"><? echo htmlspecialchars($oldarray['content']); ?></textarea>
+            <textarea  name="custompages[content]"><? echo htmlspecialchars(retisset($oldarray['content'])); ?></textarea>
         </td>
     </tr>
     <tr>

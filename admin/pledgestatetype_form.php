@@ -5,7 +5,7 @@
             <?=_("Label");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetype[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="pledgestatetype[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Points");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetype[value]" value="<?=$oldarray['value'];?>" />
+            <input type="text" name="pledgestatetype[value]" value="<?=retisset($oldarray['value']);?>" />
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
             <?=_("Include into valuation");?>:
         </td>
         <td>
-            <input type="checkbox" name="pledgestatetype[multipl]" value="1" <? echo ($oldarray['multipl']==1) ? "checked=\"checked\"" : ""; ?> />
+            <input type="checkbox" name="pledgestatetype[multipl]" value="1" <? echo (isset($oldarray['multipl']) && ($oldarray['multipl']==1)) ? "checked=\"checked\"" : ""; ?> />
         </td>
     </tr>
     <?php
@@ -31,8 +31,8 @@
             <?=_("Type");?>:
         </td>
         <td>
-            <input type="radio" name="pledgestatetype[type]" value="0" <? echo ($oldarray['type']!=1) ? "checked=\"checked\"" : ""; ?> /> <?=_("Request");?><br>
-            <input type="radio" name="pledgestatetype[type]" value="1" <? echo ($oldarray['type']==1) ? "checked=\"checked\"" : ""; ?> /> <?=_("Status quo");?>
+            <input type="radio" name="pledgestatetype[type]" value="0" <? echo (isset($oldarray['type']) && ($oldarray['type']!=1)) ? "checked=\"checked\"" : ""; ?> /> <?=_("Request");?><br>
+            <input type="radio" name="pledgestatetype[type]" value="1" <? echo (isset($oldarray['type']) && ($oldarray['type']==1)) ? "checked=\"checked\"" : ""; ?> /> <?=_("Status quo");?>
         </td>
     </tr>
     <? } ?>
@@ -41,7 +41,7 @@
             <?=_("Order");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetype[order]" value="<?=$oldarray['order'];?>" />
+            <input type="text" name="pledgestatetype[order]" value="<?=retisset($oldarray['order']);?>" />
         </td>
     </tr>
     <tr>
@@ -49,7 +49,7 @@
             <?=_("Colour");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetype[colour]" value="<?=$oldarray['colour'];?>" />
+            <input type="text" name="pledgestatetype[colour]" value="<?=retisset($oldarray['colour']);?>" />
         </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
             <?=_("Colour");?> 2:
         </td>
         <td>
-            <input type="text" name="pledgestatetype[colour2]" value="<?=$oldarray['colour2'];?>" />
+            <input type="text" name="pledgestatetype[colour2]" value="<?=retisset($oldarray['colour2']);?>" />
         </td>
     </tr>
     <tr>

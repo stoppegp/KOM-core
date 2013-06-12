@@ -5,7 +5,7 @@
             <?=_("Label");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetypegroup[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="pledgestatetypegroup[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Order");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetypegroup[order]" value="<?=$oldarray['order'];?>" />
+            <input type="text" name="pledgestatetypegroup[order]" value="<?=retisset($oldarray['order']);?>" />
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
             <?=_("Colour");?>:
         </td>
         <td>
-            <input type="text" name="pledgestatetypegroup[colour]" value="<?=$oldarray['colour'];?>" />
+            <input type="text" name="pledgestatetypegroup[colour]" value="<?=retisset($oldarray['colour']);?>" />
         </td>
     </tr>
     <tr>
@@ -33,7 +33,7 @@
                 $pledgestatetypes = $dblink->Select("pledgestatetypes");
                 if (is_array($pledgestatetypes)) {
                     foreach ($pledgestatetypes as $value) {
-                        echo '<input type="checkbox" name="pledgestatetypegroup[pledgestatetype_ids]['.$value->id.']" '.(($oldarray['pledgestatetype_ids'][$value->id] == 1) ? "checked=\"checked\"": "").' value="1" /> #'.$value->id.": ".$value->name."<br>";
+                        echo '<input type="checkbox" name="pledgestatetypegroup[pledgestatetype_ids]['.$value->id.']" '.((isset($oldarray['pledgestatetype_ids'][$value->id]) && ($oldarray['pledgestatetype_ids'][$value->id] == 1)) ? "checked=\"checked\"": "").' value="1" /> #'.$value->id.": ".$value->name."<br>";
                     }
                 }
             

@@ -53,4 +53,9 @@ function redirect($adminactive, $success = false, $error = false) {
     header('Location: '.htmlspecialchars_decode(doadminlink($page, $adminactive, true)));
 }
 
+function retisset(&$val) {
+    if (isset($val)) return $val;
+    return "";
+}
+
 ?>

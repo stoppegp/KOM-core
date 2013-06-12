@@ -5,7 +5,7 @@
             <?=_("Label:");?>
         </td>
         <td>
-            <input type="text" name="cat[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="cat[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Do not display:");?>
         </td>
         <td>
-            <input type="checkbox" name="cat[disabled]" value="1" <? echo ($oldarray['disabled']==1) ? "checked=\"checked\"" : ""; ?>" />
+            <input type="checkbox" name="cat[disabled]" value="1" <? echo (isset($oldarray['disabled']) && ($oldarray['disabled']==1)) ? "checked=\"checked\"" : ""; ?>" />
         </td>
     </tr>
     <tr>

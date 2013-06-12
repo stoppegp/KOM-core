@@ -5,7 +5,7 @@
             <?=_("Username");?>:
         </td>
         <td>
-            <input type="text" name="user[username]" value="<?=$oldarray['username'];?>" />
+            <input type="text" name="user[username]" value="<?=retisset($oldarray['username']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Name");?>:
         </td>
         <td>
-            <input type="text" name="user[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="user[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
             <?=_("E-Mail");?>:
         </td>
         <td>
-            <input type="text" name="user[email]" value="<?=$oldarray['email'];?>" /><br><small>Wenn angegeben, bekommt der Benutzer Benachrichtigungen per E-Mail</small>
+            <input type="text" name="user[email]" value="<?=retisset($oldarray['email']);?>" /><br><small>Wenn angegeben, bekommt der Benutzer Benachrichtigungen per E-Mail</small>
         </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
             <?=_("Administrator");?>:
         </td>
         <td>
-            <input type="checkbox" name="user[admin]" value="1" <? echo ($oldarray['admin']==1) ? "checked=\"checked\"" : ""; ?> />
+            <input type="checkbox" name="user[admin]" value="1" <? echo (isset($oldarray['admin']) && ($oldarray['admin']==1)) ? "checked=\"checked\"" : ""; ?> />
         </td>
     </tr>
     <tr>

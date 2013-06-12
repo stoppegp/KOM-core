@@ -5,7 +5,7 @@
             <?=_("Name");?>:
         </td>
         <td>
-            <input type="text" name="party[name]" value="<?=$oldarray['name'];?>" />
+            <input type="text" name="party[name]" value="<?=retisset($oldarray['name']);?>" />
         </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
             <?=_("Acronym");?>:
         </td>
         <td>
-            <input type="text" name="party[acronym]" value="<?=$oldarray['acronym'];?>" />
+            <input type="text" name="party[acronym]" value="<?=retisset($oldarray['acronym']);?>" />
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
             <?=_("Programme URL");?>
         </td>
         <td>
-            <input type="text" name="party[programme_url]" value="<?=$oldarray['programme_url'];?>" />
+            <input type="text" name="party[programme_url]" value="<?=retisset($oldarray['programme_url']);?>" />
         </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
             <?=_("Programme offset");?>
         </td>
         <td>
-            <input type="text" name="party[programme_offset]" value="<?=$oldarray['programme_offset'];?>" />
+            <input type="text" name="party[programme_offset]" value="<?=retisset($oldarray['programme_offset']);?>" />
         </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
             <?=_("Programm name");?>
         </td>
         <td>
-            <input type="text" name="party[programme_name]" value="<?=$oldarray['programme_name'];?>" />
+            <input type="text" name="party[programme_name]" value="<?=retisset($oldarray['programme_name']);?>" />
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
             Farbe:
         </td>
         <td>
-            <input type="text" name="party[colour]" value="<?=$oldarray['colour'];?>" />
+            <input type="text" name="party[colour]" value="<?=retisset($oldarray['colour']);?>" />
         </td>
     </tr>
     <tr>
@@ -53,7 +53,7 @@
             Reihenfolge:
         </td>
         <td>
-            <input type="text" name="party[order]" value="<?=$oldarray['order'];?>" />
+            <input type="text" name="party[order]" value="<?=retisset($oldarray['order']);?>" />
         </td>
     </tr>
     <tr>
@@ -61,7 +61,7 @@
             In die Wertung aufnehmen:
         </td>
         <td>
-            <input type="checkbox" name="party[doValue]]" value="1" <? echo ($oldarray['doValue']==1) ? "checked=\"checked\"" : ""; ?> />
+            <input type="checkbox" name="party[doValue]]" value="1" <? echo (isset($oldarray['doValue']) && ($oldarray['doValue']==1)) ? "checked=\"checked\"" : ""; ?> />
         </td>
     </tr>
     <tr>
