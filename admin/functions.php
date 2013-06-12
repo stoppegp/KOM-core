@@ -47,10 +47,11 @@ function redirect($adminactive, $success = false, $error = false) {
     if ($success && in_array($success, array("add", "del", "edit"))) {
          $adminactive['success'] = $success;
     }
-    if ($error && in_array($error, array("notfound", "last", "ratingassigned", "ratingpreinstalled"))) {
+    if ($error && in_array($error, array("notfound", "last", "ratingassigned", "ratingpreinstalled", "db"))) {
          $adminactive['error'] = $error;
     }
     header('Location: '.htmlspecialchars_decode(doadminlink($page, $adminactive, true)));
+    exit;
 }
 
 function retisset(&$val) {
