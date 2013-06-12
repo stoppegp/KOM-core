@@ -86,7 +86,7 @@ if (!isset($_SESSION['login']) || !$_SESSION['login']) {
 }
 
 /* Admin-Kontrolle */
-if ((strpos(" ".$adminactive['do'], "user") > 0) || (strpos(" ".$adminactive['page'], "user") > 0)) {
+if (((isset($adminactive['do'])) &&(strpos(" ".$adminactive['do'], "user") > 0)) || (strpos(" ".$adminactive['page'], "user") > 0)) {
     if ($_SESSION['admin'] != 1) {
         $adminactive['do'] = "";
         $adminactive['page'] = "";

@@ -16,10 +16,10 @@ KOM::$dblink->connect();
 
 $dblink = &KOM::$dblink;
 
-$active['party'] = $_GET['party'];
-$active['cat'] = $_GET['cat'];
-$active['pst'] = $_GET['pst'];
-$active['issueid'] = $_GET['issueid'];
+if (isset($_GET['party'])) $active['party'] = $_GET['party'];
+if (isset($_GET['cat'])) $active['cat'] = $_GET['cat'];
+if (isset($_GET['pst'])) $active['pst'] = $_GET['pst'];
+if (isset($_GET['issueid'])) $active['issueid'] = $_GET['issueid'];
 
 $mainDB = new Database(KOM::$dblink);
 KOM::$pagetitle = $mainDB->getOption("site_title");

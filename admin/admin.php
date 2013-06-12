@@ -30,14 +30,14 @@ if (!in_array($adminactive['page'], array("login", "issue_list", "issue_new", "i
 }
 
 /* Erlaubte Aktionen */
-if (in_array($adminactive['do'], array("issue_new", "issue_edit", "issue_del", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_new", "user_edit", "user_del", "cat_new", "cat_del", "cat_edit", "custompages_new", "custompages_edit", "custompages_del", "party_new", "party_edit", "party_del", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
+if (isset($adminactive['do']) && in_array($adminactive['do'], array("issue_new", "issue_edit", "issue_del", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_new", "user_edit", "user_del", "cat_new", "cat_del", "cat_edit", "custompages_new", "custompages_edit", "custompages_del", "party_new", "party_edit", "party_del", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
     // Aktion ausführen
     include ("do_".$adminactive['do'].".php");
 }
 
 include('header.php');
 
-if ($_GET['success']) {
+if (isset($_GET['success'])) {
     $getsuccess = $_GET['success'];
     if (in_array($getsuccess, array("add", "del", "edit"))) {
         switch ($getsuccess) {
@@ -54,7 +54,7 @@ if ($_GET['success']) {
         }
     }
 }
-if ($_GET['error']) {
+if (isset($_GET['error'])) {
     $geterror = $_GET['error'];
     if (in_array($geterror, array("notfound"))) {
         switch ($geterror) {
@@ -66,10 +66,10 @@ if ($_GET['error']) {
     }
 }
 
-if (is_array($adminerrors)) {
+if (isset($adminerrors) && is_array($adminerrors)) {
     echo "<div class=\"adminerror\">".implode("</div><div class=\"adminerror\">", $adminerrors)."</div>";
 }
-if (is_array($adminsuccs)) {
+if (isset($adminsuccs) && is_array($adminsuccs)) {
     echo "<div class=\"adminsuccess\">".implode("</div><div>", $adminsuccs)."</div>";
 }
 

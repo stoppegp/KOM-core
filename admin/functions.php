@@ -16,7 +16,7 @@ function doadminlink($page = "", $arg = null, $clear = false) {
         $nlactive['page'] = $page;
     }
     
-    if (!$arg['do']) {
+    if (!isset($arg['do'])) {
         unset($nlactive['do']);
     }
     
