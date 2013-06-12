@@ -1,8 +1,8 @@
 <?php
 $thisissueid = $adminactive['issueid'];
-if (!$database->getIssue($thisissueid)) {
-    echo _("Issue-ID not found.");
-} else {
+if (!is_numeric($thisissueid) || !$database->getIssue($thisissueid)) {
+    redirect(array("page" => "issue_list"), null, "notfound");
+}
     $thisissue = $database->getIssue($thisissueid);
     
     if (!isset($oldarray)) {
@@ -26,8 +26,5 @@ if (!$database->getIssue($thisissueid)) {
     <input type="hidden" name="issue[id]" value="<?=$thisissueid;?>" />
     </form>
     
-<?php
-}
-?>
 
 <hr /><p><a class="backlink button" href="<?=doadminlink("issue_list", null, true);?>"><?=_("Back");?></a></p>

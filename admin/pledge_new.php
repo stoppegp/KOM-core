@@ -1,9 +1,15 @@
+<?php
+ $thisissueid = $adminactive['issueid'];
+ if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+    redirect(array("page" => "issue_list"), null, "notfound");
+ }
+ ?>
     <h2><?=_("New Promise");?></h2>
 
 <form method="post">
 
 <?php
- $thisissueid = $adminactive['issueid'];
+
 
  include ('pledge_form.php'); ?>
 

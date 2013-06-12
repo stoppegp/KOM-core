@@ -1,11 +1,11 @@
 <?php
 $thisissueid = $adminactive['issueid'];
-if (!$database->getIssue($thisissueid)) {
-    echo _("Issue-ID not found.");
-} else {
-    $thisissue = $database->getIssue($thisissueid);
-    
+if (!is_numeric($thisissueid) || !$database->getIssue($thisissueid)) {
+    redirect(array("page" => "issue_list"), null, "notfound");
 }
+
+    $thisissue = $database->getIssue($thisissueid);
+
 
 ?>
     <h2><?=_("Delete issue");?></h2>

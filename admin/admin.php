@@ -54,6 +54,17 @@ if ($_GET['success']) {
         }
     }
 }
+if ($_GET['error']) {
+    $geterror = $_GET['error'];
+    if (in_array($geterror, array("notfound"))) {
+        switch ($geterror) {
+            case "notfound":
+                adminadderror(_("Entry not found."));
+                break;
+            default: adminaddsuccess(_("Error."));
+        }
+    }
+}
 
 if (is_array($adminerrors)) {
     echo "<div class=\"adminerror\">".implode("</div><div class=\"adminerror\">", $adminerrors)."</div>";
