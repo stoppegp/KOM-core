@@ -1,5 +1,6 @@
 <?php
 $thiscatid = $adminactive['catid'];
+
 if (!is_numeric($thiscatid) || !$database->getCategory($thiscatid)) {
     redirect(array("page" => "cat_list"), null, "notfound");
 }
@@ -30,7 +31,7 @@ if (count($database->getCategories()) < 2) {
 <p style="color:red;"><?=_("Do you really want to delete this entry? This operation can't be undone!");?></p>
 
 <input type="submit" name="submit_del" value="<?=_("Yes, delete!");?>" />
-<input type="submit" value="<?=_("No");?>" />
+<input type="submit" name="not_del" value="<?=_("No");?>" />
 
 <input type="hidden" name="do" value="cat_del" />
 <input type="hidden" name="cat[id]" value="<?=$thiscatid;?>" />

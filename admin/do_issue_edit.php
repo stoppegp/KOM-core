@@ -14,6 +14,9 @@ if (is_array($errors)) {
     $adminactive['page'] = "issue_edit";
     $adminactive['issueid'] = $workarray['id'];
 } else {
+    if (!is_numeric($workarray['id']) || !$database->getIssue($workarray['id'])) {
+        redirect(array("page" => "issue_list"), null, "notfound");
+    }
     try {
         $dbarray['name'] = $workarray['name'];
         $dbarray['desc'] = $workarray['desc'];
@@ -21,7 +24,7 @@ if (is_array($errors)) {
         $dblink->Update("issues", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         redirect(array("page" => "issue_list"), "edit");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "issue_list"), null, "db");
     }
 
 }

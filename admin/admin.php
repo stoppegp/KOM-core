@@ -56,7 +56,7 @@ if (isset($_GET['success'])) {
 }
 if (isset($_GET['error'])) {
     $geterror = $_GET['error'];
-    if (in_array($geterror, array("notfound", "last", "ratingassigned", "ratingpreinstalled"))) {
+    if (in_array($geterror, array("notfound", "last", "ratingassigned", "ratingpreinstalled", "db"))) {
         switch ($geterror) {
             case "notfound":
                 adminadderror(_("Entry not found."));
@@ -69,6 +69,9 @@ if (isset($_GET['error'])) {
                 break;
             case "ratingpreinstalled":
                 adminadderror(_("This rating is pre-installed and cannot be deleted!"));
+                break;
+            case "db":
+                adminadderror(_("There was a database problem."));
                 break;
             default: adminadderror(_("Error."));
         }

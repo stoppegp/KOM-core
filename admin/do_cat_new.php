@@ -12,6 +12,9 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "cat_new";
 } else {
+    if (!is_numeric($workarray['id']) || !$database->getCategory($workarray['id'])) {
+        redirect(array("page" => "cat_list"), null, "notfound");
+    }
     try {
         $dbarray['name'] = $workarray['name'];
         if ($workarray['disabled'] == 1) {
@@ -23,7 +26,7 @@ if (is_array($errors)) {
         $adminactive['page'] = "cat_list";
         redirect(array("page" => "cat_list"), "add");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "cat_list"), null, "db");
     }
 
 }

@@ -20,7 +20,7 @@ if (is_array($errors)) {
         $dblink->Insert("issues", $dbarray);
         redirect(array("page" => "issue_show", "issueid" => mysql_insert_id()), "add");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "issue_list"), null, "db");
     }
 
 }

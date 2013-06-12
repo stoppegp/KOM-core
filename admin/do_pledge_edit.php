@@ -26,6 +26,15 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "pledge_edit";
 } else {
+    $thisissueid = $workarray['issue_id'];
+    $thispledgeid = $workarray['id'];
+    if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+        redirect(array("page" => "issue_list"), null, "notfound");
+    }
+    $thisissue = $database->getIssue($thisissueid);
+    if (!is_numeric($thispledgeid) || !($thisissue->getPledge($thispledgeid))) {
+        redirect(array("page" => "issue_show", "issueid" => $thisissueid), null, "notfound");
+    }
     try {
         $dbarray['issue_id'] = $workarray['issue_id'];
         $dbarray['name'] = $workarray['name'];
@@ -44,9 +53,9 @@ if (is_array($errors)) {
         
         $dblink->Update("pledges", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         
-        redirect(array("page" => "issue_show", "issueid" => $adminactive['issueid']), "edit");
+        redirect(array("page" => "issue_show", "issueid" => $thisissueid), "edit");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "issue_show", "issueid" => $thisissueid), null, "db");
     }
 
 }

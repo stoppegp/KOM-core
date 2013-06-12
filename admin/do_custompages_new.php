@@ -22,7 +22,7 @@ if (is_array($errors)) {
         $dblink->Insert("custompages", $dbarray);
         redirect(array("page" => "custompages_list"), "add");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "custompages_list"), null, "db");
     }
 
 }

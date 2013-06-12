@@ -20,6 +20,11 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "user_edit";
 } else {
+    $thisuserid = $workarray['id'];
+    $users = $dblink->Select("users", "*", "WHERE `id`=".(int)$thisuserid);
+    if (!isset($users[0])) {
+        redirect(array("page" => "user_list"), null, "notfound");
+    }
     try {
         $dbarray['name'] = $workarray['name'];
         $dbarray['username'] = $workarray['username'];
@@ -35,7 +40,7 @@ if (is_array($errors)) {
         $dblink->Update("users", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         redirect(array("page" => "user_list"), "edit");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "user_list"), null, "db");
     }
 
 }

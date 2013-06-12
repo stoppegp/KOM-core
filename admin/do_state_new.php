@@ -22,6 +22,11 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "state_new";
 } else {
+    $thisissueid = $workarray['issue_id'];
+    if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+        redirect(array("page" => "issue_list"), null, "notfound");
+    }
+    $thisissue = $database->getIssue($thisissueid);
     try {
         $dbarray['issue_id'] = $workarray['issue_id'];
         $dbarray['name'] = $workarray['name'];
@@ -53,7 +58,7 @@ if (is_array($errors)) {
         
         redirect(array("page" => "issue_show", "issueid" => $adminactive['issueid']), "add");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "issue_show", "issueid" => $thisissueid), null, "db");
     }
 
 }

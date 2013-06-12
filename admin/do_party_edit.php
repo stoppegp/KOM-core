@@ -19,6 +19,10 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "party_edit";
 } else {
+    $parties = $dblink->Select("parties", "*", "WHERE `id`=".(int)$workarray['id']);
+    if (!isset($parties[0])) {
+         redirect(array("page" => "party_list"), null, "notfound");
+    }
     try {
         $dbarray['name'] = $workarray['name'];
         $dbarray['acronym'] = $workarray['acronym'];
@@ -43,7 +47,7 @@ if (is_array($errors)) {
         $dblink->Update("parties", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         redirect(array("page" => "party_list"), "edit");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "party_list"), null, "db");
     }
 
 }

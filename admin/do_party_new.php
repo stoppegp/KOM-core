@@ -45,7 +45,7 @@ if (is_array($errors)) {
         $dblink->Insert("parties", $dbarray);
         redirect(array("page" => "party_list"), "add");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "party_list"), null, "db");
     }
 
 }

@@ -14,13 +14,17 @@ if (is_array($errors)) {
     $oldarray = $workarray;
     $adminactive['page'] = "custompages_edit";
 } else {
+    $custompages = $dblink->Select("custompages", "*", "WHERE `id`=".(int)$workarray['id']);
+    if (!isset($custompages[0])) {
+        redirect(array("page" => "custompages_list"), null, "notfound");
+    }
     try {
         $dbarray['name'] = $workarray['name'];
         $dbarray['content'] = $workarray['content'];
         $dblink->Update("custompages", $dbarray, "WHERE `id`=".(int)$workarray['id']);
         redirect(array("page" => "custompages_list"), "edit");
     } catch (DBError $e) {
-        adminadderror(_("There was a database problem.").$e->getMessage());
+        redirect(array("page" => "custompages_list"), null, "db");
     }
 
 }
