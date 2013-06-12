@@ -27,7 +27,7 @@ if (isset($_REQUEST['login'])) {
             }
             
         }
-        if (!$_SESSION['login'] && !$logouterror) {
+        if (!isset($_SESSION['login']) && !isset($logouterror)) {
             adminadderror(_("Login error: User does not exist."));
             $logouterror = true;
         }
@@ -43,7 +43,7 @@ if (isset($_REQUEST['logout']) && $_REQUEST['logout'] == 'true') {
 }
 
 /* TIMEOUT */
-if ((time()-$_SESSION['lastvisit']) > 1800 && $_SESSION['login']) {
+if (isset($_SESSION['lastvisit']) && ((time()-$_SESSION['lastvisit']) > 1800 && $_SESSION['login'])) {
     session_destroy();
     session_start();
     adminadderror(_("You were inactive for too long and ahve been logged out."));
@@ -80,13 +80,13 @@ if (isset($_SESSION['login'])) {
 if (!isset($_SESSION['login']) || !$_SESSION['login']) {
     unset($adminactive);
     $adminactive['page'] = "login";
-    if (!$logouterror) {
+    if (!isset($logouterror)) {
         adminadderror(_("Access denied."));
     }
 }
 
 /* Admin-Kontrolle */
-if (((isset($adminactive['do'])) &&(strpos(" ".$adminactive['do'], "user") > 0)) || (strpos(" ".$adminactive['page'], "user") > 0)) {
+if (((isset($adminactive['do'])) && (strpos(" ".$adminactive['do'], "user") > 0)) || (isset($adminactive['page']) && (strpos(" ".$adminactive['page'], "user") > 0))) {
     if ($_SESSION['admin'] != 1) {
         $adminactive['do'] = "";
         $adminactive['page'] = "";

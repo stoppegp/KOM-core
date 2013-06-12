@@ -5,7 +5,7 @@ require_once('init.php');
 require_once('functions.php');
 
 /* Adminactvive-Variablen */
-$adminactive['page'] = $_REQUEST['page'];
+if (isset($_REQUEST['page'])) $adminactive['page'] = $_REQUEST['page'];
 if (isset($_REQUEST['do']) && $_REQUEST['do'] != "") $adminactive['do'] = $_REQUEST['do'];
 if (isset($_REQUEST['issueid']) && $_REQUEST['issueid'] != "") $adminactive['issueid'] = $_REQUEST['issueid'];
 if (isset($_REQUEST['pledgeid']) && $_REQUEST['pledgeid'] != "") $adminactive['pledgeid'] = $_REQUEST['pledgeid'];
