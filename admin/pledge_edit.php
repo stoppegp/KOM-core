@@ -1,14 +1,14 @@
 <?php
 $thisissueid = $adminactive['issueid'];
 $thispledgeid = $adminactive['pledgeid'];
-if (!$database->getIssue($thisissueid)) {
-    echo _("Issue-ID not found.");
-} else {
-    $thisissue = $database->getIssue($thisissueid);
-    
-    if (!$thisissue->getPledge($thispledgeid)) {
-        echo _("Promise-ID not found.");
-    } else {
+ if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+    redirect(array("page" => "issue_list"), null, "notfound");
+ }
+ $thisissue = $database->getIssue($thisissueid);
+ if (!is_numeric($thispledgeid) || !($thisissue->getPledge($thispledgeid))) {
+    redirect(array("page" => "issue_show", "issueid" => $thisissueid), null, "notfound");
+ }
+
         $thispledge = $thisissue->getPledge($thispledgeid);
         
         if (!isset($oldarray)) {
@@ -37,9 +37,5 @@ if (!$database->getIssue($thisissueid)) {
         <input type="hidden" name="pledge[id]" value="<?=$thispledgeid;?>" />
         </form>
     
-<?php
-    }
-}
-?>
 
 <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show", array("issueid" => $adminactive['issueid']), true);?>"><?=_("Back");?></a></p>

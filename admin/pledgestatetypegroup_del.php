@@ -3,13 +3,12 @@ $thispledgestatetypegroupid = $adminactive['pledgestatetypegroupid'];
 
 $pledgestatetypegroups = $dblink->Select("pledgestatetypegroups", "*", "WHERE `id`=".(int)$thispledgestatetypegroupid);
 
-if (!$pledgestatetypegroups[0]) {
-    echo _("Group-ID not found.");
-} elseif (in_array($thispledgestatetypegroupid, array(1,2,3))) {
-    echo _("This rating is pre-installed and cannot be deleted!");
-} else {
-    $thispledgestatetypegroup = $pledgestatetypegroups[0];
-    
+if (!isset($pledgestatetypegroups[0])) {
+    redirect(array("page" => "pledgestatetype_list"), null, "notfound");
+}
+if (in_array($thispledgestatetypegroupid, array(1,2,3))) {
+    redirect(array("page" => "pledgestatetype_list"), null, "ratingpreinstalled");
+}
 
 ?>
     <h2><?=_("Group");?> <?=$thispledgestatetypegroup->id;?> – <?=$thispledgestatetypegroup->name;?></h3>
@@ -25,7 +24,3 @@ if (!$pledgestatetypegroups[0]) {
 <input type="hidden" name="pledgestatetypegroup[id]" value="<?=$thispledgestatetypegroupid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list", null, true);?>"><?=_("Back");?></a></p>
-<?php
-} 
-
-?>

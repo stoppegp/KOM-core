@@ -1,8 +1,8 @@
 <?php
 $thiscatid = $adminactive['catid'];
-if (!$database->getCategory($thiscatid)) {
-    echo _("Category ID not found.");
-} else {
+if (!is_numeric($thiscatid) || !$database->getCategory($thiscatid)) {
+    redirect(array("page" => "cat_list"), null, "notfound");
+}
     $thiscat = $database->getCategory($thiscatid);
     
     if (!isset($oldarray)) {
@@ -23,9 +23,6 @@ if (!$database->getCategory($thiscatid)) {
     <input type="hidden" name="do" value="cat_edit" />
     <input type="hidden" name="cat[id]" value="<?=$thiscatid;?>" />
     </form>
-    
-<?php
-}
-?>
+
 
 <hr /><p><a class="backlink button" href="<?=doadminlink("cat_list", null, true);?>"><?=_("Back");?></a></p>

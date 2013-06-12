@@ -56,12 +56,21 @@ if (isset($_GET['success'])) {
 }
 if (isset($_GET['error'])) {
     $geterror = $_GET['error'];
-    if (in_array($geterror, array("notfound"))) {
+    if (in_array($geterror, array("notfound", "last", "ratingassigned", "ratingpreinstalled"))) {
         switch ($geterror) {
             case "notfound":
                 adminadderror(_("Entry not found."));
                 break;
-            default: adminaddsuccess(_("Error."));
+            case "last":
+                adminadderror(_("You must not delete the last entry."));
+                break;
+            case "ratingassigned":
+                adminadderror(_("This rating is assigned to a state and cannot be deleted."));
+                break;
+            case "ratingpreinstalled":
+                adminadderror(_("This rating is pre-installed and cannot be deleted!"));
+                break;
+            default: adminadderror(_("Error."));
         }
     }
 }

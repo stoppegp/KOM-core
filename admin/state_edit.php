@@ -1,15 +1,17 @@
 <?php
 $thisissueid = $adminactive['issueid'];
 $thisstateid = $adminactive['stateid'];
-if (!$database->getIssue($thisissueid)) {
-    echo _("Issue-ID not found.");
-} else {
-    $thisissue = $database->getIssue($thisissueid);
+
+if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+    redirect(array("page" => "issue_list"), null, "notfound");
+}
+$thisissue = $database->getIssue($thisissueid);
+if (!is_numeric($thisstateid) || !($thisissue->getState($thisstateid))) {
+    redirect(array("page" => "issue_show", "issueid" => $thisissueid), null, "notfound");
+}
+ 
+$thisstate = $thisissue->getState($thisstateid);
     
-    if (!$thisissue->getState($thisstateid)) {
-        echo _("State-ID not found.");
-    } else {
-        $thisstate = $thisissue->getState($thisstateid);
         if (!isset($oldarray)) {
             $oldarray['name'] = $thisstate->getName();
             $oldarray['datum'] = date("d.m.Y", $thisstate->getDatum());
@@ -41,9 +43,4 @@ if (!$database->getIssue($thisissueid)) {
         <input type="hidden" name="state[id]" value="<?=$thisstateid;?>" />
         </form>
     
-<?php
-    }
-}
-?>
-
 <hr /><p><a class="backlink button" href="<?=doadminlink("issue_show", array("issueid" => $adminactive['issueid']), true);?>"><?=_("Back");?></a></p>

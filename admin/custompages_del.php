@@ -4,10 +4,11 @@ $thiscustompageid = $adminactive['custompageid'];
 
 $custompages = $dblink->Select("custompages", "*", "WHERE `id`=".(int)$thiscustompageid);
 
-if (!$custompages[0]) {
-    echo _("Page-ID not found.");
-} else {
-     $thiscustompage = $custompages[0];
+if (!isset($custompages[0])) {
+    redirect(array("page" => "custompages_list"), null, "notfound");
+}
+
+$thiscustompage = $custompages[0];
 
 ?>
     <h2><?=_("Delete page");?></h2>
@@ -23,9 +24,3 @@ if (!$custompages[0]) {
 <input type="hidden" name="custompages[id]" value="<?=$thiscustompageid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("custompages_list", null, true);?>"><?=_("Back");?></a></p>
-
-<?php
-
-}
-
-?>

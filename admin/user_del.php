@@ -3,9 +3,10 @@
 $thisuserid = $adminactive['userid'];
 $users = $dblink->Select("users", "*", "WHERE `id`=".(int)$thisuserid);
 
-if (!$users[0]) {
-    echo _("User-ID not found.");
-} else {
+if (!isset($users[0])) {
+    redirect(array("page" => "user_list"), null, "notfound");
+}
+
     $thisuser = $users[0];
 
 ?>
@@ -22,9 +23,3 @@ if (!$users[0]) {
 <input type="hidden" name="user[id]" value="<?=$thisuserid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("user_list", null, true);?>"><?=_("Back");?></a></p>
-
-<?php
-
-}
-
-?>

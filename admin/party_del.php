@@ -3,10 +3,11 @@
 $thispartyid = $adminactive['partyid'];
 $parties = $dblink->Select("parties", "*", "WHERE `id`=".(int)$thispartyid);
 
-if (!$parties[0]) {
-     echo _("Party-ID not found.");
-} else {
-    $thisparty = $parties[0];
+if (!isset($parties[0])) {
+     redirect(array("page" => "party_list"), null, "notfound");
+}
+
+$thisparty = $parties[0];
 
 ?>
     <h2><?=_("Delete Party");?></h2>
@@ -23,9 +24,3 @@ if (!$parties[0]) {
 <input type="hidden" name="party[id]" value="<?=$thispartyid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("party_list", null, true);?>"><?=_("Back");?></a></p>
-
-<?php
-
-}
-
-?>

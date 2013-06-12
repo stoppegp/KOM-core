@@ -5,12 +5,14 @@ $pledgestatetypes = $dblink->Select("pledgestatetypes", "*", "WHERE `id`=".(int)
 $pledgestates = $dblink->Select("pledgestates", "*", "WHERE `pledgestatetype_id`=".(int)$thispledgestatetypeid);
 $pledges = $dblink->Select("pledges", "*", "WHERE `default_pledgestatetype_id`=".(int)$thispledgestatetypeid);
 
-if (!$pledgestatetypes[0]) {
-    echo _("Rating-ID not found.");
-} elseif ((count($pledgestates) > 0) || (count($pledges) > 0)) {
-    echo _("This rating is assigned to a state and cannot be deleted.");
-} else {
-    $thispledgestatetype = $pledgestatetypes[0];
+if (!isset($pledgestatetypes[0])) {
+    redirect(array("page" => "pledgestatetype_list"), null, "notfound");
+}
+if ((count($pledgestates) > 0) || (count($pledges) > 0)) {
+    redirect(array("page" => "pledgestatetype_list"), null, "ratingassigned");
+}
+
+$thispledgestatetype = $pledgestatetypes[0];
     
 
 ?>
@@ -28,7 +30,3 @@ if (!$pledgestatetypes[0]) {
 <input type="hidden" name="pledgestatetype[id]" value="<?=$thispledgestatetypeid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list", null, true);?>"><?=_("Back");?></a></p>
-<?php
-} 
-
-?>

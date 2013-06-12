@@ -1,10 +1,12 @@
 <?php
 $thiscatid = $adminactive['catid'];
-if (!$database->getCategory($thiscatid)) {
-    echo _("Category ID not found.");
-} elseif (count($database->getCategories()) < 2) {
-    echo _("It ist impossible to delete the last category!");
-} else {
+if (!is_numeric($thiscatid) || !$database->getCategory($thiscatid)) {
+    redirect(array("page" => "cat_list"), null, "notfound");
+}
+if (count($database->getCategories()) < 2) {
+    redirect(array("page" => "cat_list"), null, "last");
+}
+
     $thiscat = $database->getCategory($thiscatid);
     
 
@@ -34,7 +36,3 @@ if (!$database->getCategory($thiscatid)) {
 <input type="hidden" name="cat[id]" value="<?=$thiscatid;?>" />
 </form>
 <hr /><p><a class="backlink button" href="<?=doadminlink("cat_list", null, true);?>"><?=_("Back");?></a></p>
-<?php
-} 
-
-?>

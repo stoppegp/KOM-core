@@ -3,9 +3,10 @@ $thispledgestatetypeid = $adminactive['pledgestatetypeid'];
 
 $pledgestatetypes = $dblink->Select("pledgestatetypes", "*", "WHERE `id`=".(int)$thispledgestatetypeid);
 
-if (!$pledgestatetypes[0]) {
-    echo _("Rating-ID not found.");
-} else {
+if (!isset($pledgestatetypes[0])) {
+    redirect(array("page" => "pledgestatetype_list"), null, "notfound");
+}
+
     $thispledgestatetype = $pledgestatetypes[0];
     if (!isset($oldarray)) {
         $oldarray['name'] = $thispledgestatetype->name;
@@ -29,9 +30,5 @@ if (!$pledgestatetypes[0]) {
     <input type="hidden" name="do" value="pledgestatetype_edit" />
     <input type="hidden" name="pledgestatetype[id]" value="<?=$thispledgestatetypeid;?>" />
     </form>
-    
-<?php
-}
-?>
 
 <hr /><p><a class="backlink button" href="<?=doadminlink("pledgestatetype_list", null, true);?>"><?=_("Back");?></a></p>

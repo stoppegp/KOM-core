@@ -1,11 +1,16 @@
+<?php
+ $thisissueid = $adminactive['issueid'];
+ if (!is_numeric($thisissueid) || !($database->getIssue($thisissueid))) {
+    redirect(array("page" => "issue_list"), null, "notfound");
+ }
+ $thisissue = $database->getIssue($thisissueid);
+ ?>
+
     <h2><?=_("New state");?></h2>
 
 <form method="post">
 
 <?php
- $thisissueid = $adminactive['issueid'];
- $thisissue = &$database->getIssue($thisissueid);
-
  include ('state_form.php'); ?>
 
 <input type="hidden" name="do" value="state_new" />
