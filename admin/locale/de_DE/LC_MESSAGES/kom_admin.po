@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kom_admin\n"
-"POT-Creation-Date: 2013-04-27 23:25+0100\n"
-"PO-Revision-Date: 2013-04-27 23:25+0100\n"
+"POT-Creation-Date: 2013-06-12 17:03+0100\n"
+"PO-Revision-Date: 2013-06-12 17:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: stoppe\n"
 "Language: de_DE\n"
@@ -14,6 +14,43 @@ msgstr ""
 "X-Poedit-Basepath: D:\\GitHub\\KOM-core\\\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: admin\n"
+
+#: admin/admin.php:45
+msgid "Added successfully."
+msgstr "Der Eintrag wurde hinzugefügt."
+
+#: admin/admin.php:48
+msgid "Deletion successful."
+msgstr "Der Eintrag wurde gelöscht."
+
+#: admin/admin.php:51
+msgid "Editing successful."
+msgstr "Der Eintrag wurde bearbeitet."
+
+#: admin/admin.php:53
+msgid "Success."
+msgstr "Aktion erfolgreich ausgeführt."
+
+#: admin/admin.php:62
+msgid "Entry not found."
+msgstr "Eintrag wurde nicht gefunden."
+
+#: admin/admin.php:65
+msgid "You must not delete the last entry."
+msgstr "Der letzte Eintrag kann nicht gelöscht werden!"
+
+#: admin/admin.php:68
+msgid "This rating is assigned to a state and cannot be deleted."
+msgstr ""
+"Diese Bewertung wird zur Zeit verwendet und kann nicht gelöscht werden."
+
+#: admin/admin.php:71
+msgid "This rating is pre-installed and cannot be deleted!"
+msgstr "Diese Gruppe ist vorinstalliert und kann nicht gelöscht werden!"
+
+#: admin/admin.php:73
+msgid "Error."
+msgstr "Es ist ein Fehler aufgetreten."
 
 #: admin/auth.php:20
 msgid "Login successful."
@@ -43,62 +80,54 @@ msgstr "Benutzer wurde nicht gefunden."
 msgid "Access denied."
 msgstr "Zugriff verweigert."
 
-#: admin/cat_del.php:4 admin/cat_edit.php:4
-msgid "Category ID not found."
-msgstr "Die Kategorie-ID wurde nicht gefunden."
-
-#: admin/cat_del.php:6
-msgid "It ist impossible to delete the last category!"
-msgstr "Die letzte Kategorie kann nicht gelöscht werden!"
-
-#: admin/cat_del.php:12
+#: admin/cat_del.php:14
 msgid "Delete category"
 msgstr "Kategorie löschen"
 
-#: admin/cat_del.php:13 admin/cat_edit.php:17 admin/issue_form.php:21
+#: admin/cat_del.php:15 admin/cat_edit.php:17 admin/issue_form.php:21
 msgid "Category"
 msgstr "Kategorie"
 
-#: admin/cat_del.php:16
+#: admin/cat_del.php:18
 msgid "Assign affected Issues to this category:"
 msgstr "Welcher Kategorie sollen die zugehörigen Themen zugeordnet werden?"
 
-#: admin/cat_del.php:28 admin/custompages_del.php:17 admin/issue_del.php:15
-#: admin/party_del.php:16 admin/pledgestatetypegroup_del.php:19
-#: admin/pledgestatetype_del.php:22 admin/pledge_del.php:19
-#: admin/state_del.php:19 admin/user_del.php:16
+#: admin/cat_del.php:30 admin/custompages_del.php:18 admin/issue_del.php:15
+#: admin/party_del.php:17 admin/pledgestatetypegroup_del.php:18
+#: admin/pledgestatetype_del.php:24 admin/pledge_del.php:18
+#: admin/state_del.php:21 admin/user_del.php:17
 msgid ""
 "Do you really want to delete this entry? This operation can't be undone!"
 msgstr ""
 "Soll dieser Eintrag wirklich gelöscht werden? Dieser Vorgang kann nicht "
 "rückgängig gemacht werden."
 
-#: admin/cat_del.php:30 admin/custompages_del.php:19 admin/issue_del.php:17
-#: admin/party_del.php:19 admin/pledgestatetypegroup_del.php:21
-#: admin/pledgestatetype_del.php:24 admin/pledge_del.php:21
-#: admin/state_del.php:21 admin/user_del.php:18
+#: admin/cat_del.php:32 admin/custompages_del.php:20 admin/issue_del.php:17
+#: admin/party_del.php:20 admin/pledgestatetypegroup_del.php:20
+#: admin/pledgestatetype_del.php:26 admin/pledge_del.php:20
+#: admin/state_del.php:23 admin/user_del.php:19
 msgid "Yes, delete!"
 msgstr "Ja, löschen!"
 
-#: admin/cat_del.php:31 admin/custompages_del.php:20 admin/issue_del.php:18
-#: admin/party_del.php:20 admin/pledgestatetypegroup_del.php:22
-#: admin/pledgestatetype_del.php:25 admin/pledge_del.php:22
-#: admin/state_del.php:22 admin/user_del.php:19
+#: admin/cat_del.php:33 admin/custompages_del.php:21 admin/issue_del.php:18
+#: admin/party_del.php:21 admin/pledgestatetypegroup_del.php:21
+#: admin/pledgestatetype_del.php:27 admin/pledge_del.php:21
+#: admin/state_del.php:24 admin/user_del.php:20
 msgid "No"
 msgstr "Nein"
 
-#: admin/cat_del.php:36 admin/cat_edit.php:31 admin/cat_new.php:10
-#: admin/custompages_del.php:25 admin/custompages_edit.php:31
-#: admin/custompages_new.php:10 admin/issue_del.php:23 admin/issue_edit.php:33
-#: admin/issue_new.php:10 admin/issue_show.php:60 admin/party_del.php:25
-#: admin/party_edit.php:37 admin/party_new.php:15
-#: admin/pledgestatetypegroup_del.php:27
-#: admin/pledgestatetypegroup_edit.php:39
-#: admin/pledgestatetypegroup_new.php:10 admin/pledgestatetype_del.php:30
-#: admin/pledgestatetype_edit.php:37 admin/pledgestatetype_new.php:10
-#: admin/pledge_del.php:28 admin/pledge_edit.php:45 admin/pledge_new.php:14
-#: admin/state_del.php:28 admin/state_edit.php:49 admin/state_new.php:15
-#: admin/user_del.php:24 admin/user_edit.php:33 admin/user_new.php:10
+#: admin/cat_del.php:38 admin/cat_edit.php:28 admin/cat_new.php:10
+#: admin/custompages_del.php:26 admin/custompages_edit.php:30
+#: admin/custompages_new.php:10 admin/issue_del.php:23 admin/issue_edit.php:30
+#: admin/issue_new.php:10 admin/issue_show.php:59 admin/party_del.php:26
+#: admin/party_edit.php:34 admin/party_new.php:15
+#: admin/pledgestatetypegroup_del.php:26
+#: admin/pledgestatetypegroup_edit.php:37
+#: admin/pledgestatetypegroup_new.php:10 admin/pledgestatetype_del.php:32
+#: admin/pledgestatetype_edit.php:34 admin/pledgestatetype_new.php:10
+#: admin/pledge_del.php:27 admin/pledge_edit.php:41 admin/pledge_new.php:20
+#: admin/state_del.php:30 admin/state_edit.php:46 admin/state_new.php:20
+#: admin/user_del.php:25 admin/user_edit.php:29 admin/user_new.php:10
 msgid "Back"
 msgstr "Zurück"
 
@@ -151,19 +180,15 @@ msgstr "Keine Einträge gefunden."
 msgid "New catgegory"
 msgstr "Neue Kategorie"
 
-#: admin/custompages_del.php:8 admin/custompages_edit.php:7
-msgid "Page-ID not found."
-msgstr "Die Seiten-ID wurde nicht gefunden."
-
-#: admin/custompages_del.php:13
+#: admin/custompages_del.php:14
 msgid "Delete page"
 msgstr "Seite löschen"
 
-#: admin/custompages_del.php:14 admin/custompages_edit.php:17
+#: admin/custompages_del.php:15 admin/custompages_edit.php:19
 msgid "Page"
 msgstr "Seite"
 
-#: admin/custompages_edit.php:16
+#: admin/custompages_edit.php:18
 msgid "Edit page"
 msgstr "Seite bearbeiten"
 
@@ -186,151 +211,128 @@ msgstr "Neue Seite"
 msgid "ID"
 msgstr "ID"
 
-#: admin/custompages_list.php:12 admin/do_cat_edit.php:4
-#: admin/do_cat_new.php:5 admin/do_custompages_new.php:7
+#: admin/custompages_list.php:12 admin/do_cat_edit.php:8
+#: admin/do_cat_new.php:8 admin/do_custompages_new.php:8
 #: admin/pledgestatetypegroup_form.php:5 admin/pledgestatetype_form.php:5
 #: admin/pledgestatetype_list.php:13 admin/pledgestatetype_list.php:33
 #: admin/pledgestatetype_list.php:60 admin/pledgestatetype_list.php:88
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: admin/do_cat_del.php:36 admin/do_custompages_del.php:16
-#: admin/do_issue_del.php:28 admin/do_party_del.php:27
-#: admin/do_pledgestatetypegroup_del.php:16
-#: admin/do_pledgestatetype_del.php:19 admin/do_pledge_del.php:14
-#: admin/do_state_del.php:14 admin/do_user_del.php:16
-msgid "Deletion successful."
-msgstr "Der Eintrag wurde gelöscht."
-
-#: admin/do_cat_del.php:40 admin/do_cat_edit.php:24 admin/do_cat_new.php:25
+#: admin/do_cat_del.php:36 admin/do_cat_edit.php:26 admin/do_cat_new.php:26
 #: admin/do_custompages_del.php:18 admin/do_custompages_edit.php:23
-#: admin/do_custompages_new.php:25 admin/do_issue_del.php:31
-#: admin/do_issue_edit.php:23 admin/do_issue_new.php:23
-#: admin/do_party_del.php:29 admin/do_party_edit.php:44
-#: admin/do_party_new.php:46 admin/do_pledgestatetypegroup_del.php:18
-#: admin/do_pledgestatetypegroup_edit.php:39
-#: admin/do_pledgestatetypegroup_new.php:40
-#: admin/do_pledgestatetype_del.php:21 admin/do_pledgestatetype_edit.php:37
-#: admin/do_pledgestatetype_new.php:42 admin/do_pledge_del.php:17
-#: admin/do_pledge_edit.php:41 admin/do_pledge_new.php:53
-#: admin/do_state_del.php:17 admin/do_state_edit.php:50
-#: admin/do_state_new.php:50 admin/do_user_del.php:18
-#: admin/do_user_edit.php:37 admin/do_user_new.php:36
+#: admin/do_custompages_new.php:25 admin/do_issue_del.php:28
+#: admin/do_issue_edit.php:24 admin/do_issue_new.php:23
+#: admin/do_party_del.php:28 admin/do_party_edit.php:46
+#: admin/do_party_new.php:48 admin/do_pledgestatetypegroup_del.php:17
+#: admin/do_pledgestatetypegroup_edit.php:40
+#: admin/do_pledgestatetypegroup_new.php:42
+#: admin/do_pledgestatetype_del.php:20 admin/do_pledgestatetype_edit.php:42
+#: admin/do_pledgestatetype_new.php:47 admin/do_pledge_del.php:15
+#: admin/do_pledge_edit.php:49 admin/do_pledge_new.php:61
+#: admin/do_state_del.php:15 admin/do_state_edit.php:56
+#: admin/do_state_new.php:56 admin/do_user_del.php:17
+#: admin/do_user_edit.php:38 admin/do_user_new.php:37
 msgid "There was a database problem."
 msgstr "Es gab ein Problem mit der Datenbank."
 
-#: admin/do_cat_edit.php:7 admin/do_cat_new.php:8
-#: admin/do_custompages_edit.php:12 admin/do_custompages_new.php:14
-#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
-#: admin/do_party_edit.php:15 admin/do_party_new.php:17
-#: admin/do_pledgestatetypegroup_edit.php:10
-#: admin/do_pledgestatetypegroup_new.php:10
-#: admin/do_pledgestatetype_edit.php:10 admin/do_pledgestatetype_new.php:10
-#: admin/do_pledge_edit.php:15 admin/do_pledge_new.php:14
-#: admin/do_state_edit.php:13 admin/do_state_new.php:13
-#: admin/do_user_edit.php:17 admin/do_user_new.php:18
+#: admin/do_cat_edit.php:11 admin/do_cat_new.php:11
+#: admin/do_custompages_edit.php:13 admin/do_custompages_new.php:15
+#: admin/do_issue_edit.php:12 admin/do_issue_new.php:12
+#: admin/do_party_edit.php:18 admin/do_party_new.php:20
+#: admin/do_pledgestatetypegroup_edit.php:12
+#: admin/do_pledgestatetypegroup_new.php:13
+#: admin/do_pledgestatetype_edit.php:16 admin/do_pledgestatetype_new.php:16
+#: admin/do_pledge_edit.php:25 admin/do_pledge_new.php:24
+#: admin/do_state_edit.php:21 admin/do_state_new.php:21
+#: admin/do_user_edit.php:19 admin/do_user_new.php:20
 msgid "These fields have been filled in incorrectly: "
 msgstr "Diese Felder wurden nicht korrekt ausgefüllt: "
 
-#: admin/do_cat_edit.php:20 admin/do_custompages_edit.php:21
-#: admin/do_issue_edit.php:20 admin/do_party_edit.php:42
-#: admin/do_pledgestatetypegroup_edit.php:37
-#: admin/do_pledgestatetype_edit.php:35 admin/do_pledge_edit.php:38
-#: admin/do_state_edit.php:47 admin/do_user_edit.php:35
-msgid "Editing successful."
-msgstr "Der Eintrag wurde bearbeitet."
-
-#: admin/do_cat_new.php:21 admin/do_custompages_new.php:23
-#: admin/do_issue_new.php:20 admin/do_party_new.php:44
-#: admin/do_pledgestatetypegroup_new.php:38
-#: admin/do_pledgestatetype_new.php:40 admin/do_pledge_new.php:50
-#: admin/do_state_new.php:47 admin/do_user_new.php:34
-msgid "Added successfully."
-msgstr "Der Eintrag wurde hinzugefügt."
-
-#: admin/do_custompages_edit.php:9 admin/do_custompages_new.php:11
+#: admin/do_custompages_edit.php:10 admin/do_custompages_new.php:12
 msgid "This label exists already."
 msgstr "Die Seitenbezeichnung ist schon vergeben."
 
-#: admin/do_issue_edit.php:5 admin/do_issue_new.php:5
-#: admin/do_pledge_edit.php:10 admin/do_pledge_new.php:10
-#: admin/do_state_edit.php:9 admin/do_state_new.php:9
+#: admin/do_issue_edit.php:8 admin/do_issue_new.php:8
+#: admin/do_pledge_edit.php:20 admin/do_pledge_new.php:20
+#: admin/do_state_edit.php:17 admin/do_state_new.php:17
 msgid "issue"
 msgstr "Thema"
 
-#: admin/do_issue_edit.php:6 admin/do_issue_new.php:6
+#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
 msgid "category"
 msgstr "Kategorie"
 
-#: admin/do_party_edit.php:11 admin/do_user_edit.php:8 admin/do_user_new.php:8
+#: admin/do_party_edit.php:14 admin/do_party_new.php:14
+#: admin/do_user_edit.php:10 admin/do_user_new.php:10
 msgid "name"
 msgstr "Name"
 
-#: admin/do_party_edit.php:12
+#: admin/do_party_edit.php:15 admin/do_party_new.php:15
 msgid "acronym"
 msgstr "Kürzel"
 
-#: admin/do_pledgestatetypegroup_edit.php:7
-#: admin/do_pledgestatetypegroup_new.php:7 admin/do_pledgestatetype_edit.php:7
-#: admin/do_pledgestatetype_new.php:7
+#: admin/do_pledgestatetypegroup_edit.php:9
+#: admin/do_pledgestatetypegroup_new.php:10
+#: admin/do_pledgestatetype_edit.php:13 admin/do_pledgestatetype_new.php:13
 msgid "label"
 msgstr "Bezeichnung"
 
-#: admin/do_pledge_edit.php:5 admin/do_pledge_new.php:5
+#: admin/do_pledge_edit.php:15 admin/do_pledge_new.php:15
 msgid "pledge"
 msgstr "Versprechen"
 
-#: admin/do_pledge_edit.php:6 admin/do_pledge_edit.php:8
-#: admin/do_pledge_new.php:6 admin/do_pledge_new.php:8
+#: admin/do_pledge_edit.php:16 admin/do_pledge_edit.php:18
+#: admin/do_pledge_new.php:16 admin/do_pledge_new.php:18
 msgid "party"
 msgstr "Partei"
 
-#: admin/do_pledge_edit.php:7 admin/do_pledge_edit.php:9
-#: admin/do_pledge_new.php:7 admin/do_pledge_new.php:9
+#: admin/do_pledge_edit.php:17 admin/do_pledge_edit.php:19
+#: admin/do_pledge_new.php:17 admin/do_pledge_new.php:19
 msgid "start info"
 msgstr "Startinfo"
 
-#: admin/do_pledge_edit.php:11
+#: admin/do_pledge_edit.php:21
 msgid "It is impossible to change the type"
 msgstr "Die Art"
 
-#: admin/do_pledge_edit.php:11
+#: admin/do_pledge_edit.php:21
 msgid "request"
 msgstr "Forderung"
 
-#: admin/do_pledge_edit.php:11
+#: admin/do_pledge_edit.php:21
 msgid "status quo"
 msgstr "Zustand"
 
-#: admin/do_pledge_edit.php:11
+#: admin/do_pledge_edit.php:21
 msgid "of the pledge!"
 msgstr "des Versprechens kann nicht verändert werden!"
 
-#: admin/do_state_edit.php:5 admin/do_state_new.php:5
+#: admin/do_state_edit.php:13 admin/do_state_new.php:13
 msgid "text"
 msgstr "Text"
 
-#: admin/do_state_edit.php:6 admin/do_state_new.php:6
+#: admin/do_state_edit.php:14 admin/do_state_new.php:14
 msgid "quote"
 msgstr "Zitat"
 
-#: admin/do_state_edit.php:7 admin/do_state_new.php:7
+#: admin/do_state_edit.php:15 admin/do_state_new.php:15
 msgid "quote source"
 msgstr "Zitatquelle"
 
-#: admin/do_state_edit.php:8 admin/do_state_new.php:8
+#: admin/do_state_edit.php:16 admin/do_state_new.php:16
 msgid "date"
 msgstr "Datum"
 
-#: admin/do_user_edit.php:9 admin/do_user_new.php:9
+#: admin/do_user_edit.php:11 admin/do_user_new.php:11
 msgid "username"
 msgstr "Benutzername"
 
-#: admin/do_user_edit.php:10 admin/do_user_new.php:10 admin/do_user_new.php:11
+#: admin/do_user_edit.php:12 admin/do_user_new.php:12 admin/do_user_new.php:13
 msgid "password"
 msgstr "Passwort"
 
-#: admin/do_user_edit.php:14 admin/do_user_new.php:15
+#: admin/do_user_edit.php:16 admin/do_user_new.php:17
 msgid "This username ist not available."
 msgstr "Der Benutzername ist schon vergeben."
 
@@ -371,19 +373,13 @@ msgstr "Benutzer"
 msgid "KOM"
 msgstr "KOM"
 
-#: admin/issue_del.php:4 admin/issue_edit.php:4 admin/issue_show.php:5
-#: admin/pledge_del.php:5 admin/pledge_edit.php:5 admin/state_del.php:5
-#: admin/state_edit.php:5
-msgid "Issue-ID not found."
-msgstr "Die Themen-ID wurde nicht gefunden."
-
 #: admin/issue_del.php:11
 msgid "Delete issue"
 msgstr "Thema löschen"
 
 #: admin/issue_del.php:12 admin/issue_edit.php:19 admin/issue_form.php:5
-#: admin/issue_show.php:10 admin/pledge_del.php:15 admin/pledge_edit.php:28
-#: admin/state_del.php:15 admin/state_edit.php:32
+#: admin/issue_show.php:10 admin/pledge_del.php:14 admin/pledge_edit.php:28
+#: admin/state_del.php:17 admin/state_edit.php:34
 msgid "Issue"
 msgstr "Thema"
 
@@ -411,7 +407,7 @@ msgstr "öffnen"
 msgid "Promises"
 msgstr "Versprechen"
 
-#: admin/issue_show.php:14 admin/pledge_new.php:1
+#: admin/issue_show.php:14 admin/pledge_new.php:7
 msgid "New Promise"
 msgstr "Neues Versprechen"
 
@@ -425,7 +421,7 @@ msgstr ""
 msgid "Progress"
 msgstr "Verlauf"
 
-#: admin/issue_show.php:37 admin/state_new.php:1
+#: admin/issue_show.php:37 admin/state_new.php:9
 msgid "New state"
 msgstr "Neuer Status"
 
@@ -441,25 +437,21 @@ msgstr "Passwort"
 msgid "Login"
 msgstr "Anmelden"
 
-#: admin/party_del.php:7 admin/party_edit.php:7
-msgid "Party-ID not found."
-msgstr "Die Partei-ID wurde nicht gefunden."
-
-#: admin/party_del.php:12
+#: admin/party_del.php:13
 msgid "Delete Party"
 msgstr "Partei löschen"
 
-#: admin/party_del.php:13 admin/party_edit.php:23 admin/pledge_form.php:5
+#: admin/party_del.php:14 admin/party_edit.php:24 admin/pledge_form.php:5
 msgid "Party"
 msgstr "Partei"
 
-#: admin/party_del.php:17
+#: admin/party_del.php:18
 msgid "WARNING: All pledges of this party will be deleted!"
 msgstr ""
 "ACHTUNG: Es werden auch sämtliche Versprechen dieser Partei unwiderruflich "
 "gelöscht!"
 
-#: admin/party_edit.php:22
+#: admin/party_edit.php:23
 msgid "Edit Party"
 msgstr "Partei bearbeiten"
 
@@ -492,20 +484,12 @@ msgstr "Neue Partei"
 msgid "Electorial platform"
 msgstr "Wahlprogramm"
 
-#: admin/pledgestatetypegroup_del.php:7 admin/pledgestatetypegroup_edit.php:6
-msgid "Group-ID not found."
-msgstr "Die Gruppen-ID wurde nicht gefunden."
-
-#: admin/pledgestatetypegroup_del.php:9
-msgid "This rating is pre-installed and cannot be deleted!"
-msgstr "Diese Gruppe ist vorinstalliert und kann nicht gelöscht werden!"
-
-#: admin/pledgestatetypegroup_del.php:15
-#: admin/pledgestatetypegroup_edit.php:25
+#: admin/pledgestatetypegroup_del.php:14
+#: admin/pledgestatetypegroup_edit.php:26
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/pledgestatetypegroup_edit.php:24
+#: admin/pledgestatetypegroup_edit.php:25
 msgid "Edit group"
 msgstr "Gruppe bearbeiten"
 
@@ -522,25 +506,16 @@ msgstr "Farbe"
 msgid "New Group"
 msgstr "Neue Gruppe"
 
-#: admin/pledgestatetype_del.php:9 admin/pledgestatetype_edit.php:7
-msgid "Rating-ID not found."
-msgstr "Die Bewertungs-ID wurde nicht gefunden."
-
-#: admin/pledgestatetype_del.php:11
-msgid "This rating is assigned to a state and cannot be deleted."
-msgstr ""
-"Diese Bewertung wird zur Zeit verwendet und kann nicht gelöscht werden."
-
-#: admin/pledgestatetype_del.php:17
+#: admin/pledgestatetype_del.php:19
 msgid "Delete rating"
 msgstr "Bewertung löschen"
 
-#: admin/pledgestatetype_del.php:18 admin/pledgestatetype_edit.php:22
+#: admin/pledgestatetype_del.php:20 admin/pledgestatetype_edit.php:23
 #: admin/state_form.php:34
 msgid "Rating"
 msgstr "Bewertung"
 
-#: admin/pledgestatetype_edit.php:21
+#: admin/pledgestatetype_edit.php:22
 msgid "Edit rating"
 msgstr "Bewertung bearbeiten"
 
@@ -598,15 +573,11 @@ msgstr "Benutzerdefinierte Gruppen"
 msgid "custom"
 msgstr "benutzerdefiniert"
 
-#: admin/pledge_del.php:10 admin/pledge_edit.php:10
-msgid "Promise-ID not found."
-msgstr "Die Versprechen-ID wurde nicht gefunden."
-
-#: admin/pledge_del.php:14
+#: admin/pledge_del.php:13
 msgid "Delete Promise"
 msgstr "Versprechen löschen"
 
-#: admin/pledge_del.php:16 admin/pledge_edit.php:29
+#: admin/pledge_del.php:15 admin/pledge_edit.php:29
 msgid "Promise"
 msgstr "Versprechen"
 
@@ -643,19 +614,15 @@ msgstr "Seite im Wahlprogramm"
 msgid "If filled, the fields source and URL are ignored."
 msgstr "Wenn ausgefüllt, werden die Felder Quelle und URL ignoriert."
 
-#: admin/state_del.php:10 admin/state_edit.php:10
-msgid "State-ID not found."
-msgstr "Die Status-ID wurde nicht gefunden."
-
-#: admin/state_del.php:14
+#: admin/state_del.php:16
 msgid "Delete state"
 msgstr "Status löschen"
 
-#: admin/state_del.php:16 admin/state_edit.php:33
+#: admin/state_del.php:18 admin/state_edit.php:35
 msgid "State"
 msgstr "Status"
 
-#: admin/state_edit.php:31
+#: admin/state_edit.php:33
 msgid "Edit state"
 msgstr "Status bearbeiten"
 
@@ -671,15 +638,11 @@ msgstr "Datum"
 msgid "No information"
 msgstr "Keine Information"
 
-#: admin/user_del.php:7 admin/user_edit.php:7
-msgid "User-ID not found."
-msgstr "Die Benutzer-ID wurde nicht gefunden."
-
-#: admin/user_del.php:12
+#: admin/user_del.php:13
 msgid "Delete user"
 msgstr "Benutzer löschen"
 
-#: admin/user_del.php:13 admin/user_edit.php:19
+#: admin/user_del.php:14 admin/user_edit.php:19
 msgid "User"
 msgstr "Benutzer"
 
@@ -702,6 +665,33 @@ msgstr "Passwort bestätigen"
 #: admin/user_list.php:3 admin/user_new.php:1
 msgid "New user"
 msgstr "Neuer Benutzer"
+
+#~ msgid "Category ID not found."
+#~ msgstr "Die Kategorie-ID wurde nicht gefunden."
+
+#~ msgid "Page-ID not found."
+#~ msgstr "Die Seiten-ID wurde nicht gefunden."
+
+#~ msgid "Issue-ID not found."
+#~ msgstr "Die Themen-ID wurde nicht gefunden."
+
+#~ msgid "Party-ID not found."
+#~ msgstr "Die Partei-ID wurde nicht gefunden."
+
+#~ msgid "Group-ID not found."
+#~ msgstr "Die Gruppen-ID wurde nicht gefunden."
+
+#~ msgid "Rating-ID not found."
+#~ msgstr "Die Bewertungs-ID wurde nicht gefunden."
+
+#~ msgid "Promise-ID not found."
+#~ msgstr "Die Versprechen-ID wurde nicht gefunden."
+
+#~ msgid "State-ID not found."
+#~ msgstr "Die Status-ID wurde nicht gefunden."
+
+#~ msgid "User-ID not found."
+#~ msgstr "Die Benutzer-ID wurde nicht gefunden."
 
 #~ msgid "Pledge-ID not found."
 #~ msgstr "Die Versprechen-ID wurde nicht gefunden."
