@@ -25,7 +25,7 @@ $database = new Database($dblink);
 $database->loadContent();
 
 /* Erlaubte Seiten */
-if (!in_array($adminactive['page'], array("login", "issue_list", "issue_new", "issue_edit", "issue_del", "issue_show", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_list", "user_new", "user_edit", "user_del", "cat_list", "cat_edit", "cat_new", "cat_del", "cat_edit", "custompages_list", "custompages_new", "custompages_edit", "custompages_del", "party_list", "party_new", "party_edit", "party_del", "pledgestatetype_list", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
+if (!isset($adminactive['page']) || !in_array($adminactive['page'], array("login", "issue_list", "issue_new", "issue_edit", "issue_del", "issue_show", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_list", "user_new", "user_edit", "user_del", "cat_list", "cat_edit", "cat_new", "cat_del", "cat_edit", "custompages_list", "custompages_new", "custompages_edit", "custompages_del", "party_list", "party_new", "party_edit", "party_del", "pledgestatetype_list", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
     $adminactive['page'] = "issue_list";
 }
 
