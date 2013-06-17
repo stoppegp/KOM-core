@@ -5,7 +5,10 @@ require("init.php");
 ob_start();
 if (file_exists("interface/".KOM::$active['page'].".php")) {
     require("interface/".KOM::$active['page'].".php");
+} elseif (file_exists("defaultpages/".KOM::$active['page'].".php")) {
+    require("defaultpages/".KOM::$active['page'].".php");
 }
+
 $KOM_CONTENT = ob_get_contents();
 ob_end_clean();
 

@@ -129,6 +129,7 @@ class KOM {
                         }
                     break;
                     case "home":
+                    default:
                         $url = "";
                     break;
                 }
@@ -144,7 +145,6 @@ class KOM {
                 $cparray[$val->name] = $val->id;
             }
         }
-        $active['page'] = "home";
 
         $urisplit = explode("/", $uri);
         
@@ -194,6 +194,12 @@ class KOM {
                     }
                 }
             }
+        } else {
+            $active['page'] = "home";
+        }
+        
+        if (!isset($active['page'])) {
+            $active['page'] = "error-404";
         }
         
         return $active;
