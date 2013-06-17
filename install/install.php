@@ -45,17 +45,6 @@ if (isset($_POST['install']['do'])) {
         define( 'DB_PREFIX',    "{$install['dbprefix']}");
 
         define(  'SITE_URL',    "{$install['url']}");
-
-
-        KOM::\$pagenames = array(
-
-            "category"  =>  "",
-            "single"    =>  "",
-            "report"    =>  "fehler-melden"
-
-
-        );
-
     ?>
 CONFIG;
     fwrite($datei, $configtext);
