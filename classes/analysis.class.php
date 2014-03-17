@@ -111,7 +111,7 @@ class Analysis {
             unset($tempar);
             $tempar['name'] = $value0->getName();
             $col = Analysis::hex2rgb($value0->getColour());
-            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")";
+            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".number_format($opacity, 2, ".", "").")";
             $tempar['y'] = $group_nr[$value0->getID()];
             if (isset($options[$value0->getID()]) && is_array($options[$value0->getID()])) {
                 foreach ($options[$value0->getID()] as $key => $val) {
@@ -137,7 +137,7 @@ class Analysis {
             if ( $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl() == 0) continue;
             $tempar['name'] = $value0->getName();
             $col = Analysis::hex2rgb($value0->getColour());
-            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")";
+            $tempar['color'] = "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".number_format($opacity, 2, ".", "").")";
             $tempar['y'] = $nr[$value0->getID()] * $value0->getMultipl();
             if (is_array($options[$value0->getID()])) {
                 foreach ($options[$value0->getID()] as $key => $val) {
@@ -182,7 +182,7 @@ class Analysis {
             $col = Analysis::hex2rgb($this->linkDatabase->getPledgestatetypegroup($key)->getColour());
             $temp00 = array(
                 'name' => $this->linkDatabase->getPledgestatetypegroup($key)->getName(),
-                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")",
+                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".number_format($opacity, 2, ".", "").")",
             );
             if (is_array($options[$key])) {
                 foreach ($options[$key] as $key0 => $val0) {
@@ -257,7 +257,7 @@ class Analysis {
             $col = $this->linkDatabase->getPledgestatetype($key)->getColour();
             $temp00 = array(
                 'name' => $this->linkDatabase->getPledgestatetype($key)->getName(),
-                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".$opacity.")",
+                'color' => "rgba(".$col[0].", ".$col[1].", ".$col[2].", ".number_format($opacity, 2, ".", "").")",
             );
             if (is_array($options[$key])) {
                 foreach ($options[$key] as $key0 => $val0) {
