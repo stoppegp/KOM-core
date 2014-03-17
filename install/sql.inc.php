@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `<?=$install['dbprefix'];?>issues` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `desc` text CHARACTER SET utf8 NOT NULL,
+  `comment` text CHARACTER SET utf8 NOT NULL,
   `category_ids` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=232 ;

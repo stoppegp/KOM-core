@@ -18,6 +18,14 @@
     </tr>
     <tr>
         <td>
+            <?=_("Comment");?>:
+        </td>
+        <td>
+            <textarea name="issue[comment]"><?=retisset($oldarray['comment']);?></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
             <?=_("Category");?>:
         </td>
         <td>

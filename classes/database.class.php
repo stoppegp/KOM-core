@@ -163,7 +163,7 @@ class Database {
             foreach ($retar as $key => $val) {
                 
                 if ((!(isset($this->filters['categories']) && is_array($this->filters['categories']))) || (count(array_intersect($this->filters['categories'], unserialize($val->category_ids))) > 0)) {
-                    $this->issues[$val->id] = new Issue($this, $val->id, $val->name, $val->desc, $val->category_ids);
+                    $this->issues[$val->id] = new Issue($this, $val->id, $val->name, $val->desc, $val->comment, $val->category_ids);
                     if (isset($this->filters['parties'])) {
                         $this->issues[$val->id]->setFilter("parties", $this->filters['parties']);
                     }

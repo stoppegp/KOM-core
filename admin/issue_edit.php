@@ -8,6 +8,7 @@ if (!is_numeric($thisissueid) || !$database->getIssue($thisissueid)) {
     if (!isset($oldarray)) {
         $oldarray['name'] = $thisissue->getName();
         $oldarray['desc'] = $thisissue->getDesc();
+        $oldarray['comment'] = $thisissue->getComment();
         foreach ($thisissue->getCategories() as $value) {
             $oldarray['cat'][$value->getID()] = 1;
         }

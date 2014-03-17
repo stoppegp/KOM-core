@@ -13,6 +13,7 @@ class Issue {
 	private $id;
 	private $name;
 	private $desc;
+	private $comment;
     private $category_ids;
     
     private $pledges = array();
@@ -24,12 +25,13 @@ class Issue {
     private $filters;
     private $isLoad = false;
 
-	function __construct(&$linkDatabase, $id, $name, $desc, $category_ids) {
+	function __construct(&$linkDatabase, $id, $name, $desc, $comment, $category_ids) {
         $this->linkDatabase = &$linkDatabase;
     
 		$this->id = $id;
 		$this->name = $name;
 		$this->desc = $desc;
+		$this->comment = $comment;
         $this->category_ids = unserialize($category_ids);
 	}
     
@@ -191,6 +193,10 @@ class Issue {
     
     public function getDesc() {
         return $this->desc;
+    }
+    
+    public function getComment() {
+        return $this->comment;
     }
     
 }
