@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kom_admin\n"
-"POT-Creation-Date: 2013-06-12 17:50+0100\n"
-"PO-Revision-Date: 2013-06-12 17:50+0100\n"
+"POT-Creation-Date: 2014-03-17 23:09+0100\n"
+"PO-Revision-Date: 2014-03-17 23:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: stoppe\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: D:\\GitHub\\KOM-core\\\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -48,11 +48,11 @@ msgstr ""
 msgid "This rating is pre-installed and cannot be deleted!"
 msgstr "Diese Gruppe ist vorinstalliert und kann nicht gelöscht werden!"
 
-#: admin/admin.php:74 admin/do_pledgestatetypegroup_del.php:17
+#: admin/admin.php:74 admin/do_pledgestatetype_del.php:20
+#: admin/do_pledgestatetype_edit.php:42 admin/do_pledgestatetype_new.php:47
+#: admin/do_pledgestatetypegroup_del.php:17
 #: admin/do_pledgestatetypegroup_edit.php:40
 #: admin/do_pledgestatetypegroup_new.php:42
-#: admin/do_pledgestatetype_del.php:20 admin/do_pledgestatetype_edit.php:42
-#: admin/do_pledgestatetype_new.php:47
 msgid "There was a database problem."
 msgstr "Es gab ein Problem mit der Datenbank."
 
@@ -92,7 +92,7 @@ msgstr "Zugriff verweigert."
 msgid "Delete category"
 msgstr "Kategorie löschen"
 
-#: admin/cat_del.php:16 admin/cat_edit.php:17 admin/issue_form.php:21
+#: admin/cat_del.php:16 admin/cat_edit.php:17 admin/issue_form.php:29
 msgid "Category"
 msgstr "Kategorie"
 
@@ -101,8 +101,8 @@ msgid "Assign affected Issues to this category:"
 msgstr "Welcher Kategorie sollen die zugehörigen Themen zugeordnet werden?"
 
 #: admin/cat_del.php:31 admin/custompages_del.php:18 admin/issue_del.php:15
-#: admin/party_del.php:17 admin/pledgestatetypegroup_del.php:18
-#: admin/pledgestatetype_del.php:24 admin/pledge_del.php:18
+#: admin/party_del.php:17 admin/pledge_del.php:18
+#: admin/pledgestatetype_del.php:24 admin/pledgestatetypegroup_del.php:18
 #: admin/state_del.php:21 admin/user_del.php:17
 msgid ""
 "Do you really want to delete this entry? This operation can't be undone!"
@@ -111,31 +111,31 @@ msgstr ""
 "rückgängig gemacht werden."
 
 #: admin/cat_del.php:33 admin/custompages_del.php:20 admin/issue_del.php:17
-#: admin/party_del.php:20 admin/pledgestatetypegroup_del.php:20
-#: admin/pledgestatetype_del.php:26 admin/pledge_del.php:20
+#: admin/party_del.php:20 admin/pledge_del.php:20
+#: admin/pledgestatetype_del.php:26 admin/pledgestatetypegroup_del.php:20
 #: admin/state_del.php:23 admin/user_del.php:19
 msgid "Yes, delete!"
 msgstr "Ja, löschen!"
 
 #: admin/cat_del.php:34 admin/custompages_del.php:21 admin/issue_del.php:18
-#: admin/party_del.php:21 admin/pledgestatetypegroup_del.php:21
-#: admin/pledgestatetype_del.php:27 admin/pledge_del.php:21
+#: admin/party_del.php:21 admin/pledge_del.php:21
+#: admin/pledgestatetype_del.php:27 admin/pledgestatetypegroup_del.php:21
 #: admin/state_del.php:24 admin/user_del.php:20
 msgid "No"
 msgstr "Nein"
 
 #: admin/cat_del.php:39 admin/cat_edit.php:28 admin/cat_new.php:10
 #: admin/custompages_del.php:26 admin/custompages_edit.php:30
-#: admin/custompages_new.php:10 admin/issue_del.php:23 admin/issue_edit.php:30
+#: admin/custompages_new.php:10 admin/issue_del.php:23 admin/issue_edit.php:31
 #: admin/issue_new.php:10 admin/issue_show.php:59 admin/party_del.php:26
-#: admin/party_edit.php:34 admin/party_new.php:15
-#: admin/pledgestatetypegroup_del.php:26
+#: admin/party_edit.php:34 admin/party_new.php:15 admin/pledge_del.php:27
+#: admin/pledge_edit.php:41 admin/pledge_new.php:20
+#: admin/pledgestatetype_del.php:32 admin/pledgestatetype_edit.php:34
+#: admin/pledgestatetype_new.php:10 admin/pledgestatetypegroup_del.php:26
 #: admin/pledgestatetypegroup_edit.php:37
-#: admin/pledgestatetypegroup_new.php:10 admin/pledgestatetype_del.php:32
-#: admin/pledgestatetype_edit.php:34 admin/pledgestatetype_new.php:10
-#: admin/pledge_del.php:27 admin/pledge_edit.php:41 admin/pledge_new.php:20
-#: admin/state_del.php:30 admin/state_edit.php:46 admin/state_new.php:20
-#: admin/user_del.php:25 admin/user_edit.php:29 admin/user_new.php:10
+#: admin/pledgestatetypegroup_new.php:10 admin/state_del.php:30
+#: admin/state_edit.php:46 admin/state_new.php:20 admin/user_del.php:25
+#: admin/user_edit.php:29 admin/user_new.php:10
 msgid "Back"
 msgstr "Zurück"
 
@@ -221,22 +221,22 @@ msgstr "ID"
 
 #: admin/custompages_list.php:12 admin/do_cat_edit.php:8
 #: admin/do_cat_new.php:8 admin/do_custompages_new.php:8
-#: admin/pledgestatetypegroup_form.php:5 admin/pledgestatetype_form.php:5
-#: admin/pledgestatetype_list.php:13 admin/pledgestatetype_list.php:33
-#: admin/pledgestatetype_list.php:60 admin/pledgestatetype_list.php:88
+#: admin/pledgestatetype_form.php:5 admin/pledgestatetype_list.php:13
+#: admin/pledgestatetype_list.php:33 admin/pledgestatetype_list.php:60
+#: admin/pledgestatetype_list.php:88 admin/pledgestatetypegroup_form.php:5
 msgid "Label"
 msgstr "Bezeichnung"
 
 #: admin/do_cat_edit.php:11 admin/do_cat_new.php:11
 #: admin/do_custompages_edit.php:13 admin/do_custompages_new.php:15
-#: admin/do_issue_edit.php:12 admin/do_issue_new.php:12
+#: admin/do_issue_edit.php:13 admin/do_issue_new.php:13
 #: admin/do_party_edit.php:18 admin/do_party_new.php:20
-#: admin/do_pledgestatetypegroup_edit.php:12
-#: admin/do_pledgestatetypegroup_new.php:13
-#: admin/do_pledgestatetype_edit.php:16 admin/do_pledgestatetype_new.php:16
 #: admin/do_pledge_edit.php:25 admin/do_pledge_new.php:24
-#: admin/do_state_edit.php:21 admin/do_state_new.php:21
-#: admin/do_user_edit.php:19 admin/do_user_new.php:20
+#: admin/do_pledgestatetype_edit.php:16 admin/do_pledgestatetype_new.php:16
+#: admin/do_pledgestatetypegroup_edit.php:12
+#: admin/do_pledgestatetypegroup_new.php:13 admin/do_state_edit.php:21
+#: admin/do_state_new.php:21 admin/do_user_edit.php:19
+#: admin/do_user_new.php:20
 msgid "These fields have been filled in incorrectly: "
 msgstr "Diese Felder wurden nicht korrekt ausgefüllt: "
 
@@ -244,13 +244,13 @@ msgstr "Diese Felder wurden nicht korrekt ausgefüllt: "
 msgid "This label exists already."
 msgstr "Die Seitenbezeichnung ist schon vergeben."
 
-#: admin/do_issue_edit.php:8 admin/do_issue_new.php:8
+#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
 #: admin/do_pledge_edit.php:20 admin/do_pledge_new.php:20
 #: admin/do_state_edit.php:17 admin/do_state_new.php:17
 msgid "issue"
 msgstr "Thema"
 
-#: admin/do_issue_edit.php:9 admin/do_issue_new.php:9
+#: admin/do_issue_edit.php:10 admin/do_issue_new.php:10
 msgid "category"
 msgstr "Kategorie"
 
@@ -262,12 +262,6 @@ msgstr "Name"
 #: admin/do_party_edit.php:15 admin/do_party_new.php:15
 msgid "acronym"
 msgstr "Kürzel"
-
-#: admin/do_pledgestatetypegroup_edit.php:9
-#: admin/do_pledgestatetypegroup_new.php:10
-#: admin/do_pledgestatetype_edit.php:13 admin/do_pledgestatetype_new.php:13
-msgid "label"
-msgstr "Bezeichnung"
 
 #: admin/do_pledge_edit.php:15 admin/do_pledge_new.php:15
 msgid "pledge"
@@ -298,6 +292,12 @@ msgstr "Zustand"
 #: admin/do_pledge_edit.php:21
 msgid "of the pledge!"
 msgstr "des Versprechens kann nicht verändert werden!"
+
+#: admin/do_pledgestatetype_edit.php:13 admin/do_pledgestatetype_new.php:13
+#: admin/do_pledgestatetypegroup_edit.php:9
+#: admin/do_pledgestatetypegroup_new.php:10
+msgid "label"
+msgstr "Bezeichnung"
 
 #: admin/do_state_edit.php:13 admin/do_state_new.php:13
 msgid "text"
@@ -351,8 +351,8 @@ msgstr "Kategorien"
 msgid "Parties"
 msgstr "Parteien"
 
-#: admin/header.php:33 admin/pledgestatetypegroup_form.php:29
-#: admin/pledgestatetype_list.php:1
+#: admin/header.php:33 admin/pledgestatetype_list.php:1
+#: admin/pledgestatetypegroup_form.php:29
 msgid "Ratings"
 msgstr "Bewertungen"
 
@@ -368,19 +368,23 @@ msgstr "KOM"
 msgid "Delete issue"
 msgstr "Thema löschen"
 
-#: admin/issue_del.php:12 admin/issue_edit.php:19 admin/issue_form.php:5
+#: admin/issue_del.php:12 admin/issue_edit.php:20 admin/issue_form.php:5
 #: admin/issue_show.php:10 admin/pledge_del.php:14 admin/pledge_edit.php:28
 #: admin/state_del.php:17 admin/state_edit.php:34
 msgid "Issue"
 msgstr "Thema"
 
-#: admin/issue_edit.php:18
+#: admin/issue_edit.php:19
 msgid "Edit issue"
 msgstr "Thema bearbeiten"
 
 #: admin/issue_form.php:13 admin/pledge_form.php:30
 msgid "Description"
 msgstr "Beschreibung"
+
+#: admin/issue_form.php:21
+msgid "Comment"
+msgstr "Kommentar"
 
 #: admin/issue_list.php:1
 msgid "Issues"
@@ -475,95 +479,6 @@ msgstr "Neue Partei"
 msgid "Electorial platform"
 msgstr "Wahlprogramm"
 
-#: admin/pledgestatetypegroup_del.php:14
-#: admin/pledgestatetypegroup_edit.php:26
-msgid "Group"
-msgstr "Gruppe"
-
-#: admin/pledgestatetypegroup_edit.php:25
-msgid "Edit group"
-msgstr "Gruppe bearbeiten"
-
-#: admin/pledgestatetypegroup_form.php:13 admin/pledgestatetype_form.php:41
-msgid "Order"
-msgstr "Reihenfolge"
-
-#: admin/pledgestatetypegroup_form.php:21 admin/pledgestatetype_form.php:49
-#: admin/pledgestatetype_form.php:57
-msgid "Colour"
-msgstr "Farbe"
-
-#: admin/pledgestatetypegroup_new.php:1 admin/pledgestatetype_list.php:83
-msgid "New Group"
-msgstr "Neue Gruppe"
-
-#: admin/pledgestatetype_del.php:19
-msgid "Delete rating"
-msgstr "Bewertung löschen"
-
-#: admin/pledgestatetype_del.php:20 admin/pledgestatetype_edit.php:23
-#: admin/state_form.php:34
-msgid "Rating"
-msgstr "Bewertung"
-
-#: admin/pledgestatetype_edit.php:22
-msgid "Edit rating"
-msgstr "Bewertung bearbeiten"
-
-#: admin/pledgestatetype_form.php:13
-msgid "Points"
-msgstr "Punkte"
-
-#: admin/pledgestatetype_form.php:21
-msgid "Include into valuation"
-msgstr "In die Wertung aufnehmen"
-
-#: admin/pledgestatetype_form.php:31 admin/pledgestatetype_list.php:9
-#: admin/pledgestatetype_list.php:29 admin/pledgestatetype_list.php:59
-#: admin/pledgestatetype_list.php:87
-msgid "Type"
-msgstr "Art"
-
-#: admin/pledgestatetype_form.php:34 admin/pledgestatetype_list.php:9
-msgid "Request"
-msgstr "Forderung"
-
-#: admin/pledgestatetype_form.php:35 admin/pledgestatetype_list.php:29
-msgid "Status quo"
-msgstr "Zustand"
-
-#: admin/pledgestatetype_list.php:3 admin/pledgestatetype_new.php:1
-msgid "New Rating"
-msgstr "Neue Bewertung"
-
-#: admin/pledgestatetype_list.php:50
-msgid "Groups"
-msgstr "Gruppen"
-
-#: admin/pledgestatetype_list.php:55
-msgid "Pre-installed"
-msgstr "Vorinstalliert"
-
-#: admin/pledgestatetype_list.php:68
-msgid "Nothing happened"
-msgstr "Nichts passiert"
-
-#: admin/pledgestatetype_list.php:69
-msgid "Promise kept"
-msgstr "Versprechen gehalten"
-
-#: admin/pledgestatetype_list.php:70
-msgid "Promise broken"
-msgstr "Versprechen gebrochen"
-
-#: admin/pledgestatetype_list.php:82
-msgid "Custom groups"
-msgstr "Benutzerdefinierte Gruppen"
-
-#: admin/pledgestatetype_list.php:93
-msgid "custom"
-msgstr "benutzerdefiniert"
-
 #: admin/pledge_del.php:13
 msgid "Delete Promise"
 msgstr "Versprechen löschen"
@@ -604,6 +519,95 @@ msgstr "Seite im Wahlprogramm"
 #: admin/pledge_form.php:78
 msgid "If filled, the fields source and URL are ignored."
 msgstr "Wenn ausgefüllt, werden die Felder Quelle und URL ignoriert."
+
+#: admin/pledgestatetype_del.php:19
+msgid "Delete rating"
+msgstr "Bewertung löschen"
+
+#: admin/pledgestatetype_del.php:20 admin/pledgestatetype_edit.php:23
+#: admin/state_form.php:34
+msgid "Rating"
+msgstr "Bewertung"
+
+#: admin/pledgestatetype_edit.php:22
+msgid "Edit rating"
+msgstr "Bewertung bearbeiten"
+
+#: admin/pledgestatetype_form.php:13
+msgid "Points"
+msgstr "Punkte"
+
+#: admin/pledgestatetype_form.php:21
+msgid "Include into valuation"
+msgstr "In die Wertung aufnehmen"
+
+#: admin/pledgestatetype_form.php:31 admin/pledgestatetype_list.php:9
+#: admin/pledgestatetype_list.php:29 admin/pledgestatetype_list.php:59
+#: admin/pledgestatetype_list.php:87
+msgid "Type"
+msgstr "Art"
+
+#: admin/pledgestatetype_form.php:34 admin/pledgestatetype_list.php:9
+msgid "Request"
+msgstr "Forderung"
+
+#: admin/pledgestatetype_form.php:35 admin/pledgestatetype_list.php:29
+msgid "Status quo"
+msgstr "Zustand"
+
+#: admin/pledgestatetype_form.php:41 admin/pledgestatetypegroup_form.php:13
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: admin/pledgestatetype_form.php:49 admin/pledgestatetype_form.php:57
+#: admin/pledgestatetypegroup_form.php:21
+msgid "Colour"
+msgstr "Farbe"
+
+#: admin/pledgestatetype_list.php:3 admin/pledgestatetype_new.php:1
+msgid "New Rating"
+msgstr "Neue Bewertung"
+
+#: admin/pledgestatetype_list.php:50
+msgid "Groups"
+msgstr "Gruppen"
+
+#: admin/pledgestatetype_list.php:55
+msgid "Pre-installed"
+msgstr "Vorinstalliert"
+
+#: admin/pledgestatetype_list.php:68
+msgid "Nothing happened"
+msgstr "Nichts passiert"
+
+#: admin/pledgestatetype_list.php:69
+msgid "Promise kept"
+msgstr "Versprechen gehalten"
+
+#: admin/pledgestatetype_list.php:70
+msgid "Promise broken"
+msgstr "Versprechen gebrochen"
+
+#: admin/pledgestatetype_list.php:82
+msgid "Custom groups"
+msgstr "Benutzerdefinierte Gruppen"
+
+#: admin/pledgestatetype_list.php:83 admin/pledgestatetypegroup_new.php:1
+msgid "New Group"
+msgstr "Neue Gruppe"
+
+#: admin/pledgestatetype_list.php:93
+msgid "custom"
+msgstr "benutzerdefiniert"
+
+#: admin/pledgestatetypegroup_del.php:14
+#: admin/pledgestatetypegroup_edit.php:26
+msgid "Group"
+msgstr "Gruppe"
+
+#: admin/pledgestatetypegroup_edit.php:25
+msgid "Edit group"
+msgstr "Gruppe bearbeiten"
 
 #: admin/state_del.php:16
 msgid "Delete state"
