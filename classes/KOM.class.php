@@ -81,6 +81,8 @@ class KOM {
                         break;
                     }
                 }
+            } else {
+                $ret0['active'] = false;
             }
             
             $ret0['text'] = $value['text'];
