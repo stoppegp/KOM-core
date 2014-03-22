@@ -125,7 +125,7 @@ class KOM {
                     case "custompage":
                         if (isset($array['custompageid']) && is_array(KOM::$custompagelist) && in_array($array['custompageid'], array_keys(KOM::$custompagelist))) {
                             $custompageid = $array['custompageid'];
-                            $url = KOM::$custompagelist[$custompageid]."/";
+                            $url = strtolower(KOM::$custompagelist[$custompageid])."/";
                         }
                     break;
                     case "home":
@@ -185,9 +185,9 @@ class KOM {
             if (!$endrewrite) {
                 for ($a = 0; $a < count($uriparts); $a++) {
                     $tempname = implode("/", array_slice($uriparts, 0, (count($uriparts)-$a)));
-                    if (in_array($tempname, KOM::$custompagelist)) {
+                    if (in_array($tempname, array_map('strtolower', KOM::$custompagelist))) {
                         $active['page'] = "custompage";
-                        $temp0 = array_flip(KOM::$custompagelist);
+                        $temp0 = array_flip(array_map('strtolower', KOM::$custompagelist));
                         $active['custompageid'] = $temp0[$tempname];
                         $endrewrite = true;
                         break;
