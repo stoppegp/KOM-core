@@ -22,7 +22,7 @@ class KOM {
         $tempar = KOM::$dblink->Select("issues", "id, name");
         if (is_array($tempar)) {
             foreach($tempar as $value) {
-                KOM::$issuelist[$value->id] = KOM::filteruri($value->name);
+                KOM::$issuelist[$value->id] = $value->name;
             }
         }
     }
