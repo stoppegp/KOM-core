@@ -88,7 +88,7 @@ class KOM {
             $ret0['text'] = $value['text'];
             $ret0['submenu'] = $value['submenu'];
 			if (!isset($value['args'])) $value['args'] = null;
-			if (!isset($value['args'])) $value['clearargs'] = null;
+			if (!isset($value['clearargs'])) $value['clearargs'] = null;
             $ret0['link'] = KOM::dolink($value['page'], $value['args'], $value['clearargs']);
             
             $ret[] = $ret0;
