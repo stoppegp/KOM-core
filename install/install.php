@@ -85,7 +85,7 @@ CONFIG;
     </tr>
     <tr>
         <td>URL:</td>
-        <td><input type="text" name="install[url]" value="<?php echo str_replace("/install/install.php", "", "http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']); ?>" /></td>
+        <td><input type="text" name="install[url]" value="<?php echo str_replace("/install/install.php", "", $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']); ?>" /></td>
     </tr>
     <tr>
         <td>Startdatum:</td>

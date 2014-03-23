@@ -21,7 +21,8 @@ KOM::$dblink->connect();
 
 KOM::$mainDB = new Database(KOM::$dblink);
 KOM::$pagetitle = KOM::$mainDB->getOption("site_title");
-KOM::$site_url = SITE_URL;
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+KOM::$site_url = $protocol.SITE_URL;
 
 KOM::loadIssuelist();
 KOM::loadCustompagelist();
@@ -31,8 +32,8 @@ if (file_exists('interface/init.php')) {
 }
 
 $uri = $_SERVER['REQUEST_URI'];
-if (strpos("-".parse_url($uri, PHP_URL_PATH), parse_url(SITE_URL, PHP_URL_PATH)) == 1) {
-    $uri = substr($uri, strlen(parse_url(SITE_URL, PHP_URL_PATH)));
+if (strpos("-".parse_url($uri, PHP_URL_PATH), parse_url(KOM::$site_url, PHP_URL_PATH)) == 1) {
+    $uri = substr($uri, strlen(parse_url(KOM::$site_url, PHP_URL_PATH)));
 }
 
 KOM::$active = KOM::urlrewrite($uri);

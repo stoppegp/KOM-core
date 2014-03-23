@@ -209,7 +209,7 @@ class KOM {
 
     static function registerScript($content, $link = false) {
         if ($link) {
-            KOM::$scripts[] = '<script type="text/javascript" src="'.SITE_URL."/".$content.'"></script>';
+            KOM::$scripts[] = '<script type="text/javascript" src="'.KOM::$site_url."/".$content.'"></script>';
         } else {
             KOM::$scripts[] = '<script type="text/javascript">"'.$content.'"</script>';
         }
@@ -217,7 +217,7 @@ class KOM {
 
     static function registerStyle($content, $link = false) {
         if ($link) {
-            KOM::$styles[] = '<link rel="stylesheet" type="text/css" href="'.SITE_URL."/".$content.'" />';
+            KOM::$styles[] = '<link rel="stylesheet" type="text/css" href="'.KOM::$site_url."/".$content.'" />';
         } else {
             KOM::$styles[] = '<style type="text/css">"'.$content.'"</style>';
         }
