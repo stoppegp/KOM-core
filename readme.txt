@@ -1,7 +1,7 @@
 KOM-core
 =================================================
 
-Version 1.0 beta2, 27.04.2013
+Version 1.0, 23.03.2014
 
 Autor: Martin Stoppler @stoppegp
 Lizenz: GPL
@@ -54,7 +54,7 @@ Jetzt ist alles wichtige eingerichtet, und es kann mit der Erstellung der Themen
 3.1 Themen
 
 Auf der Themen-Seite werden alle erstellten Themen, sortiert nach Kategorien, angezeigt.
-Ein neues Thema kann über den Button "Neues Thema" erstellt werden. Hier muss zwingend ein Name und mindestens eine Kategorie angegeben werden. Außerdem empfiehlt es sich, eine Beschreibung hinzuzufügen. Es gibt hier auch die Möglichkeit, einen Kommentar zur Bewertung einzugeben. Nach dem erfolgreichen Erstellen wird das Thema automatisch geöffnet (siehe 3.2 und 3.3).
+Ein neues Thema kann über den Button "Neues Thema" erstellt werden. Hier muss zwingend ein Name und mindestens eine Kategorie angegeben werden. Außerdem empfiehlt es sich, eine Beschreibung hinzuzufügen. Nach dem erfolgreichen Erstellen wird das Thema automatisch geöffnet (siehe 3.2 und 3.3).
 Über den Button "bearbeiten" kann ein Thema geändert werden, der Button "löschen" entfernt das Theme und alle darin enthaltenen Versprechen (siehe 3.2) und Status (siehe 3.3).
 Über den Button "öffnen" oder mit einem Klick auf den Namen des Themas wird das Thema geöffnet (siehe 3.2 und 3.3).
 
