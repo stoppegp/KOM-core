@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once('init.php');
-require_once('functions.php');
+require_once(dirname(__FILE__).'/init.php');
+require_once(dirname(__FILE__).'/functions.php');
 
 /* Adminactvive-Variablen */
 if (isset($_REQUEST['page'])) $adminactive['page'] = $_REQUEST['page'];
@@ -18,7 +18,7 @@ if (isset($_REQUEST['pledgestatetypeid']) && $_REQUEST['pledgestatetypeid'] != "
 if (isset($_REQUEST['pledgestatetypegroupid']) && $_REQUEST['pledgestatetypegroupid'] != "") $adminactive['pledgestatetypegroupid'] = $_REQUEST['pledgestatetypegroupid'];
 
 /* AUTH */
-require_once('auth.php');
+require_once(dirname(__FILE__).'/auth.php');
 
 /* Datenbank initialisieren */
 $database = new Database($dblink);
@@ -32,10 +32,10 @@ if (!isset($adminactive['page']) || !in_array($adminactive['page'], array("login
 /* Erlaubte Aktionen */
 if (isset($adminactive['do']) && in_array($adminactive['do'], array("issue_new", "issue_edit", "issue_del", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_new", "user_edit", "user_del", "cat_new", "cat_del", "cat_edit", "custompages_new", "custompages_edit", "custompages_del", "party_new", "party_edit", "party_del", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
     // Aktion ausführen
-    include ("do_".$adminactive['do'].".php");
+    include (dirname(__FILE__)."./do_".$adminactive['do'].".php");
 }
 
-include('header.php');
+include(dirname(__FILE__).'/header.php');
 
 if (isset($_GET['success'])) {
     $getsuccess = $_GET['success'];
@@ -85,8 +85,8 @@ if (isset($adminsuccs) && is_array($adminsuccs)) {
     echo "<div class=\"adminsuccess\">".implode("</div><div>", $adminsuccs)."</div>";
 }
 
-include($adminactive['page'].".php");
+include(dirname(__FILE__).'/'.$adminactive['page'].".php");
 
-include('footer.php');
+include(dirname(__FILE__).'/footer.php');
 
 ?>

@@ -16,7 +16,7 @@ function kom_autoload($class) {
         "search"  =>  "classes/search.class.php",
     );
     if (in_array(strtolower($class), array_keys($classes))) {
-        include_once $classes[strtolower($class)];
+        include_once dirname(__FILE__).'/'.$classes[strtolower($class)];
     }
 }
 

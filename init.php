@@ -1,34 +1,17 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 
-require('helpers/errorclasses.php');
-require('helpers/MySQL.class.php');
-require('classes/KOM.class.php');
-require("config.php");
-require_once('helpers/gettext/gettext.inc');
+require(dirname(__FILE__).'/helpers/errorclasses.php');
+require(dirname(__FILE__).'/helpers/MySQL.class.php');
+require(dirname(__FILE__).'/classes/KOM.class.php');
+require(dirname(__FILE__).'/config.php');
+require_once(dirname(__FILE__).'/helpers/gettext/gettext.inc');
 
 
-require('autoload.php');
-
-if (get_magic_quotes_gpc()) {
-    $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-    while (list($key, $val) = each($process)) {
-        foreach ($val as $k => $v) {
-            unset($process[$key][$k]);
-            if (is_array($v)) {
-                $process[$key][stripslashes($k)] = $v;
-                $process[] = &$process[$key][stripslashes($k)];
-            } else {
-                $process[$key][stripslashes($k)] = stripslashes($v);
-            }
-        }
-    }
-    unset($process);
-}
-
+require(dirname(__FILE__).'/autoload.php');
 
 if (file_exists("interface/functions.php")) {
-    require("interface/functions.php");
+    require(dirname(__FILE__).'/interface/functions.php');
 }
 
 try {
@@ -45,7 +28,7 @@ KOM::loadIssuelist();
 KOM::loadCustompagelist();
 
 if (file_exists('interface/init.php')) {
-    require("interface/init.php");
+    require(dirname(__FILE__).'/interface/init.php');
 }
 
 $uri = $_SERVER['REQUEST_URI'];

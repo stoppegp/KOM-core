@@ -1,13 +1,13 @@
 <?php
-require('../classes/KOM.class.php');
-require("../config.php");
+require(dirname(__FILE__).'/../classes/KOM.class.php');
+require(dirname(__FILE__).'/../config.php');
 
-require('../helpers/errorclasses.php');
-require('../helpers/MySQL.class.php');
+require(dirname(__FILE__).'/../helpers/errorclasses.php');
+require(dirname(__FILE__).'/../helpers/MySQL.class.php');
 
 
-require('../autoload.php');
-require_once('../helpers/gettext/gettext.inc');
+require(dirname(__FILE__).'/../autoload.php');
+require_once(dirname(__FILE__).'/../helpers/gettext/gettext.inc');
 
 if (get_magic_quotes_gpc()) {
     $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
@@ -24,7 +24,6 @@ if (get_magic_quotes_gpc()) {
     }
     unset($process);
 }
-
 
 /* DB-Verbindung aufbauen */
 KOM::$dblink = new MySQL(DB_HOST, DB_USER, DB_PASSWORD, DB_DBNAME, DB_PREFIX);

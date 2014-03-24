@@ -25,7 +25,7 @@ if (!isset($parties[0])) {
     
     <form method="post">
 
-    <? include ('party_form.php'); ?>
+    <? include (dirname(__FILE__).'/party_form.php'); ?>
 
     <input type="hidden" name="do" value="party_edit" />
     <input type="hidden" name="party[id]" value="<?=$thispartyid;?>" />

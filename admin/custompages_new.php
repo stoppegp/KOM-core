@@ -2,7 +2,7 @@
 
 <form method="post">
 
-<? include ('custompages_form.php'); ?>
+<? include (dirname(__FILE__).'/custompages_form.php'); ?>
 
 <input type="hidden" name="do" value="custompages_new" />
 </form>

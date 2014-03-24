@@ -56,7 +56,7 @@ CONFIG;
         mysql_query($query, $sql);
         ob_start();
         
-        include('sql.inc.php');
+        include(dirname(__FILE__).'/sql.inc.php');
         
         $query = ob_get_contents();
         

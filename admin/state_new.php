@@ -11,7 +11,7 @@
 <form method="post">
 
 <?php
- include ('state_form.php'); ?>
+ include (dirname(__FILE__).'/state_form.php'); ?>
 
 <input type="hidden" name="do" value="state_new" />
 <input type="hidden" name="state[issue_id]" value="<?=$thisissueid;?>" />

@@ -20,7 +20,7 @@ if (!isset($custompages[0])) {
     
     <form method="post">
 
-    <? include ('custompages_form.php'); ?>
+    <? include (dirname(__FILE__).'/custompages_form.php'); ?>
 
     <input type="hidden" name="do" value="custompages_edit" />
     <input type="hidden" name="custompages[id]" value="<?=$thiscustompageid;?>" />

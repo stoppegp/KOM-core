@@ -25,7 +25,7 @@ if (!isset($pledgestatetypes[0])) {
     <form method="post">
 
     <? $hidetype = true;
-    include ('pledgestatetype_form.php'); ?>
+    include (dirname(__FILE__).'/pledgestatetype_form.php'); ?>
 
     <input type="hidden" name="do" value="pledgestatetype_edit" />
     <input type="hidden" name="pledgestatetype[id]" value="<?=$thispledgestatetypeid;?>" />

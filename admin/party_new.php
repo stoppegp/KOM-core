@@ -7,7 +7,7 @@
 
 ?>
 
-<? include ('party_form.php'); ?>
+<? include (dirname(__FILE__).'/party_form.php'); ?>
 
 <input type="hidden" name="do" value="party_new" />
 </form>

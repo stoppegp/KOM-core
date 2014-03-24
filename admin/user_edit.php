@@ -20,7 +20,7 @@ if (!isset($users[0])) {
     
     <form method="post">
 
-    <? include ('user_form.php'); ?>
+    <? include (dirname(__FILE__).'/user_form.php'); ?>
 
     <input type="hidden" name="do" value="user_edit" />
     <input type="hidden" name="user[id]" value="<?=$thisuserid;?>" />

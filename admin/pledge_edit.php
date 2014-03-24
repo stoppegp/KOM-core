@@ -30,7 +30,7 @@ $thispledgeid = $adminactive['pledgeid'];
         
         <form method="post">
 
-        <? include ('pledge_form.php'); ?>
+        <? include (dirname(__FILE__).'/pledge_form.php'); ?>
 
         <input type="hidden" name="do" value="pledge_edit" />
         <input type="hidden" name="pledge[issue_id]" value="<?=$thisissueid;?>" />

@@ -2,7 +2,7 @@
 
 <form method="post">
 
-<? include ('pledgestatetype_form.php'); ?>
+<? include (dirname(__FILE__).'/pledgestatetype_form.php'); ?>
 
 <input type="hidden" name="do" value="pledgestatetype_new" />
 </form>

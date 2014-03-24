@@ -27,7 +27,7 @@ if (!isset($pledgestatetypegroups[0])) {
     
     <form method="post">
 
-    <? include ('pledgestatetypegroup_form.php'); ?>
+    <? include (dirname(__FILE__).'/pledgestatetypegroup_form.php'); ?>
 
     <input type="hidden" name="do" value="pledgestatetypegroup_edit" />
     <input type="hidden" name="pledgestatetypegroup[id]" value="<?=$thispledgestatetypegroupid;?>" />

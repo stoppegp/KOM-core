@@ -36,7 +36,7 @@ $thisstate = $thisissue->getState($thisstateid);
         
         <form method="post">
 
-        <? include ('state_form.php'); ?>
+        <? include (dirname(__FILE__).'/state_form.php'); ?>
 
         <input type="hidden" name="do" value="state_edit" />
         <input type="hidden" name="state[issue_id]" value="<?=$thisissueid;?>" />

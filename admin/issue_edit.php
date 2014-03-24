@@ -21,7 +21,7 @@ if (!is_numeric($thisissueid) || !$database->getIssue($thisissueid)) {
     
     <form method="post">
 
-    <? include ('issue_form.php'); ?>
+    <? include (dirname(__FILE__).'/issue_form.php'); ?>
 
     <input type="hidden" name="do" value="issue_edit" />
     <input type="hidden" name="issue[id]" value="<?=$thisissueid;?>" />

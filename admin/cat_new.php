@@ -2,7 +2,7 @@
 
 <form method="post">
 
-<? include ('cat_form.php'); ?>
+<? include (dirname(__FILE__).'/cat_form.php'); ?>
 
 <input type="hidden" name="do" value="cat_new" />
 </form>
