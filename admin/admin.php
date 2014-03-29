@@ -32,7 +32,7 @@ if (!isset($adminactive['page']) || !in_array($adminactive['page'], array("login
 /* Erlaubte Aktionen */
 if (isset($adminactive['do']) && in_array($adminactive['do'], array("issue_new", "issue_edit", "issue_del", "pledge_new", "pledge_del", "pledge_edit", "state_new", "state_del", "state_edit", "user_new", "user_edit", "user_del", "cat_new", "cat_del", "cat_edit", "custompages_new", "custompages_edit", "custompages_del", "party_new", "party_edit", "party_del", "pledgestatetype_new", "pledgestatetype_edit", "pledgestatetype_del", "pledgestatetypegroup_new", "pledgestatetypegroup_edit", "pledgestatetypegroup_del"))) {
     // Aktion ausführen
-    include (dirname(__FILE__)."./do_".$adminactive['do'].".php");
+    include (dirname(__FILE__)."/do_".$adminactive['do'].".php");
 }
 
 include(dirname(__FILE__).'/header.php');
