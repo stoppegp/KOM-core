@@ -211,7 +211,7 @@ class KOM {
         if ($link) {
             KOM::$scripts[] = '<script type="text/javascript" src="'.KOM::$site_url."/".$content.'"></script>';
         } else {
-            KOM::$scripts[] = '<script type="text/javascript">"'.$content.'"</script>';
+            KOM::$scripts[] = '<script type="text/javascript">'.$content.'</script>';
         }
     }
 
