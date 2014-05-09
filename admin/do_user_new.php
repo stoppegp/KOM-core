@@ -25,7 +25,7 @@ if (is_array($errors)) {
         $dbarray['name'] = $workarray['name'];
         $dbarray['username'] = $workarray['username'];
         $dbarray['password'] = sha1($workarray['password']);
-        $dbarray['email'] = sha1($workarray['email']);
+        $dbarray['email'] = $workarray['email'];
         if ($workarray['admin'] == 1) {
             $dbarray['admin'] = 1;
         } else {
